@@ -24,7 +24,7 @@ The Hiking Journal is a place for users to log all their hiking adventures. Why?
 * Sass
 * CSS
 * HTML
-* Semantic UI CSS Framework
+* Bulma CSS Framework
 * Heroku
 * Mapbox API (Stretch Goal)
 
