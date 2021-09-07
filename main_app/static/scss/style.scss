@@ -1,4 +1,3 @@
-
 $navbar: #28587b;
 $btn: #467383;
 $trim: #64888a;
@@ -12,5 +11,6 @@ $primary-font: 'Poppins', sans-serif;
 
 body {
     font: $primary-font;
+    color: $navbar;
     background: $background;
 }
