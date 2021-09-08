@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'scripts/main.js' %}" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>The Hiking Journal</title>
+    <title>The Hiking Journal - {% block title %} {% endblock%} </title>
 </head>
 <body>
-    <h1>You made it to the home page</h1>
+    {% block content %} 
+    {% endblock %}
 </body>
 </html>

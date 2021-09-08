@@ -3,6 +3,6 @@ from django.views import View
 from django.views.generic.base import TemplateView
 
 class Home(TemplateView):
-    template_name = "base.html"
+    template_name = "home.html"
 
 
