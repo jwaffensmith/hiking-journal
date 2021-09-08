@@ -4,36 +4,35 @@ body {
   background: #f4f4f4;
 }
 
-.navbar {
-  background: #28587b;
-}
-.navbar .navbar-burger {
-  color: #e7ede6;
-}
-.navbar .navbar-menu .navbar-item:hover {
-  color: #28587b;
-}
-.navbar .navbar-menu .navbar-item:hover .site-name:hover {
+.navbar .navbar-brand {
   background-color: #28587b;
 }
-.navbar .navbar-menu .navbar-item:hover .logo:hover {
+.navbar .navbar-brand .navbar-item {
   background-color: #28587b;
 }
-.navbar .navbar-menu .logo {
+.navbar .navbar-brand .navbar-item .logo {
   color: #e7ede6;
   padding: 2px;
 }
-.navbar .navbar-menu .site-name {
+.navbar .navbar-brand .navbar-item .site-name {
   padding: 5px;
   font-weight: 700;
   font-size: 20px;
   color: #e7ede6;
 }
-.navbar .navbar-menu .about {
+.navbar .navbar-brand .navbar-burger {
+  color: #e7ede6;
+  background: #28587b;
+}
+.navbar .navbar-menu {
+  background: #28587b;
+  text-align: center;
+}
+.navbar .navbar-menu .about, .navbar .navbar-menu .signup-button, .navbar .navbar-menu .login-button {
   color: #e7ede6;
 }
-.navbar .navbar-menu .signup-button, .navbar .navbar-menu .login-button {
-  color: #e7ede6;
+.navbar .navbar-menu .login-button:hover, .navbar .navbar-menu .signup-button:hover, .navbar .navbar-menu .about:hover {
+  color: #28587b;
 }
 
 .footer {

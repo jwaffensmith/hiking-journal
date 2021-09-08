@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Home {% endblock%} 
 
 {% block content%}
-<h1>You made it to the home page</h1>
+
+<h1>A Place to journal your hiking adventures.</h1>
+<img src="{% static 'landing4.png' %}">
 
 {% endblock %}
