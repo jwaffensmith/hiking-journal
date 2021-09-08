@@ -4,7 +4,15 @@
 
 {% block content%}
 
-<h1>A Place to journal your hiking adventures.</h1>
-<img src="{% static 'landing4.png' %}">
-
+    <section class="gradient">
+        <div class="container">
+            <div class="img-container">
+                <img src="{% static 'landing4.png' %}" alt="mountains" style="width:100%; margin-top: 50px; opacity: 50%; filter: drop-shadow(8px 8px 10px gray)">
+                <p class="welcome-message">A place to journal your hiking adventures.</p>
+                <button class="button is-ghost img-signup">Sign Up</button>
+                <button class="button is-ghost img-login">Login</button>
+            </div>
+        </div>
+    </section>
+    
 {% endblock %}

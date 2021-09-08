@@ -1,7 +1,5 @@
 body {
-  font: "Poppins", sans-serif;
-  color: #28587b;
-  background: #f4f4f4;
+  font-family: "Poppins", sans-serif;
 }
 
 .navbar .navbar-brand {
@@ -36,9 +34,12 @@ body {
 }
 
 .footer {
-  padding: 10px;
-  margin-top: 20px;
+  padding: 20px;
   background: #e7ede6;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
 }
 .footer .contact-info {
   margin: 0;
@@ -47,6 +48,52 @@ body {
 .footer .contact-info .developer-name, .footer .contact-info .contact-icon {
   color: #28587b;
   font-size: 15px;
+}
+
+.gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  background: linear-gradient(#28587b, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6);
+}
+.gradient .container {
+  position: relative;
+  text-align: center;
+  color: #f4f4f4;
+  width: 80%;
+  height: auto;
+}
+.gradient .container .img-container {
+  position: absolute;
+  text-align: center;
+  color: #f4f4f4;
+  margin-top: 50px;
+}
+.gradient .container .img-container .welcome-message {
+  position: absolute;
+  color: #f4f4f4;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gradient .container .img-container .img-login {
+  position: absolute;
+  top: 40%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  color: #28587b;
+  text-decoration: none;
+}
+.gradient .container .img-container .img-signup {
+  position: absolute;
+  top: 40%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  color: #28587b;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */

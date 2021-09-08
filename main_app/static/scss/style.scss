@@ -3,16 +3,14 @@ $btn: #467383;
 $trim: #64888a;
 $gradient_four: #9fb798;
 $gradient_five:  #b7cdb2;
-$background: #cfdbcc;
+$gradient_six: #cfdbcc;
 $footer: #e7ede6;
 $background: #f4f4f4;
 $primary-font: 'Poppins', sans-serif;
 
 
 body {
-    font: $primary-font;
-    color: $navbar;
-    background: $background;
+    font-family: $primary-font;
 }
 
 .navbar {
@@ -63,9 +61,12 @@ body {
 
 
 .footer {
-    padding: 10px;
-    margin-top: 20px;
+    padding: 20px;
     background: $footer;
+    position: fixed;
+    left:0px;
+    bottom:0px;
+    width:100%;
 
     .contact-info {
         margin: 0;
@@ -76,6 +77,61 @@ body {
             font-size: 15px;
         }
     }
-
 }
+.gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    background: linear-gradient($navbar, $btn, $btn, $trim, $trim, 
+    $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
+    $gradient_six, $gradient_six, $footer, $background, $footer);
+
+    .container {
+    position: relative;
+    text-align: center;
+    color: $background;
+    width: 80%;
+    height: auto;
+    
+    .img-container {
+        position: absolute;
+        text-align: center;
+        color: $background;
+        margin-top: 50px;
+    
+        .welcome-message {
+            position: absolute;
+            color: $background;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .img-login {
+            position: absolute;
+            top: 40%;
+            left: 58%;
+            transform: translate(-50%, -50%);
+            color: $navbar;
+            text-decoration: none;
+        }
+        
+        .img-signup {
+            position: absolute;
+            top: 40%;
+            left: 42%;
+            transform: translate(-50%, -50%);
+            color: $navbar;
+            text-decoration: none;
+        }
+        
+    }
+    }
+}
+
+
+
 
