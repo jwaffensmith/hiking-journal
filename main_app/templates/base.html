@@ -31,13 +31,23 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
+            {% if user.is_authenticated %}
             <div class="navbar-menu is-active">
                 <div class="navbar-end">
                     <a class="navbar-item about" href="{% url 'about' %}">About</a>
-                    <a class="navbar-item login-button">Login</a>
-                    <a class="navbar-item signup-button"> Sign Up </a>
+                    <a class="navbar-item" href="{% url 'profile' %}">Welcome,</a>
+                    <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
                 </div>
             </div>
+            {% else %}
+            <div class="navbar-menu is-active">
+                <div class="navbar-end">
+                    <a class="navbar-item about" href="{% url 'about' %}">About</a>
+                    <a class="navbar-item login-button" href="{% url 'login' %}">Log In</a>
+                    <a class="navbar-item signup-button" href="{% url 'signup' %}"> Sign Up </a>
+                </div>
+            </div>
+            {% endif %}
         </nav>
     
         {% block content %} 
