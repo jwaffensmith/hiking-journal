@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.views import View
 from django.views.generic.base import TemplateView
 
 class Home(TemplateView):
@@ -7,3 +5,6 @@ class Home(TemplateView):
 
 class About(TemplateView):
     template_name = "about.html"
+
+class Profile(TemplateView):
+    template_name = "profile.html"
