@@ -1,5 +1,3 @@
-from django.db import models
-
 import time
 
 from django.db import models
@@ -39,3 +37,11 @@ class Comment(Model):
 
     def __str__(self):
         return f"{self.pk} - {self.hike.title}"
+
+
+
+class Profile(Model):
+    username = CharField(max_length=30)
+    avatar = CharField(max_length=200, default="https://source.unsplash.com/twukN12EN7c")
+    location = CharField
+
