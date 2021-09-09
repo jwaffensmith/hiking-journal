@@ -19,12 +19,10 @@
 
         <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <div class="navbar-item">
-                    <a href="{% url 'home' %}">
-                        <i class="fas fa-hiking fa-2x logo"></i>
-                        <span class="site-name">The Hiking Journal</span>
-                    </a>
-                </div>
+                <a class="navbar-item" href="{% url 'home' %}">
+                    <i class="fas fa-hiking fa-2x logo"></i>
+                    <span class="site-name">The Hiking Journal</span>
+                </a>
                 <a role="button" class="navbar-burger is-active" aria-label="menu" aria-expanded="false">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -34,8 +32,8 @@
             {% if user.is_authenticated %}
             <div class="navbar-menu is-active">
                 <div class="navbar-end">
+                    <a class="navbar-item welcome-user" href="{% url 'profile' %}">{{user.username}}, the hiker extraordinaire. </a>
                     <a class="navbar-item about" href="{% url 'about' %}">About</a>
-                    <a class="navbar-item" href="{% url 'profile' %}">Welcome,</a>
                     <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
                 </div>
             </div>

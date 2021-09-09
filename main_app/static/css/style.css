@@ -4,37 +4,45 @@ body, html {
   margin: 0;
 }
 
-.navbar {
-  box-shadow: 1px 2px 3px #28587b;
+nav.navbar.is-fixed-top {
+  box-shadow: 1px 1px 1px #467383;
+  background: linear-gradient(#467383, #28587b);
 }
-.navbar .navbar-brand {
-  background-color: #28587b;
+nav.navbar.is-fixed-top .navbar-brand {
+  background: linear-gradient(#28587b, #467383);
 }
-.navbar .navbar-brand .navbar-item {
-  background-color: #28587b;
-}
-.navbar .navbar-brand .navbar-item .logo {
+nav.navbar.is-fixed-top .navbar-brand .navbar-item .logo {
   color: #e7ede6;
   padding: 2px;
 }
-.navbar .navbar-brand .navbar-item .site-name {
+nav.navbar.is-fixed-top .navbar-brand .navbar-item .site-name {
   padding: 5px;
   font-weight: 700;
   font-size: 20px;
   color: #e7ede6;
 }
-.navbar .navbar-brand .navbar-burger {
+nav.navbar.is-fixed-top .navbar-brand .navbar-burger {
   color: #e7ede6;
-  background: #28587b;
+  background: linear-gradient(#28587b, #467383);
 }
-.navbar .navbar-menu {
-  background: #28587b;
+nav.navbar.is-fixed-top .navbar-brand .navbar-burger.is-active {
+  color: #e7ede6;
+  background: linear-gradient(#28587b, #467383);
+}
+nav.navbar.is-fixed-top .navbar-menu.is-active {
+  background: linear-gradient(#28587b, #467383);
+}
+nav.navbar.is-fixed-top .navbar-menu.is-active {
+  background: linear-gradient(#28587b, #467383);
   text-align: center;
 }
-.navbar .navbar-menu .about, .navbar .navbar-menu .signup-button, .navbar .navbar-menu .login-button {
+nav.navbar.is-fixed-top .navbar-end {
+  background: linear-gradient(#28587b, #467383);
+}
+nav.navbar.is-fixed-top .navbar-end .about, nav.navbar.is-fixed-top .navbar-end .signup-button, nav.navbar.is-fixed-top .navbar-end .login-button, nav.navbar.is-fixed-top .navbar-end .welcome-user {
   color: #e7ede6;
 }
-.navbar .navbar-menu .login-button:hover, .navbar .navbar-menu .signup-button:hover, .navbar .navbar-menu .about:hover {
+nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top .navbar-end .signup-button:hover, nav.navbar.is-fixed-top .navbar-end .about:hover, nav.navbar.is-fixed-top .navbar-end .welcome-user:hover {
   color: #28587b;
 }
 
@@ -62,7 +70,7 @@ body, html {
   left: 0px;
   top: 0px;
   z-index: -1;
-  background: linear-gradient(#28587b, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6);
+  background: linear-gradient(#467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6);
 }
 
 .img-container {
@@ -82,11 +90,11 @@ body, html {
 }
 .img-container .welcome-message {
   margin-top: 10px;
-  color: "Poppins", sans-serif;
+  color: #467383;
   font-size: 20px;
 }
 .img-container .img-login, .img-container .img-signup {
-  margin-top: 10px;
+  margin: 15px;
   color: #28587b;
   outline: none !important;
   text-decoration: none;
@@ -102,6 +110,61 @@ body, html {
 }
 .img-container .img-login:focus, .img-container .img-signup:focus {
   box-shadow: none;
+}
+.img-container .img-login:after, .img-container .img-signup:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #467383;
+  transform-origin: bottom right;
+  transition: transform 0.1s ease-out;
+}
+.img-container .img-login:hover:after, .img-container .img-signup:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.container.about {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+}
+.container.about .welcome-message {
+  margin-top: 20px;
+  color: #4d4848;
+  font-size: 20px;
+}
+
+.container.signup {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+}
+.container.signup .signup-form {
+  margin-top: 10px;
+  color: #28587b;
+  font-size: 20px;
+}
+
+.container.login {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+}
+.container.login .login-form {
+  margin-top: 10px;
+  color: #28587b;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 1024px) {

@@ -15,53 +15,63 @@ body, html {
     margin: 0;
 }
 
-.navbar {
-    box-shadow: 1px 2px 3px $navbar;
-
+nav.navbar.is-fixed-top {
+    box-shadow: 1px 1px 1px $btn;
+    background: linear-gradient($btn, $navbar);
+    
     .navbar-brand {
-
-        background-color: $navbar;
+        background: linear-gradient($navbar, $btn);
 
         .navbar-item {
-
-            background-color: $navbar;
 
             .logo {
                 color: $footer;
                 padding: 2px;
             }
-        
+            
             .site-name {
                 padding: 5px;
                 font-weight: 700;
                 font-size: 20px;
                 color: $footer;
+                
             }
-
         }
 
         .navbar-burger {
             color: $footer;
-            background: $navbar;
+            background: linear-gradient($navbar, $btn);
         }
-
+        .navbar-burger.is-active {
+            color: $footer;
+            background: linear-gradient($navbar, $btn);
+        }
     }
 
-    .navbar-menu {
+    .navbar-menu.is-active {
 
-        background: $navbar;
+        background: linear-gradient($navbar, $btn);
+    }
+
+    .navbar-menu.is-active {
+
+        background: linear-gradient($navbar, $btn);
         text-align: center;
+    }
+
+    .navbar-end {
+
+        background: linear-gradient($navbar, $btn);
     
-            .about, .signup-button, .login-button  {
+            .about, .signup-button, .login-button, .welcome-user  {
                 color: $footer;
             }
 
-            .login-button:hover, .signup-button:hover, .about:hover {
+            .login-button:hover, .signup-button:hover, .about:hover, .welcome-user:hover {
                 color: $navbar;
             }
         }
     } 
-
 
 .footer {
     padding: 20px;
@@ -88,7 +98,7 @@ body, html {
     left: 0px;
     top: 0px;
     z-index: -1;
-    background: linear-gradient($navbar, $btn, $btn, $trim, $trim, 
+    background: linear-gradient($btn, $btn, $trim, $trim, 
     $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
     $gradient_six, $gradient_six, $footer, $background, $footer);
 }
@@ -110,12 +120,12 @@ body, html {
     }
         .welcome-message {
             margin-top: 10px;
-            color: $primary-font;
+            color: $btn;
             font-size: 20px;
         }
 
         .img-login, .img-signup {
-            margin-top: 10px;
+            margin: 15px;
             color: $navbar;
             outline: none !important;
             text-decoration: none;
@@ -136,6 +146,65 @@ body, html {
             box-shadow: none;
         }
 
+        .img-login:after, .img-signup:after  {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: $btn;
+            transform-origin: bottom right;
+            transition: transform 0.10s ease-out;
+        }
+
+        .img-login:hover:after, .img-signup:hover:after  {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+}
+
+.container.about {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+
+    .welcome-message {
+        margin-top: 20px;
+        color: rgb(77, 72, 72);
+        font-size: 20px;
+    }
+}
+
+.container.signup {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+
+    .signup-form {
+        margin-top: 10px;
+        color: $navbar;
+        font-size: 20px;
+    }
+}
+
+.container.login {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+
+    .login-form {
+        margin-top: 10px;
+        color: $navbar;
+        font-size: 20px;
+    }
 }
 
 
