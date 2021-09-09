@@ -10,8 +10,12 @@
         {% if user.is_authenticated %}
         <p class="is-size-5 welcome-message">Hike on, {{ user.username }}.</p>
         {% else %}
-        <button class="button is-ghost is-large img-signup">Sign Up</button>
-        <button class="button is-ghost is-large img-login">Log In</button>
+        <a href="{% url 'signup' %}">
+            <button class="button is-ghost is-large img-signup">Sign Up</button>
+        </a>
+        <a href="{% url 'login' %}">
+            <button class="button is-ghost is-large img-login">Log In</button>
+        </a>
         {% endif %}
     </div>
 </div>

@@ -14,15 +14,14 @@ class About(TemplateView):
 class Profile(TemplateView):
     template_name = "profile.html"
 
-class Signup(TemplateView):
-    
-    template_name = "signup.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['signup_form'] = SignupForm()
-        context['profile_form'] = ProfileForm()
-        return context
+class Signup(View):
+    
+    def get(self, request):
+        signup_form = SignupForm()
+        profile_form = ProfileForm()
+        context = {"signup_form": signup_form, "profile_form": profile_form}
+        return render(request, "registration/signup.html", context)
 
     def post(self, request):
         signup_form = SignupForm(request.POST)
@@ -40,4 +39,4 @@ class Signup(TemplateView):
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "password1", "password2")
