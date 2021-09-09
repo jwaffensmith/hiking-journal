@@ -6,38 +6,25 @@ body, html {
 
 nav.navbar.is-fixed-top {
   box-shadow: 1px 1px 1px #467383;
-  background: linear-gradient(#467383, #28587b);
 }
-nav.navbar.is-fixed-top .navbar-brand {
-  background: linear-gradient(#28587b, #467383);
+nav.navbar.is-fixed-top .navbar-brand .navbar-burger {
+  color: #e7ede6;
 }
-nav.navbar.is-fixed-top .navbar-brand .navbar-item .logo {
+nav.navbar.is-fixed-top .navbar-brand .navbar-burger.is-active {
+  color: #e7ede6;
+}
+nav.navbar.is-fixed-top .navbar-item .logo {
   color: #e7ede6;
   padding: 2px;
 }
-nav.navbar.is-fixed-top .navbar-brand .navbar-item .site-name {
+nav.navbar.is-fixed-top .navbar-item .site-name {
   padding: 5px;
   font-weight: 700;
   font-size: 20px;
   color: #e7ede6;
 }
-nav.navbar.is-fixed-top .navbar-brand .navbar-burger {
-  color: #e7ede6;
-  background: linear-gradient(#28587b, #467383);
-}
-nav.navbar.is-fixed-top .navbar-brand .navbar-burger.is-active {
-  color: #e7ede6;
-  background: linear-gradient(#28587b, #467383);
-}
 nav.navbar.is-fixed-top .navbar-menu.is-active {
-  background: linear-gradient(#28587b, #467383);
-}
-nav.navbar.is-fixed-top .navbar-menu.is-active {
-  background: linear-gradient(#28587b, #467383);
   text-align: center;
-}
-nav.navbar.is-fixed-top .navbar-end {
-  background: linear-gradient(#28587b, #467383);
 }
 nav.navbar.is-fixed-top .navbar-end .about, nav.navbar.is-fixed-top .navbar-end .signup-button, nav.navbar.is-fixed-top .navbar-end .login-button, nav.navbar.is-fixed-top .navbar-end .welcome-user {
   color: #e7ede6;
@@ -74,7 +61,6 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
 }
 
 .img-container {
-  background-image: url("../landing3.png");
   background-color: #f4f4f4;
   height: 100%;
   background-position: center;
@@ -129,41 +115,50 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
 }
 
 .container.about {
-  position: absolute;
-  left: 0;
+  display: inline;
   top: 20%;
   width: 100%;
   text-align: center;
 }
 .container.about .welcome-message {
-  margin-top: 20px;
+  margin-top: 30px;
   color: #4d4848;
   font-size: 20px;
+  text-align: center;
 }
 
 .container.signup {
-  position: absolute;
   left: 0;
   top: 20%;
-  width: 100%;
-  text-align: center;
+  background: #e7ede6;
+  padding: 50px;
+  border-radius: 7px;
+  border-color: #467383;
+  border-style: solid;
+  border-width: 5px;
+  text-align: justify;
 }
 .container.signup .signup-form {
   margin-top: 10px;
-  color: #28587b;
+  color: #2d2a2a;
   font-size: 20px;
 }
 
 .container.login {
-  position: absolute;
   left: 0;
   top: 20%;
-  width: 100%;
   text-align: center;
+  background: #e7ede6;
+  width: 100%;
+  padding: 50px;
+  border-radius: 7px;
+  border-color: #467383;
+  border-style: solid;
+  border-width: 5px;
 }
 .container.login .login-form {
   margin-top: 10px;
-  color: #28587b;
+  color: #2d2a2a;
   font-size: 20px;
 }
 
