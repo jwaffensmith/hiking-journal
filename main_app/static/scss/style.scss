@@ -42,6 +42,11 @@ nav.navbar.is-fixed-top {
             color: $footer;
             
         }
+
+        #home-link:hover {
+            pointer-events: none;
+        }
+
     }
 
     .navbar-menu.is-active {
@@ -79,13 +84,12 @@ nav.navbar.is-fixed-top {
     }
 }
 .gradient {
-    position: absolute;
     width: 100%;
     height: 100%;
     left: 0px;
     top: 0px;
     z-index: -1;
-    background: linear-gradient($btn, $btn, $trim, $trim, 
+    background: linear-gradient($btn, $btn, $btn, $trim, $trim, 
     $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
     $gradient_six, $gradient_six, $footer, $background, $footer);
 }
