@@ -1,7 +1,12 @@
-body {
+body, html {
   font-family: "Poppins", sans-serif;
+  height: 100%;
+  margin: 0;
 }
 
+.navbar {
+  box-shadow: 1px 2px 3px #28587b;
+}
 .navbar .navbar-brand {
   background-color: #28587b;
 }
@@ -59,41 +64,51 @@ body {
   z-index: -1;
   background: linear-gradient(#28587b, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6);
 }
-.gradient .container {
-  position: relative;
-  text-align: center;
-  color: #f4f4f4;
-  width: 80%;
-  height: auto;
+
+.img-container {
+  background-image: url("../landing3.png");
+  background-color: #f4f4f4;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.gradient .container .img-container {
+.img-container .landing-caption {
   position: absolute;
-  text-align: center;
-  color: #f4f4f4;
-  margin-top: 50px;
-}
-.gradient .container .img-container .welcome-message {
-  position: absolute;
-  color: #f4f4f4;
+  left: 0;
   top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
 }
-.gradient .container .img-container .img-login {
-  position: absolute;
-  top: 40%;
-  left: 58%;
-  transform: translate(-50%, -50%);
-  color: #28587b;
-  text-decoration: none;
+.img-container .welcome-message {
+  margin-top: 10px;
+  color: "Poppins", sans-serif;
+  font-size: 20px;
 }
-.gradient .container .img-container .img-signup {
-  position: absolute;
-  top: 40%;
-  left: 42%;
-  transform: translate(-50%, -50%);
+.img-container .img-login, .img-container .img-signup {
+  margin-top: 10px;
   color: #28587b;
+  outline: none !important;
   text-decoration: none;
+  border-color: transparent;
+}
+.img-container .img-login:hover, .img-container .img-signup:hover {
+  text-decoration: none;
+  transition: all 0.5s;
+  color: #467383;
+}
+.img-container .img-login:active, .img-container .img-signup:active {
+  color: #28587b;
+}
+.img-container .img-login:focus, .img-container .img-signup:focus {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .img-container {
+    left: 50%;
+    margin-left: -512px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
