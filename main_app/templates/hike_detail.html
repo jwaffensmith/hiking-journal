@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %} Hike Details {% endblock %}
+{% load static %}
 {% block content %}
 <main>
     <main class="gradient">
@@ -28,13 +29,29 @@
                         <footer class="card-footer">
                             <a class="card-footer-item has-text-black-ter" href="{% url 'profile' user.profile.pk %}">Back to Journal</a>
                             <a class="card-footer-item has-text-warning-dark" href="{% url 'hike_update' hike.pk %}">Edit</a>
-                            <a class="card-footer-item has-text-danger-dark" href="{% url 'hike_delete' hike.pk %}">Delete</a>
+                            <a class="card-footer-item has-text-danger-dark modal-delete-btn" id="delete-btn">Delete</a>
+                            <div class="modal" id="delete-modal">
+                                <div class="modal-background" id="delete-modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Delete {{ hike.name }}?</p>
+                                        <button class="delete" aria-label="close" id="delete-cancel"></button>
+                                    </header>
+                                    <footer class="modal-card-foot">
+                                        <form method="post" action="{% url 'hike_delete' hike.pk %}">
+                                            {% csrf_token %}
+                                            <input type="submit" class="button is-danger" value="Delete" />
+                                            <input type="hidden" name="text" value="{{ next }}" />
+                                        <a href="{% url 'hike_detail' hike.pk %}"><button class="button">Cancel</button></a>
+                                    </footer>
+                                </div>
+                            </div>
                         </footer>
                     </div>
                 </div>
-                
             </div>
         </div>
     </main>
 </main>
 {% endblock %}
+

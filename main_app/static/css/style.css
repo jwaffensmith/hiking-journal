@@ -40,9 +40,6 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
 .footer {
   padding: 20px;
   background: #e7ede6;
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
   width: 100%;
 }
 .footer .contact-info {

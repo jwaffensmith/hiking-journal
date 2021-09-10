@@ -12,3 +12,6 @@ urlpatterns = [
     path('hikes/<int:pk>/update/', HikeUpdate.as_view(), name="hike_update"),
     path('hikes/<int:pk>/delete/', HikeDelete.as_view(), name="hike_delete"),
 ]
+
+
+
