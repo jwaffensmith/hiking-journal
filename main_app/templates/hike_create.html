@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Add Hike {% endblock %}
+{% block content %}
+<main>
+    <main class="gradient">
+        <div class="container login">
+            <div class="login-form">
+                <h1 class="welcome-message">Add a hike</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input class="button is-success" type="submit" value="Submit">
+                </form>
+                <a class="button is-warning" href="{% url 'profile' user.profile.pk %}">Cancel</a>
+            </div>
+        </div>
+    </main>
+</main>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} Hike Details {% endblock %}
+{% block content %}
+<main>
+    <main class="gradient">
+        <div class="container login">
+            <div class="login-form">
+                <div class="column card">
+                    <div class="card-header">
+                        <p class="card-header-title">
+                        {{hike.name}}
+                        </p>
+                    </div>
+                    <div class="card-image">
+                        <figure class="image is-square">
+                            <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
+                        </figure>
+                    </div>
+                    <section class="content hike-details">
+                        <p><strong>Location:</strong> {{hike.location}}</p>
+                        <P><strong>Length:</strong> {{hike.length}} Miles</p>
+                        <p><strong>Elevation Gain:</strong> {{hike.elevation_gain}} Feet</P>
+                        <p><strong>My Hike Rating:</strong> {{hike.hike_rating}}</p>
+                        <p><strong>Hiked on</strong> {{hike.hike_date}} </p>
+                        <p><strong>Details:</strong> {{hike.description}}</p>
+                    </section>
+                    <div class="card">
+                        <footer class="card-footer">
+                            <a class="card-footer-item has-text-black-ter" href="{% url 'profile' user.profile.pk %}">Journal Page</a>
+                        </footer>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+</main>
+{% endblock %}

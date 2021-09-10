@@ -13,6 +13,7 @@ body, html {
     font-family: $primary-font;
     height: 100%;
     margin: 0;
+    background-color: $footer;
 }
 
 nav.navbar.is-fixed-top {
@@ -91,7 +92,7 @@ nav.navbar.is-fixed-top {
     z-index: -1;
     background: linear-gradient($btn, $btn, $btn, $trim, $trim, 
     $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
-    $gradient_six, $gradient_six, $footer, $background, $footer);
+    $gradient_six, $gradient_six, $footer, $background, $footer, $footer, $footer);
 }
 
 .img-container {

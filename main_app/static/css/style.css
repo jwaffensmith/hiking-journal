@@ -2,6 +2,7 @@ body, html {
   font-family: "Poppins", sans-serif;
   height: 100%;
   margin: 0;
+  background-color: #e7ede6;
 }
 
 nav.navbar.is-fixed-top {
@@ -59,7 +60,7 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   left: 0px;
   top: 0px;
   z-index: -1;
-  background: linear-gradient(#467383, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6);
+  background: linear-gradient(#467383, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6, #e7ede6, #e7ede6);
 }
 
 .img-container {
