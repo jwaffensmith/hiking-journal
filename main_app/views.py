@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import DetailView
 from .forms import UserCreationForm, ProfileForm
 from .models import Hike, User, Profile, Comment
@@ -87,6 +87,9 @@ class HikeUpdate(UpdateView):
         return reverse("hike_detail", kwargs={"pk": self.object.pk})
 
 
-class HikeDelete(DeleteView):
-    model = Hike
-    success_url = reverse("profile")
+class HikeDelete(View):
+    def post(self, request, pk):
+        hike_to_delete = Hike.objects.get(id=pk)
+        hike_to_delete.delete()
+        return redirect("/profile/")
+

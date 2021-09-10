@@ -16,7 +16,7 @@
     <title>The Hiking Journal - {% block title %} {% endblock%} </title>
 </head>
     <body>
-
+    <section>
         <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand" style="background: linear-gradient(#467383, #28587b);">
                 <a role="button" class="navbar-burger is-active" aria-label="menu" aria-expanded="false">
@@ -34,7 +34,7 @@
                 </div>
             {% if user.is_authenticated and not user.is_superuser %}
                 <div class="navbar-end">
-                    <a class="navbar-item welcome-user" href="{% url 'profile' user.profile.pk %}">{{user.username}}, the hiker extraordinaire. </a>
+                    <a class="navbar-item welcome-user" href="{% url 'profile' user.profile.pk %}">{{ user.first_name }}'s Journal</a>
                     <a class="navbar-item about" href="{% url 'about' %}">About</a>
                     <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
                 </div>
@@ -54,10 +54,11 @@
             </div>
             {% endif %}
         </nav>
+    </section>
 
             {% block content %} 
             {% endblock %}
-
+    <section>
         <footer class="footer">
             <div class="content has-text-centered">
                 <p class="contact-info">
@@ -68,5 +69,6 @@
                 </p>
             </div>
         </footer>
+    </section>
     </body>
 </html class="has-navbar-fixed-top">

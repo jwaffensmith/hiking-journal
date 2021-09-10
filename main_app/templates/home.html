@@ -8,7 +8,7 @@
     <div class="landing-caption">
         <p class="is-size-4 welcome-message">A place to journal your hiking adventures.</p>
         {% if user.is_authenticated %}
-        <p class="is-size-5 welcome-message">Hike on, {{ user.username }}.</p>
+        <p class="is-size-5 welcome-message">Hike on, {{ user.first_name }}.</p>
         {% else %}
         <a href="{% url 'signup' %}">
             <button class="button is-ghost is-large img-signup">Sign Up</button>
