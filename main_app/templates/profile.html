@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Profile {% endblock%} 
+
+{% block content%}
+
+<main class="gradient">
+    <div class="container login">
+        <div class="login-form">
+            <h1 class="welcome-message">Hiking Journal</h1>
+            <img src={{profile.avatar}} >
+            <a class="button is-dark" href="{% url 'hike_create' profile.pk %}">Add Hike</a>
+            {% for hike in user.hikes.all %}
+                <div class="card is-mobile is-centered" id="hike-list-card">
+                    <div class="card-header">
+                        <p class="card-header-title">
+                        {{hike.name}}
+                        </p>
+                </div>
+                <a href="{% url 'hike_detail' hike.pk%}">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
+                        </figure>
+                    <section class="content hike-details">
+                        <p><strong>Location:</strong> {{hike.location}}</p>
+                        <P><strong>Length:</strong> {{hike.length}} Miles</p>
+                        <p><strong>Elevation Gain:</strong> {{hike.elevation_gain}} Feet</P>
+                        <p><strong>My Hike Rating:</strong> {{hike.hike_rating}}</p>
+                        <p><strong>Hiked on</strong> {{hike.hike_date}} </p>
+                        <p><strong>Details:</strong> {{hike.description}}</p>
+                    </section>
+                    </div>
+                </a>
+                {% empty %}
+                <article class="message">
+                    <div class="message-header">
+                        <p>No Hikes Available</p>
+                    </div>
+                {% endfor %}
+                </article>
+            </div>
+        </div>
+    </div>
+</main>
+
+    
+{% endblock %}

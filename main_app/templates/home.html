@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Home {% endblock%} 
+{% block title %} Home {% endblock%}
 
 {% block content%}
 
-<h1>A Place to journal your hiking adventures.</h1>
-<img src="{% static 'landing4.png' %}">
+<div class="img-container" style="background-image: url({% static 'landing3.png' %});">
+    <div class="landing-caption">
+        <p class="is-size-4 welcome-message">A place to journal your hiking adventures.</p>
+        {% if user.is_authenticated %}
+        <p class="is-size-5 welcome-message">Hike on, {{ user.username }}.</p>
+        {% else %}
+        <a href="{% url 'signup' %}">
+            <button class="button is-ghost is-large img-signup">Sign Up</button>
+        </a>
+        <a href="{% url 'login' %}">
+            <button class="button is-ghost is-large img-login">Log In</button>
+        </a>
+        {% endif %}
+    </div>
+</div>
+
 
 {% endblock %}
