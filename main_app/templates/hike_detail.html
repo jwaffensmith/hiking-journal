@@ -26,7 +26,9 @@
                     </section>
                     <div class="card">
                         <footer class="card-footer">
-                            <a class="card-footer-item has-text-black-ter" href="{% url 'profile' user.profile.pk %}">Journal Page</a>
+                            <a class="card-footer-item has-text-black-ter" href="{% url 'profile' user.profile.pk %}">Back to Journal</a>
+                            <a class="card-footer-item has-text-warning-dark" href="{% url 'hike_update' hike.pk %}">Edit</a>
+                            <a class="card-footer-item has-text-danger-dark" href="{% url 'hike_delete' hike.pk %}">Delete</a>
                         </footer>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from .forms import UserCreationForm, ProfileForm
 from .models import Hike, User, Profile, Comment
@@ -76,3 +76,17 @@ class HikeCreate(CreateView):
 
     def get_success_url(self):
         return reverse("hike_detail", kwargs={'pk': self.object.pk})
+
+
+class HikeUpdate(UpdateView):
+    model = Hike
+    fields= ["name", "img_one", "img_two", "img_three", "description", "location", "length", "elevation_gain", "hike_rating", "hike_date"]
+    template_name = "hike_update.html"
+
+    def get_success_url(self):
+        return reverse("hike_detail", kwargs={"pk": self.object.pk})
+
+
+class HikeDelete(DeleteView):
+    model = Hike
+    success_url = reverse("profile")
