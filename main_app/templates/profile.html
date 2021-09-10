@@ -32,6 +32,40 @@
                     </section>
                     </div>
                 </a>
+                <footer class="card-footer">
+                    <form class="card-footer-item" action="{% url 'comment_create' profile.pk hike.pk%}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="content" id="">
+                        <input class="button has-text-white-ter has-background-dark" type="submit" value="Add Comment" href="{% url 'profile' user.profile.pk %}">
+                    </form>
+                </footer>
+                {% for comment in hike.comments.all %}
+                <div class="card">
+                    <div>
+                        <p>{{comment.content}}</p>
+                        <a class="card-footer-item has-text-danger-dark modal-delete-btn" id="comment-delete-btn">Delete</a>
+                            <div class="modal" id="comment-delete-modal">
+                                <div class="modal-background" id="delete-modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Delete Comment</p>
+                                        <button class="delete" aria-label="close" id="comment-delete-close"></button>
+                                    </header>
+                                    <footer class="modal-card-foot">
+                                        <form class="card-footer-item" action="{% url 'comment_delete' comment.pk %}" method="post">
+                                            {% csrf_token %}
+                                            <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Delete" href="{% url 'profile' user.profile.pk %}">
+                                            <input type="hidden" name="text" value="{{ next }}" />
+                                        </form> 
+                                        <a href="{% url 'profile' user.profile.pk %}"><button class="button">Cancel</button></a>
+                                    </footer>
+                                </div>
+                            </div>
+                    </div>
+                    <div>
+                {% endfor %}
+                </div>
+            </div>
                 {% empty %}
                 <article class="message">
                     <div class="message-header">
