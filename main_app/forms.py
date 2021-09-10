@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import fields
-from .models import Profile, Hike
+from .models import Profile, Hike, Comment
 
 class UserCreationForm(UserCreationForm):
     first_name = forms.CharField(required=True, label='First Name')
@@ -27,8 +27,3 @@ class ProfileForm(forms.ModelForm):
             fields = ('location', 'avatar')
 
 
-class HikeCreationForm(forms.ModelForm):
-    class Meta:
-        model = Hike
-        template_name = "hike_create.html"
-        fields= ["name", "img_one", "img_two", "img_three", "description", "location", "length", "elevation_gain", "hike_rating", "hike_date"]
