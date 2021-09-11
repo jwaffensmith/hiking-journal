@@ -6,11 +6,43 @@
         <div class="container login">
             <div class="login-form">
                 <h1 class="welcome-message">Add a hike</h1>
-                <form method="post">
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <input class="button is-success" type="submit" value="Submit">
-                </form>
+                    <form class="card-footer-item" method="post">
+                        <div class="d-flex flex-column mb-3">
+                            {% csrf_token %}
+                            <label for="name">Hike Name</label>
+                            <input type="text" value="{{ hike.name }}" name="name" required></input>
+
+                            <label for="img_one">Image</label>
+                            <input type="file" value="{{ hike.img_one }}" name="img_one"></input>
+
+                            <label for="img_two">Image</label>
+                            <input type="file" value="{{ hike.img_two }}" name="img_two"></input>
+
+                            <label for="img_three">Image</label>
+                            <input type="file" value="{{ hike.img_three}}" name="img_three"></input>
+
+                            <label for="location">Location</label>
+                            <input type="text" value="{{ hike.location}}" name="location" required></input>
+
+                            <label for="hike_date"> Date Hiked</label>
+                            <input type="text" value="{{ hike.hike_date}}" name="hike_date"></input>
+
+                            <label for="length"> Length </label>
+                            <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.01"></input>
+
+                            <label for="elevation_gain"> Elevation Gain </label>
+                            <input type="number" value="{{ hike.elevation_gain}}" name="elevation_gain" min="0"></input>
+
+                            <label for="hike_rating"> Hike Rating </label>
+                            <input type="number" value="{{ hike.hike_rating}}" name="hike_rating" min="1" max="5" required></input>
+
+                            <label for="description">Hike description</label>
+                            <textarea type="text" value="{{hike.description}}" name="description">{{hike.description}}</textarea>
+
+                        <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Submit">
+                        <input type="hidden" name="text" value="{{ next }}" />
+                    </form> 
+                </div>
                 <a class="button is-warning" href="{% url 'profile' user.profile.pk %}">Cancel</a>
             </div>
         </div>

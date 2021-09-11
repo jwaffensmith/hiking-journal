@@ -217,6 +217,17 @@ a.review-note:hover {
 
 }
 
+span.review-hike {
+    color: $navbar !important;
+}
+
+a.review-hike:hover {
+    color: $gradient_five !important;
+    transform: rotate(360deg);
+    transform: scale(1.05);
+
+}
+
 a.journal-link:hover {
     color: $trim !important;
     transform: rotate(360deg);

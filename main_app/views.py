@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
 from .forms import UserCreationForm, ProfileForm, UpdateProfileForm, UpdateUserForm
@@ -101,7 +101,6 @@ class ProfileUpdate(TemplateView):
                     "update_profile_form": update_user_form}
             return render(request, "profile_update.html", context)
 
-
 class HikeDetail(DetailView):
     model = Hike
     template_name = "hike_detail.html"
@@ -109,7 +108,7 @@ class HikeDetail(DetailView):
 class HikeCreate(CreateView):
     model = Hike
     template_name = "hike_create.html"
-    fields= ["name", "img_one", "img_two", "img_three", "description", "location", "length", "elevation_gain", "hike_rating", "hike_date"]
+    fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating",  "description"]
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -126,7 +125,7 @@ class HikeCreate(CreateView):
 
 class HikeUpdate(UpdateView):
     model = Hike
-    fields= ["name", "img_one", "img_two", "img_three", "description", "location", "length", "elevation_gain", "hike_rating", "hike_date"]
+    fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating", "description"]
     template_name = "hike_update.html"
 
     def get_success_url(self):
@@ -153,7 +152,7 @@ class CommentDetail(DetailView):
 
 class CommentUpdate(UpdateView):
     model = Comment
-    fields= ["content"]
+    fields = ["content"]
 
     def get_success_url(self):
         return reverse("comment_detail", kwargs={"pk": self.object.pk})
@@ -163,28 +162,3 @@ class CommentDelete(View):
         comment_to_delete = Comment.objects.get(id=pk)
         comment_to_delete.delete()
         return redirect("/profile/")
-
-
-
-#  def post(self, request, *args, **kwargs):
-#         pk = self.kwargs['pk']
-
-#         profile = get_object_or_404(Profile, pk=pk)
-#         update_profile_form = UpdateProfileForm(instance=profile, data=request.POST)
-
-#         user = get_object_or_404(User, pk=pk)
-#         update_user_form = UpdateUserForm(instance=user, data=request.POST)
-
-#         if 'save_profile' in request.POST:
-#             if update_profile_form.is_bound and update_profile_form.is_valid():
-#                 update_profile_form.save()
-#             else:
-#                 messages.error(request, update_profile_form.errors)
-
-#         elif 'save_user' in request.POST:
-#             if update_user_form.is_bound and update_user_form.is_valid():
-#                 update_user_form.save()
-#             else:
-#                 messages.error(request, update_user_form.errors)
-        
-#         return redirect("/profile/")
