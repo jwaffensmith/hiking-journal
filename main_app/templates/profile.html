@@ -47,6 +47,7 @@
 
         <div class="login-form">
             <h1 class="welcome-message">Hiking Journal</h1>
+            <a class="button is-dark" href="{% url 'profile_update' profile.pk %}">Update Profile</a>
             <img src={{profile.avatar}} >
             <a class="button is-dark" href="{% url 'hike_create' profile.pk %}">Add Hike</a>
             {% for hike in user.hikes.all %}
