@@ -5,11 +5,39 @@ $(document).ready(function() {
     });
 });
 
-$('#comment-delete-btn').click(function () {
-    $("#comment-delete-modal").addClass("is-active");
+
+$('#delete-btn').on('click', function (e) {
+    $("#delete-modal").addClass("is-active");
 });
 
-$('#comment-delete-close').click(function () {
-    $('#comment-delete-modal').removeClass('is-active');
+$('#delete-cancel').on('click', function (e) {
+    $('#delete-modal').removeClass('is-active');
 });
 
+$('#delete-cancel-btn').on('click', function (e) {
+    $('#delete-modal').removeClass('is-active');
+});
+
+$('#delete-comment-btn').on('click', function (e) {
+    $("#delete-comment-modal").addClass("is-active");
+});
+
+$('#delete-comment-cancel').on('click', function (e) {
+    $('#delete-comment-modal').removeClass('is-active');
+});
+
+$('#delete-comment-cancel-btn').on('click', function (e) {
+    $('#delete-comment-modal').removeClass('is-active');
+});
+
+$('#comment-edit-btn').click(function () {
+    $("#comment-edit-modal").addClass("is-active");
+});
+
+$('#comment-edit-close').click(function () {
+    $('#comment-edit-modal').removeClass('is-active');
+});
+
+$('#edit-comment-cancel-btn').click(function () {
+    $('#comment-edit-modal').removeClass('is-active');
+});

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import DetailView
 from .forms import UserCreationForm, ProfileForm
 from .models import Hike, User, Profile, Comment
@@ -100,6 +100,17 @@ class CommentCreate(CreateView):
         user = User.objects.get(pk=self.kwargs.get("pk"))
         Comment.objects.create(content=comment_content, hike=related_hike, user=user)
         return redirect('/profile/')
+
+class CommentDetail(DetailView):
+        model = Comment
+        template_name= "comment_detail.html"
+
+class CommentUpdate(UpdateView):
+    model = Comment
+    fields= ["content"]
+
+    def get_success_url(self):
+        return reverse("comment_detail", kwargs={"pk": self.object.pk})
         
 class CommentDelete(View):
     def post(self, request, pk):

@@ -42,7 +42,8 @@
                                             {% csrf_token %}
                                             <input type="submit" class="button is-danger" value="Delete" />
                                             <input type="hidden" name="text" value="{{ next }}" />
-                                        <a href="{% url 'hike_detail' hike.pk %}"><button class="button">Cancel</button></a>
+                                        </form>
+                                        <button class="button is-success" aria-label="close" id="delete-cancel-btn">Cancel</button>
                                     </footer>
                                 </div>
                             </div>

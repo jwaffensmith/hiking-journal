@@ -23,6 +23,7 @@
                             <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
                         </figure>
                     <section class="content hike-details">
+                        <p><strong>Posted on</strong> {{hike.created_at|date}}</p>
                         <p><strong>Location:</strong> {{hike.location}}</p>
                         <P><strong>Length:</strong> {{hike.length}} Miles</p>
                         <p><strong>Elevation Gain:</strong> {{hike.elevation_gain}} Feet</P>
@@ -36,31 +37,33 @@
                     <form class="card-footer-item" action="{% url 'comment_create' profile.pk hike.pk%}" method="post">
                         {% csrf_token %}
                         <input type="text" name="content" id="">
-                        <input class="button has-text-white-ter has-background-dark" type="submit" value="Add Comment" href="{% url 'profile' user.profile.pk %}">
+                        <input class="button has-text-white-ter has-background-dark is-small" type="submit" value="Add Note" href="{% url 'profile' user.profile.pk %}">
                     </form>
                 </footer>
                 {% for comment in hike.comments.all %}
                 <div class="card">
                     <div>
                         <p>{{comment.content}}</p>
-                        <a class="card-footer-item has-text-danger-dark modal-delete-btn" id="comment-delete-btn">Delete</a>
-                            <div class="modal" id="comment-delete-modal">
-                                <div class="modal-background" id="delete-modal-background"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">Delete Comment</p>
-                                        <button class="delete" aria-label="close" id="comment-delete-close"></button>
-                                    </header>
-                                    <footer class="modal-card-foot">
-                                        <form class="card-footer-item" action="{% url 'comment_delete' comment.pk %}" method="post">
-                                            {% csrf_token %}
-                                            <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Delete" href="{% url 'profile' user.profile.pk %}">
-                                            <input type="hidden" name="text" value="{{ next }}" />
-                                        </form> 
-                                        <a href="{% url 'profile' user.profile.pk %}"><button class="button">Cancel</button></a>
-                                    </footer>
-                                </div>
+                        <p>{{comment.created_at|date}}</p>
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                              <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                              </span>
+                            </button>
+                          </div>
+                          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                            <div class="dropdown-content">
+                              <div class="dropdown-item">
+                                <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+                              </div>
                             </div>
+                        <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+                            <ul>
+                                <li class="is-active"><a href="#" aria-current="page"></a></li>
+                                <li><a href="{% url 'comment_detail' comment.pk %}"></a></li>
+                            </ul>
+                        </nav>
                     </div>
                     <div>
                 {% endfor %}
