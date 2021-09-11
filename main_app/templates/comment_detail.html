@@ -19,13 +19,13 @@
                         </figure>
                     </div>
                     <section class="content hike-details">
-                        <strong>Notes</strong> 
+                        <strong>Notes written on {{comment.created_at|date}}</strong> 
                         <p>{{comment.content}}</p>
                     </section>
                     <div class="card">
                         <footer class="card-footer">
-                            <a class="card-footer-item has-text-black-ter" href="{% url 'profile' user.profile.pk %}">Journal</a>
-                            <a class="card-footer-item has-text-danger-dark modal-delete-btn" id="comment-edit-btn">Edit</a>
+                            <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>
+                            <a class="card-footer-item has-text-warning-dark modal-delete-btn edit-link" id="comment-edit-btn">Edit</a>
                             <div class="modal" id="comment-edit-modal">
                                 <div class="modal-background" id="delete-modal-background"></div>
                                 <div class="modal-card">
@@ -47,12 +47,12 @@
                                     </footer>
                                 </div>
                             </div>
-                            <a class="card-footer-item has-text-danger-dark modal-delete-btn" id="delete-comment-btn">Delete</a>
+                            <a class="card-footer-item has-text-danger-dark modal-delete-btn delete-link" id="delete-comment-btn">Delete</a>
                             <div class="modal" id="delete-comment-modal">
                                 <div class="modal-background" id="delete-modal-background"></div>
                                 <div class="modal-card">
                                     <header class="modal-card-head">
-                                        <p class="modal-card-title">Are ou sure you want to delete?</p>
+                                        <p class="modal-card-title">Are you sure you want to delete?</p>
                                         <button class="delete" aria-label="close" id="delete-comment-cancel"></button>
                                     </header>
                                     <footer class="modal-card-foot">

@@ -162,6 +162,36 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   font-size: 20px;
 }
 
+.review-note {
+  color: #28587b !important;
+}
+
+a.review-note:hover {
+  color: #b7cdb2 !important;
+  transform: rotate(360deg);
+  transform: scale(1.05);
+}
+
+a.journal-link:hover {
+  color: #64888a !important;
+  transform: rotate(360deg);
+  transform: scale(1.05);
+}
+
+a.edit-link:hover {
+  transform: rotate(360deg);
+  transform: scale(1.05);
+}
+
+a.delete-link:hover {
+  transform: rotate(360deg);
+  transform: scale(1.05);
+}
+
+div.dropdown {
+  border-radius: 40px !important;
+}
+
 @media screen and (max-width: 1024px) {
   .img-container {
     left: 50%;

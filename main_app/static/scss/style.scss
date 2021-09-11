@@ -206,6 +206,41 @@ nav.navbar.is-fixed-top {
     }
 }
 
+.review-note {
+    color: $navbar !important;
+}
+
+a.review-note:hover {
+    color: $gradient_five !important;
+    transform: rotate(360deg);
+    transform: scale(1.05);
+
+}
+
+a.journal-link:hover {
+    color: $trim !important;
+    transform: rotate(360deg);
+    transform: scale(1.05);
+
+}
+
+a.edit-link:hover {
+    transform: rotate(360deg);
+    transform: scale(1.05);
+
+}
+
+
+a.delete-link:hover {
+    transform: rotate(360deg);
+    transform: scale(1.05);
+
+}
+
+div.dropdown {
+    border-radius: 40px !important;
+}
+
 
 @media screen and (max-width: 1024px) { 
     .img-container {
