@@ -6,6 +6,45 @@
 
 <main class="gradient">
     <div class="container login">
+        <div class="dropdown is-active">
+            <div class="field">
+                <p class="control is-expanded has-icons-right">
+                    <input class="input" type="search" placeholder="Search..."/>
+                    <span class="icon is-small is-right"><i class="fas fa-search"></i></span>
+                </p>
+            </div>
+        </div>
+
+        <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>Sort Hikes</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">
+                    Alphabetical Order
+                    </a>
+                    <a href="#" class="dropdown-item">
+                    Newest to Oldest
+                    </a>
+                    <a href="#" class="dropdown-item">
+                    Oldest to Newest
+                    </a>
+                    <a href="#" class="dropdown-item">
+                    Highest Rating to Lowest
+                    </a>
+                    <a href="#" class="dropdown-item">
+                    Lowest Rating to Highest
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <div class="login-form">
             <h1 class="welcome-message">Hiking Journal</h1>
             <img src={{profile.avatar}} >
@@ -23,6 +62,7 @@
                             <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
                         </figure>
                     <section class="content hike-details">
+                        <p><strong>Posted on</strong> {{hike.created_at|date}}</p>
                         <p><strong>Location:</strong> {{hike.location}}</p>
                         <P><strong>Length:</strong> {{hike.length}} Miles</p>
                         <p><strong>Elevation Gain:</strong> {{hike.elevation_gain}} Feet</P>
@@ -36,35 +76,28 @@
                     <form class="card-footer-item" action="{% url 'comment_create' profile.pk hike.pk%}" method="post">
                         {% csrf_token %}
                         <input type="text" name="content" id="">
-                        <input class="button has-text-white-ter has-background-dark" type="submit" value="Add Comment" href="{% url 'profile' user.profile.pk %}">
+                        <input class="button has-text-white-ter has-background-dark is-small" type="submit" value="Add Note" href="{% url 'profile' user.profile.pk %}">
                     </form>
                 </footer>
                 {% for comment in hike.comments.all %}
                 <div class="card">
                     <div>
                         <p>{{comment.content}}</p>
-                        <a class="card-footer-item has-text-danger-dark modal-delete-btn" id="comment-delete-btn">Delete</a>
-                            <div class="modal" id="comment-delete-modal">
-                                <div class="modal-background" id="delete-modal-background"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">Delete Comment</p>
-                                        <button class="delete" aria-label="close" id="comment-delete-close"></button>
-                                    </header>
-                                    <footer class="modal-card-foot">
-                                        <form class="card-footer-item" action="{% url 'comment_delete' comment.pk %}" method="post">
-                                            {% csrf_token %}
-                                            <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Delete" href="{% url 'profile' user.profile.pk %}">
-                                            <input type="hidden" name="text" value="{{ next }}" />
-                                        </form> 
-                                        <a href="{% url 'profile' user.profile.pk %}"><button class="button">Cancel</button></a>
-                                    </footer>
-                                </div>
-                            </div>
+                        <p>{{comment.created_at|date}}</p>
+                        <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+                            <ul>
+                                <li>
+                                    <a class="review-note" href="{% url 'comment_detail' comment.pk %}">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-book" aria-hidden="true" style="color: #28587b;"></i>
+                                    </span>
+                                    <span class="review-note" >Review Note</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
-                    <div>
                 {% endfor %}
-                </div>
             </div>
                 {% empty %}
                 <article class="message">
