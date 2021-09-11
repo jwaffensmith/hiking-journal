@@ -4,8 +4,10 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
-from .forms import UserCreationForm, ProfileForm
+from .forms import UserCreationForm, ProfileForm, UpdateProfileForm, UpdateUserForm
+from .filters import HikeFilter
 from .models import Hike, User, Profile, Comment
 from django.contrib import messages
 
@@ -35,7 +37,6 @@ class Signup(View):
             profile.user = user
             profile.save()
             login(request, user)
-            return redirect("/profile/")
         else: 
             context = {"signup_form": signup_form, "profile_form": profile_form}
             return render(request, "registration/signup.html", context)
@@ -49,12 +50,57 @@ class ProfileDetail(TemplateView):
     model = Profile
     template_name = "profile.html"
 
+    # my_filter = HikeFilter().filters['o'].field.choices
+    # [
+    #     ('name', 'User account'),
+    #     ('-account', 'User account (descending)'),
+    #     ('first_name', 'First name'),
+    #     ('-first_name', 'First name (descending)'),
+    #     ('last_name', 'Last name'),
+    #     ('-last_name', 'Last name (descending)'),
+    # ]
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['profile'] = Profile.objects.get(pk=self.kwargs.get("pk"))
         context['hikes'] = Hike.objects.filter(user=self.kwargs.get("pk"))
         context['comments'] = Comment.objects.filter(user=self.kwargs.get("pk"))
         return context
+    
+class ProfileUpdate(TemplateView):
+    template_name = "profile_update.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = get_object_or_404(Profile, pk=self.kwargs['pk'])
+        user = get_object_or_404(User, pk=self.kwargs['pk'])
+        context['profile'] = profile
+        context['user'] = user
+        context['update_profile_form'] = UpdateProfileForm(instance=user.profile)
+        context['update_user_form'] = UpdateUserForm(instance=user)
+        return context
+
+    def post(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+
+        profile = get_object_or_404(Profile, pk=pk)
+        update_profile_form = UpdateProfileForm(instance=profile, data=request.POST)
+
+        user = get_object_or_404(User, pk=pk)
+        update_user_form = UpdateUserForm(instance=user, data=request.POST)
+
+        if update_profile_form.is_valid() and update_user_form.is_valid():
+            update_profile_form.save()
+            update_user_form.save()
+            return redirect("/profile/")
+        else:
+            update_profile_form = UpdateProfileForm(instance=request.user)
+            update_user_form = UpdateUserForm(instance=request.user.profile)
+
+            context = {"update_user_form": update_profile_form,
+                    "update_profile_form": update_user_form}
+            return render(request, "profile_update.html", context)
+
 
 class HikeDetail(DetailView):
     model = Hike
@@ -117,3 +163,28 @@ class CommentDelete(View):
         comment_to_delete = Comment.objects.get(id=pk)
         comment_to_delete.delete()
         return redirect("/profile/")
+
+
+
+#  def post(self, request, *args, **kwargs):
+#         pk = self.kwargs['pk']
+
+#         profile = get_object_or_404(Profile, pk=pk)
+#         update_profile_form = UpdateProfileForm(instance=profile, data=request.POST)
+
+#         user = get_object_or_404(User, pk=pk)
+#         update_user_form = UpdateUserForm(instance=user, data=request.POST)
+
+#         if 'save_profile' in request.POST:
+#             if update_profile_form.is_bound and update_profile_form.is_valid():
+#                 update_profile_form.save()
+#             else:
+#                 messages.error(request, update_profile_form.errors)
+
+#         elif 'save_user' in request.POST:
+#             if update_user_form.is_bound and update_user_form.is_valid():
+#                 update_user_form.save()
+#             else:
+#                 messages.error(request, update_user_form.errors)
+        
+#         return redirect("/profile/")
