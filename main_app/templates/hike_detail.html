@@ -19,15 +19,21 @@
                     <div class="card-image">
                         <figure class="image is-square" style="margin-top: 5px;">
                             <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
-                            <img src="{{hike.img_two}}" alt="{{hike.name}}"/>
-                            <img src="{{hike.img_three}}" alt="{{hike.name}}"/>              
                         </figure>
+                        {% if hike.img_two != '' %}
                         <figure class="image is-square" style="margin-top: 5px;">
-                            <img src="{{hike.img_two}}" alt="{{hike.name}}"/>
+                            <img src="{{hike.img_two}}" alt="{{hike.description}}"/>      
                         </figure>
+                        {% elif hike.img_two == '' %}
+                        <p></p>
+                        {% endif %}
+                        {% if hike.img_three != '' %}
                         <figure class="image is-square" style="margin-top: 5px;">
-                            <img src="{{hike.img_three}}" alt="{{hike.name}}"/>ß
+                            <img src="{{hike.img_three}}" alt="{{hike.name}}"/>  
                         </figure>
+                        {% elif hike.img_three == '' %}
+                        <p></p>
+                        {% endif %} 
                     </div>
                     <section class="content hike-details">
                         <div style="display: flex; justify-content: space-between;">

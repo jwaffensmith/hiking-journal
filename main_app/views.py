@@ -55,17 +55,16 @@ class ProfileDetail(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['profile'] = Profile.objects.get(pk=self.kwargs.get("pk"))
-        context['hikes'] = Hike.objects.filter(user=self.kwargs.get("pk"))
-        context['comments'] = Comment.objects.filter(user=self.kwargs.get("pk"))
         name_query = self.request.GET.get("name")
 
         if name_query != None:
             context['hikes'] = Hike.objects.filter(
-                name__icontains=name_query, user=self.request.user)
+            name__icontains=name_query, user=self.request.user)
             context["header"] = f"Searching for {name_query}"
         else:
             context['hikes'] = Hike.objects.filter(user=self.request.user)
-
+            context['profile'] = Profile.objects.get(pk=self.kwargs.get("pk"))
+            context['comments'] = Comment.objects.filter(user=self.kwargs.get("pk"))
         return context
     
 class ProfileUpdate(TemplateView):
