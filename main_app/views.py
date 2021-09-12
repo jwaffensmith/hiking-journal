@@ -125,7 +125,7 @@ class HikeCreate(CreateView):
 
 class HikeUpdate(UpdateView):
     model = Hike
-    fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating", "description"]
+    fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating",  "description"]
     template_name = "hike_update.html"
 
     def get_success_url(self):
