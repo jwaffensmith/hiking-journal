@@ -24,15 +24,11 @@
                         <figure class="image is-square" style="margin-top: 5px;">
                             <img src="{{hike.img_two}}" alt="{{hike.description}}"/>      
                         </figure>
-                        {% elif hike.img_two == '' %}
-                        <p></p>
-                        {% endif %}
+                        {% endif %} 
                         {% if hike.img_three != '' %}
                         <figure class="image is-square" style="margin-top: 5px;">
                             <img src="{{hike.img_three}}" alt="{{hike.name}}"/>  
                         </figure>
-                        {% elif hike.img_three == '' %}
-                        <p></p>
                         {% endif %} 
                     </div>
                     <section class="content hike-details">
@@ -76,10 +72,10 @@
                                 <span><i class="fas fa-star" style="color: gray;"></i></span> 
                                 {% endif %}
                             </div>
-                            <p style="margin-top: 10px;"><strong>Details </strong> </p>
                             <p>{{hike.description}}</p>
                         </div>
                     </section>
+                </div>
                     <div class="card">
                         <footer class="card-footer">
                             <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>

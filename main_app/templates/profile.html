@@ -60,12 +60,12 @@
             <img src={{profile.avatar}} >
             <a class="button is-dark" href="{% url 'hike_create' profile.pk %}">Add Hike</a>
             {% for hike in user.hikes.all %}
-                <div class="card is-mobile is-centered" id="hike-list-card">
+                <div class="card is-mobile is-centered" style="margin-top: 20px;" id="hike-list-card">
                     <div class="card-header">
                         <p class="card-header-title">
                         {{hike.name}}
                         </p>
-                        <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+                        <nav class="breadcrumb is-right" aria-label="breadcrumbs" style="margin-top: 10px;">
                             <ul>
                                 <li>
                                     <a class="review-hike" href="{% url 'hike_detail' hike.pk %}">
@@ -93,13 +93,13 @@
                         {% if form.errors %}
                         {% for field in form %}
                             {% for error in field.errors %}
-                                <div class="is-danger">
+                                <div>
                                     <strong>{{ error|escape }}</strong>
                                 </div>
                             {% endfor %}
                         {% endfor %}
                         {% for error in form.non_field_errors %}
-                            <div class="is-danger">
+                            <div>
                                 <strong>{{ error|escape }}</strong>
                             </div>
                         {% endfor %}
