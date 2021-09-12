@@ -38,7 +38,7 @@
                                             {% csrf_token %}
                                             <div class="d-flex flex-column mb-3">
                                                 <label for="content">Comment Content:</label>
-                                                <textarea type="text" value="{{ comment.content}}" name="content" rows="10" required>{{ comment.content }}</textarea>
+                                                <textarea type="text" value="{{ comment.content}}" name="content" rows="10" cols="30" name="description" required>{{ comment.content }}</textarea>
                                             </div>
                                             {% if form.errors %}
                                             {% for field in form %}
@@ -57,7 +57,7 @@
                                             <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Update" href="{% url 'profile' user.profile.pk %}">
                                             <input type="hidden" name="text" value="{{ next }}" />
                                         </form> 
-                                        <button class="button is-success" aria-label="close" id="edit-comment-cancel-btn">Cancel</button>
+                                        <button class="button is-success" aria-label="close" id="comment-cancel-btn">Cancel</button>
                                     </footer>
                                 </div>
                             </div>
