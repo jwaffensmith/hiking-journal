@@ -3,8 +3,8 @@
 {% block content %}
 <main>
     <main class="gradient">
-        <div class="container login">
-            <div class="login-form">
+        <div class="container page-card">
+            <div class="card-border">
                 <h1 class="welcome-message">Add a hike</h1>
                     <form class="card-footer-item" method="post">
                         <div class="d-flex flex-column mb-3">
@@ -28,10 +28,10 @@
                             <input type="date" name="hike_date">
 
                             <label for="length"> Length </label>
-                            <input type="number"  name="length" min="0" step="0.01">
+                            <input type="number"  name="length" min="0" step="0.1"><span>Miles</span>
 
                             <label for="elevation_gain"> Elevation Gain </label>
-                            <input type="number" name="elevation_gain" min="0">
+                            <input type="number" name="elevation_gain" min="0"><span>Feet</span>
 
                             <label for="hike_rating"> Hike Rating </label>
                             <input type="number" name="hike_rating" min="1" max="5" required>

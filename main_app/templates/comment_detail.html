@@ -12,11 +12,23 @@
                         <p class="card-header-title">
                         {{comment.hike.name}}
                         </p>
+                        <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+                            <ul>
+                                <li>
+                                    <a class="review-hike" href="{% url 'hike_detail' comment.hike.pk %}">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-book" aria-hidden="true" style="color: #28587b;"></i>
+                                    </span>
+                                    <span class="review-hike"> View Hike</span>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                     <div class="card-image">
-                        <figure class="image is-square">
-                            <img src="{{comment.hike.img_one}}" alt="{{hike.name}}"/>
-                        </figure>
+                            <figure class="image is-4by3">
+                                <img src="{{ comment.hike.img_one}}" alt="{{comment.hike.name}}"/>
+                            </figure>
+                        </a>
                     </div>
                     <section class="content hike-details">
                         <strong>Notes written on {{comment.created_at|date}}</strong> 

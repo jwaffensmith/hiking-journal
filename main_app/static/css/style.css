@@ -144,7 +144,7 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   font-size: 20px;
 }
 
-.container.login {
+.container.page-card {
   left: 0;
   top: 20%;
   text-align: center;
@@ -156,7 +156,7 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   border-style: solid;
   border-width: 5px;
 }
-.container.login .login-form {
+.container.page-card .card-border {
   margin-top: 10px;
   color: #2d2a2a;
   font-size: 20px;
@@ -166,7 +166,7 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   color: #28587b !important;
 }
 
-a.review-note:hover {
+a.review-note:hover, a.review-hike:hover {
   color: #b7cdb2 !important;
   transform: rotate(360deg);
   transform: scale(1.05);
@@ -176,24 +176,13 @@ span.review-hike {
   color: #28587b !important;
 }
 
-a.review-hike:hover {
-  color: #b7cdb2 !important;
-  transform: rotate(360deg);
-  transform: scale(1.05);
-}
-
 a.journal-link:hover {
   color: #64888a !important;
   transform: rotate(360deg);
   transform: scale(1.05);
 }
 
-a.edit-link:hover {
-  transform: rotate(360deg);
-  transform: scale(1.05);
-}
-
-a.delete-link:hover {
+a.edit-link:hover, a.delete-link:hover {
   transform: rotate(360deg);
   transform: scale(1.05);
 }

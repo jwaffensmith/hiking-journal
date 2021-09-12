@@ -4,26 +4,75 @@
 {% block content %}
 <main>
     <main class="gradient">
-        <div class="container login">
-            <div class="login-form">
+        <div class="container page-card">
+            <div class="card-border">
                 <div class="column card">
                     <div class="card-header">
-                        <p class="card-header-title">
-                        {{hike.name}}
+                        <p class="card-header-title"> 
+                        {{hike.name}} 
                         </p>
+                        <p>{{hike.created_at|date}}</p>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        {{hike.location}}
                     </div>
                     <div class="card-image">
-                        <figure class="image is-square">
+                        <figure class="image is-square" style="margin-top: 5px;">
                             <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
+                            <img src="{{hike.img_two}}" alt="{{hike.name}}"/>
+                            <img src="{{hike.img_three}}" alt="{{hike.name}}"/>
+                        </figure>
+                        <figure class="image is-square" style="margin-top: 5px;">
+                            <img src="{{hike.img_two}}" alt="{{hike.name}}"/>
+                        </figure>
+                        <figure class="image is-square" style="margin-top: 5px;">
+                            <img src="{{hike.img_three}}" alt="{{hike.name}}"/>
                         </figure>
                     </div>
                     <section class="content hike-details">
-                        <p><strong>Location:</strong> {{hike.location}}</p>
-                        <P><strong>Length:</strong> {{hike.length}} Miles</p>
-                        <p><strong>Elevation Gain:</strong> {{hike.elevation_gain}} Feet</P>
-                        <p><strong>My Hike Rating:</strong> {{hike.hike_rating}}</p>
-                        <p><strong>Hiked on</strong> {{hike.hike_date}} </p>
-                        <p><strong>Details:</strong> {{hike.description}}</p>
+                        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                            <P><strong>Length | </strong> {{hike.length}} Miles</p>
+                            <p><strong>Elevation Gain | </strong> {{hike.elevation_gain}} Feet</P>
+                            <p><strong>Hiked | </strong> {{hike.hike_date}} </p>
+                        </div>
+                        <div>
+                            <div>
+                                <spn><p><strong>Hike Rating</strong></p></spn>
+                                {% if hike.hike_rating == 5 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                {% elif hike.hike_rating == 4 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                {% elif hike.hike_rating == 3 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                {% elif hike.hike_rating == 2 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span>  
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                {% elif hike.hike_rating == 1 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                {% endif %}
+                            </div>
+                            <p style="margin-top: 10px;"><strong>Details </strong> </p>
+                            <p>{{hike.description}}</p>
+                        </div>
                     </section>
                     <div class="card">
                         <footer class="card-footer">
@@ -60,7 +109,7 @@
                                                 <input type="date" value="{{ hike.hike_date|date:'Y-m-d'}}" placeholder="{{ hike.hike_date|date:'Y-m-d'}}" name="hike_date" required>
 
                                                 <label for="length"> Length </label>
-                                                <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.01">
+                                                <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.1">
 
                                                 <label for="elevation_gain"> Elevation Gain </label>
                                                 <input type="number" value="{{ hike.elevation_gain}}" name="elevation_gain" min="0">
