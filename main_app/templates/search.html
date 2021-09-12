@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Search {% endblock%} 
+
+{% block content%}
+
+<main class="gradient">
+    <div class="container page-card">
+        <div class="control">
+            <form action="" method="POST" action="{% url 'search' %}">
+                {% csrf_token %}
+                <input class="input" type="search" placeholder="Search Hikes" name="searched"/>
+                <input class="button is-success" type="submit" name="submit" value="Search" />
+            </form>
+        </div>  
+        {% if searched %}
+        <h1>You Searched For {{ searched }}</h1>
+            {% for hike in hikes %}
+                <br/>
+                <h3>{{ hike }}</h3>
+            {% endfor %}
+            {% for user in users %}
+            <br/>
+            <h3>{{ user }}</h3>
+            {% endfor %}    
+        {% else %}
+            <h1>Search for Friends or Hikes</h1>
+        {% endif %}
+</main>
+
+{% endblock %}

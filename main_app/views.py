@@ -2,6 +2,7 @@ from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
+from django.db.models import Q
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import get_object_or_404
@@ -54,19 +55,27 @@ class ProfileDetail(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['hikes'] = Hike.objects.filter(user=self.request.user)
         context['profile'] = Profile.objects.get(pk=self.kwargs.get("pk"))
-        name_query = self.request.GET.get("name")
-
-        if name_query != None:
-            context['hikes'] = Hike.objects.filter(
-            name__icontains=name_query, user=self.request.user)
-            context["header"] = f"Searching for {name_query}"
-        else:
-            context['hikes'] = Hike.objects.filter(user=self.request.user)
-            context['profile'] = Profile.objects.get(pk=self.kwargs.get("pk"))
-            context['comments'] = Comment.objects.filter(user=self.kwargs.get("pk"))
+        context['comments'] = Comment.objects.filter(user=self.kwargs.get("pk"))
         return context
-    
+
+class SearchView(View):
+    template_name = 'search.html'
+
+    def get(self, request):
+       return render(request, "search.html", {})
+
+    def post(self, request):
+        if request.method == "POST":
+            searched = request.POST['searched']
+            hikes = Hike.objects.filter(name__icontains=searched)
+            users = User.objects.filter(username__icontains=searched)
+            return render(request, 'search.html', {'searched': searched, 'hikes': hikes, 'users': users})
+        else: 
+            return render(request, "search.html", {})
+
+
 class ProfileUpdate(TemplateView):
     template_name = "profile_update.html"
 

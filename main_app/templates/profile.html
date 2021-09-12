@@ -8,22 +8,6 @@
 
 <main class="gradient">
     <div class="container page-card">
-        <h1 class="title">{{header}}</h1>
-        <form>
-            <div class="dropdown is-active">
-                <div class="control">
-                    <p class="control is-expanded has-icons-right">
-                        <input class="input" type="text" name="name" placeholder="Search..."/>
-                        <span class="icon is-small is-right"><i class="fas fa-search"></i></span>
-                    </p>
-                </div>
-                <div class="control">
-                    <input class="button is-success" type="submit" value="Search" />
-                </div>
-                <a class="button is-dark" href="{% url 'profile' user.profile.pk %}">Clear Search</a>
-            </div>
-        </form>
-
         <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -53,7 +37,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="card-border">
             <h1 class="welcome-message">Hiking Journal</h1>
             <a class="button is-dark" href="{% url 'profile_update' profile.pk %}">Update Profile</a>

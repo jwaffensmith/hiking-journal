@@ -34,12 +34,14 @@
                 </div>
             {% if user.is_authenticated and not user.is_superuser %}
                 <div class="navbar-end">
+                    <a class="navbar-item about" href="{% url 'search' %}">Search</a>
                     <a class="navbar-item welcome-user" href="{% url 'profile' user.profile.pk %}">My Journal</a>
                     <a class="navbar-item about" href="{% url 'about' %}">About</a>
                     <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
                 </div>
             {% elif user.is_superuser %}
                 <div class="navbar-end">
+                    <a class="navbar-item about" href="{% url 'search' %}">Search</a>
                     <a class="navbar-item welcome-user" href="{% url 'admin:index' %}">Admin Page</a>
                     <a class="navbar-item about" href="{% url 'about' %}">About</a>
                     <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
