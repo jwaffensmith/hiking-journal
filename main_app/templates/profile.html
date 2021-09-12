@@ -4,16 +4,25 @@
 
 {% block content%}
 
+
+
 <main class="gradient">
     <div class="container page-card">
-        <div class="dropdown is-active">
-            <div class="field">
-                <p class="control is-expanded has-icons-right">
-                    <input class="input" type="search" placeholder="Search..."/>
-                    <span class="icon is-small is-right"><i class="fas fa-search"></i></span>
-                </p>
+        <h1 class="title">{{header}}</h1>
+        <form>
+            <div class="dropdown is-active">
+                <div class="control">
+                    <p class="control is-expanded has-icons-right">
+                        <input class="input" type="text" name="name" placeholder="Search..."/>
+                        <span class="icon is-small is-right"><i class="fas fa-search"></i></span>
+                    </p>
+                </div>
+                <div class="control">
+                    <input class="button is-success" type="submit" value="Search" />
+                </div>
+                <a class="button is-dark" href="{% url 'profile' user.profile.pk %}">Clear Search</a>
             </div>
-        </div>
+        </form>
 
         <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
@@ -76,16 +85,7 @@
                                 <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
                             </figure>
                         </a>
-                    <section class="content hike-details">
-                        <p><strong>Posted on</strong> {{hike.created_at|date}}</p>
-                        <p><strong>Location:</strong> {{hike.location}}</p>
-                        <P><strong>Length:</strong> {{hike.length}} Miles</p>
-                        <p><strong>Elevation Gain:</strong> {{hike.elevation_gain}} Feet</P>
-                        <p><strong>My Hike Rating:</strong> {{hike.hike_rating}}</p>
-                        <p><strong>Hiked on</strong> {{hike.hike_date}} </p>
-                        <p><strong>Details:</strong> {{hike.description}}</p>
-                    </section>
-                </div>
+                    </div>
                 <footer class="card-footer">
                     <form class="card-footer-item" action="{% url 'comment_create' profile.pk hike.pk%}" method="post">
                         {% csrf_token %}
