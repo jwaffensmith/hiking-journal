@@ -5,7 +5,6 @@ $(document).ready(function() {
     });
 });
 
-
 $('#delete-btn').on('click', function (e) {
     $("#delete-modal").addClass("is-active");
 });

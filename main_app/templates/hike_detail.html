@@ -58,7 +58,7 @@
                             <input type="text" value="{{ hike.location}}" name="location" required>
 
                             <label for="hike_date"> Date Hiked</label>
-                            <input type="date" value="{{ hike.hike_date}}" name="hike_date" required>
+                            <input type="date" value="{{ hike.hike_date|date:'Y-m-d'}}" placeholder="{{ hike.hike_date|date:'Y-m-d'}}" name="hike_date" required>
 
                             <label for="length"> Length </label>
                             <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.01">
