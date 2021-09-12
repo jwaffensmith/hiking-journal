@@ -37,6 +37,8 @@ class Signup(View):
             profile.user = user
             profile.save()
             login(request, user)
+            return redirect("/profile/")
+
         else: 
             context = {"signup_form": signup_form, "profile_form": profile_form}
             return render(request, "registration/signup.html", context)
@@ -126,7 +128,6 @@ class HikeCreate(CreateView):
 class HikeUpdate(UpdateView):
     model = Hike
     fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating",  "description"]
-    template_name = "hike_update.html"
 
     def get_success_url(self):
         return reverse("hike_detail", kwargs={"pk": self.object.pk})

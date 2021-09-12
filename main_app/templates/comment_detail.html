@@ -40,6 +40,20 @@
                                                 <label for="content">Comment Content:</label>
                                                 <textarea type="text" value="{{ comment.content}}" name="content" rows="10" required>{{ comment.content }}</textarea>
                                             </div>
+                                            {% if form.errors %}
+                                            {% for field in form %}
+                                                {% for error in field.errors %}
+                                                    <div class="alert alert-danger">
+                                                        <strong>{{ error|escape }}</strong>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            {% for error in form.non_field_errors %}
+                                                <div class="alert alert-danger">
+                                                    <strong>{{ error|escape }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                            {% endif %}
                                             <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Update" href="{% url 'profile' user.profile.pk %}">
                                             <input type="hidden" name="text" value="{{ next }}" />
                                         </form> 

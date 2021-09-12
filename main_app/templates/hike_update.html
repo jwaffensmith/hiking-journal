@@ -11,22 +11,22 @@
                         {% csrf_token %}
                         <div class="d-flex flex-column mb-3">
                             <label for="name">Hike Name</label>
-                            <input type="text" value="{{ hike.name }}" name="name" required>
+                            <input type="text" value="{{ hike.name }}" name="name"  required>
 
                             <label for="img_one">Image</label>
-                            <input type="file" value="{{ hike.img_one }}" name="img_one" required>
+                            <input type="text" value="{{ hike.img_one }}" name="img_one"  required>
 
                             <label for="img_two">Image</label>
-                            <input type="file" value="{{ hike.img_two }}" name="img_two">
+                            <input type="text" value="{{ hike.img_two }}" name="img_two" >
 
                             <label for="img_three">Image</label>
-                            <input type="file" value="{{ hike.img_three}}" name="img_three">
+                            <input type="text" value="{{ hike.img_three}}" name="img_three" >
 
                             <label for="location">Location</label>
                             <input type="text" value="{{ hike.location}}" name="location" required>
 
                             <label for="hike_date"> Date Hiked</label>
-                            <input type="text" value="{{ hike.hike_date}}" name="hike_date">
+                            <input type="date" value="{{ hike.hike_date}}" name="hike_date">
 
                             <label for="length"> Length </label>
                             <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.01">
@@ -39,6 +39,21 @@
 
                             <label for="description">Hike description</label>
                             <textarea type="text" value="{{hike.description}}" name="description">{{hike.description}}</textarea>
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="is-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="is-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        
                         </div>
                     <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Submit">
                     <input type="hidden" name="text" value="{{ next }}" />
