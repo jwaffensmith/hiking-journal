@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models import Model, CharField, TextField, DateTimeField, ForeignKey, ImageField
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import DateField, IntegerField, DecimalField
-from django.db.models.fields.files import ImageField
 from django.contrib.auth.models import User
 
 
@@ -16,9 +15,9 @@ class Profile(Model):
 
 class Hike(Model):
     name = CharField(max_length=50)
-    img_one = ImageField(max_length=500, default="https://source.unsplash.com/Bkci_8qcdvQ")
-    img_two = ImageField(max_length=500, blank= True)
-    img_three = ImageField(max_length=500, blank= True)
+    img_one = CharField(max_length=500, default="https://source.unsplash.com/Bkci_8qcdvQ")
+    img_two = CharField(max_length=500, blank= True)
+    img_three = CharField(max_length=500, blank= True)
     description = TextField(max_length=1000, blank= True)
     location = CharField(max_length=200)
     length = DecimalField(decimal_places=2, max_digits=7, default=0, blank= True)
@@ -36,7 +35,7 @@ class Hike(Model):
 
 class Comment(Model):
     hike = models.ForeignKey(Hike, on_delete=CASCADE, related_name="comments")
-    content = TextField(max_length=500)
+    content = TextField(max_length=1000)
     created_at = DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=CASCADE, related_name="comments")
 

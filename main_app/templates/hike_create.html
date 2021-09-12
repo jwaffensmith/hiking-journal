@@ -6,11 +6,43 @@
         <div class="container login">
             <div class="login-form">
                 <h1 class="welcome-message">Add a hike</h1>
-                <form method="post">
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <input class="button is-success" type="submit" value="Submit">
-                </form>
+                    <form class="card-footer-item" method="post">
+                        <div class="d-flex flex-column mb-3">
+                            {% csrf_token %}
+                            <label for="name">Hike Name</label>
+                            <input type="text" name="name" placeholder="Hike Name" >
+
+                            <label for="img_one">Image</label>
+                            <input type="text" value="https://source.unsplash.com/Bkci_8qcdvQ" name="img_one">
+
+                            <label for="img_two">Image</label>
+                            <input type="text" name="img_two">
+
+                            <label for="img_three">Image</label>
+                            <input type="text" name="img_three">
+
+                            <label for="location">Location</label>
+                            <input type="text" name="location" required>
+
+                            <label for="hike_date"> Date Hiked</label>
+                            <input type="date" name="hike_date">
+
+                            <label for="length"> Length </label>
+                            <input type="number"  name="length" min="0" step="0.01">
+
+                            <label for="elevation_gain"> Elevation Gain </label>
+                            <input type="number" name="elevation_gain" min="0">
+
+                            <label for="hike_rating"> Hike Rating </label>
+                            <input type="number" name="hike_rating" min="1" max="5" required>
+
+                            <label for="description">Hike description</label>
+                            <textarea type="text" name="description" placeholder="Write about the hike"></textarea>
+
+                        <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Submit">
+                        <input type="hidden" name="text" value="{{ next }}" />
+                    </form> 
+                </div>
                 <a class="button is-warning" href="{% url 'profile' user.profile.pk %}">Cancel</a>
             </div>
         </div>

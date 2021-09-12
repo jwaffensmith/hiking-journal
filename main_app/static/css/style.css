@@ -172,6 +172,16 @@ a.review-note:hover {
   transform: scale(1.05);
 }
 
+span.review-hike {
+  color: #28587b !important;
+}
+
+a.review-hike:hover {
+  color: #b7cdb2 !important;
+  transform: rotate(360deg);
+  transform: scale(1.05);
+}
+
 a.journal-link:hover {
   color: #64888a !important;
   transform: rotate(360deg);

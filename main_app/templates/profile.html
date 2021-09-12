@@ -56,12 +56,26 @@
                         <p class="card-header-title">
                         {{hike.name}}
                         </p>
+                        <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+                            <ul>
+                                <li>
+                                    <a class="review-hike" href="{% url 'hike_detail' hike.pk %}">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-book" aria-hidden="true" style="color: #28587b;"></i>
+                                    </span>
+                                    <span class="review-hike"> Review Hike</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                 </div>
-                <a href="{% url 'hike_detail' hike.pk%}">
+    
                     <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
-                        </figure>
+                        <a href="{% url 'hike_detail' hike.pk%}">
+                            <figure class="image is-4by3">
+                                <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
+                            </figure>
+                        </a>
                     <section class="content hike-details">
                         <p><strong>Posted on</strong> {{hike.created_at|date}}</p>
                         <p><strong>Location:</strong> {{hike.location}}</p>
@@ -71,12 +85,25 @@
                         <p><strong>Hiked on</strong> {{hike.hike_date}} </p>
                         <p><strong>Details:</strong> {{hike.description}}</p>
                     </section>
-                    </div>
-                </a>
+                </div>
                 <footer class="card-footer">
                     <form class="card-footer-item" action="{% url 'comment_create' profile.pk hike.pk%}" method="post">
                         {% csrf_token %}
                         <input type="text" name="content" id="">
+                        {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="is-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="is-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
                         <input class="button has-text-white-ter has-background-dark is-small" type="submit" value="Add Note" href="{% url 'profile' user.profile.pk %}">
                     </form>
                 </footer>

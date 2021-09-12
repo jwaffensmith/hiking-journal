@@ -28,7 +28,73 @@
                     <div class="card">
                         <footer class="card-footer">
                             <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>
-                            <a class="card-footer-item has-text-warning-dark edit-link" href="{% url 'hike_update' hike.pk %}">Edit</a>
+                            
+            <a class="card-footer-item has-text-warning-dark modal-delete-btn edit-link" id="hike-edit-btn">Edit</a>
+            <div class="modal" id="hike-edit-modal">
+                <div class="modal-background" id="edit-modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Update Hike</p>
+                        <button class="delete" aria-label="close" id="hike-edit-close"></button>
+                    </header>
+                    <footer class="modal-card-foot">
+                        <form class="card-footer-item" method="post" action="{% url 'hike_update' hike.pk %}">
+                            <div class="d-flex flex-column mb-3">
+                                {% csrf_token %}
+
+                            <label for="name">Hike Name</label>
+                            <input type="text" value="{{ hike.name }}" name="name" required>
+
+                            <label for="img_one">Image</label>
+                            <input type="text" value="{{ hike.img_one }}" name="img_one" required>
+
+                            <label for="img_two">Image</label>
+                            <input type="text" value="{{ hike.img_two }}" name="img_two">
+
+                            <label for="img_three">Image</label>
+                            <input type="text" value="{{ hike.img_three}}" name="img_three">
+
+                            <label for="location">Location</label>
+                            <input type="text" value="{{ hike.location}}" name="location" required>
+
+                            <label for="hike_date"> Date Hiked</label>
+                            <input type="date" value="{{ hike.hike_date|date:'Y-m-d'}}" placeholder="{{ hike.hike_date|date:'Y-m-d'}}" name="hike_date" required>
+
+                            <label for="length"> Length </label>
+                            <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.01">
+
+                            <label for="elevation_gain"> Elevation Gain </label>
+                            <input type="number" value="{{ hike.elevation_gain}}" name="elevation_gain" min="0">
+
+                            <label for="hike_rating"> Hike Rating </label>
+                            <input type="number" value="{{ hike.hike_rating}}" name="hike_rating" min="1" max="5" required>
+
+                            <label for="description">Hike description</label>
+                            <textarea type="text" value="{{hike.description}}" name="description">{{hike.description}}</textarea>
+                            
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="is-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="is-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                            {% endif %}
+
+                            <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Update">
+                            <input type="hidden" name="text" value="{{ next }}" />
+                        </form> 
+                    </div>
+                        <button class="button is-success" aria-label="close" id="hike-edit-cancel-btn">Cancel</button>
+                    </footer>
+                </div>
+            </div>
                             <a class="card-footer-item has-text-danger-dark modal-delete-btn delete-link" id="delete-btn">Delete</a>
                             <div class="modal" id="delete-modal">
                                 <div class="modal-background" id="delete-modal-background"></div>

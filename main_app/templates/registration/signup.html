@@ -12,6 +12,20 @@
                 {% csrf_token %}   
                 {{ signup_form.as_p }}
                 {{ profile_form.as_p }}
+                {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="is-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="is-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+                {% endif %}
                 <input type="submit" class="button" value="Sign Up" /> 
                 <input type="hidden" name="next" value="{{ next }}" />
             </form>
