@@ -4,8 +4,8 @@
 {% block content%}
 
 <main class="gradient">
-    <div class="container login">
-        <div class="login-form">
+    <div class="container page-card">
+        <div class="card-border">
             <h1>Log In</h1>
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %} 

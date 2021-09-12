@@ -37,7 +37,7 @@ $('#comment-edit-close').click(function () {
     $('#comment-edit-modal').removeClass('is-active');
 });
 
-$('#edit-comment-cancel-btn').click(function () {
+$('#comment-cancel-btn').click(function () {
     $('#comment-edit-modal').removeClass('is-active');
 });
 

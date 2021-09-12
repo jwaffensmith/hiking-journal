@@ -4,97 +4,147 @@
 {% block content %}
 <main>
     <main class="gradient">
-        <div class="container login">
-            <div class="login-form">
+        <div class="container page-card">
+            <div class="card-border">
                 <div class="column card">
                     <div class="card-header">
-                        <p class="card-header-title">
-                        {{hike.name}}
+                        <p class="card-header-title"> 
+                        {{hike.name}} 
                         </p>
+                        <p>{{hike.created_at|date}}</p>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        {{hike.location}}
                     </div>
                     <div class="card-image">
-                        <figure class="image is-square">
+                        <figure class="image is-square" style="margin-top: 5px;">
                             <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
                         </figure>
+                        {% if hike.img_two != '' %}
+                        <figure class="image is-square" style="margin-top: 5px;">
+                            <img src="{{hike.img_two}}" alt="{{hike.description}}"/>      
+                        </figure>
+                        {% endif %} 
+                        {% if hike.img_three != '' %}
+                        <figure class="image is-square" style="margin-top: 5px;">
+                            <img src="{{hike.img_three}}" alt="{{hike.name}}"/>  
+                        </figure>
+                        {% endif %} 
                     </div>
                     <section class="content hike-details">
-                        <p><strong>Location:</strong> {{hike.location}}</p>
-                        <P><strong>Length:</strong> {{hike.length}} Miles</p>
-                        <p><strong>Elevation Gain:</strong> {{hike.elevation_gain}} Feet</P>
-                        <p><strong>My Hike Rating:</strong> {{hike.hike_rating}}</p>
-                        <p><strong>Hiked on</strong> {{hike.hike_date}} </p>
-                        <p><strong>Details:</strong> {{hike.description}}</p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <P><strong>Length | </strong> {{hike.length}} Miles</p>
+                            <p><strong>Elevation Gain | </strong> {{hike.elevation_gain}} Feet</P>
+                            <p><strong>Hiked | </strong> {{hike.hike_date}} </p>
+                        </div>
+                        <div>
+                            <div>
+                                <spn><p><strong>Hike Rating</strong></p></spn>
+                                {% if hike.hike_rating == 5 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                {% elif hike.hike_rating == 4 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                {% elif hike.hike_rating == 3 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                {% elif hike.hike_rating == 2 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span>  
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                {% elif hike.hike_rating == 1 %}
+                                <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                                {% endif %}
+                            </div>
+                            <p>{{hike.description}}</p>
+                        </div>
                     </section>
+                </div>
                     <div class="card">
                         <footer class="card-footer">
                             <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>
+                            <a class="card-footer-item has-text-warning-dark modal-delete-btn edit-link" id="hike-edit-btn">Edit</a>
+                                <div class="modal" id="hike-edit-modal">
+                                    <div class="modal-background" id="edit-modal-background"></div>
+                                        <div class="modal-card">
+                                            <header class="modal-card-head">
+                                                <p class="modal-card-title">Update Hike</p>
+                                                <button class="delete" aria-label="close" id="hike-edit-close"></button>
+                                            </header>
+                                            <footer class="modal-card-foot">
+                                            <form class="card-footer-item" method="post" action="{% url 'hike_update' hike.pk %}">
+                                                <div class="d-flex flex-column mb-3">
+                                                {% csrf_token %}
+
+                                                <label for="name">Hike Name</label>
+                                                <input type="text" value="{{ hike.name }}" name="name" required>
+
+                                                <label for="img_one">Image</label>
+                                                <input type="text" value="{{ hike.img_one }}" name="img_one" required>
+
+                                                <label for="img_two">Image</label>
+                                                <input type="text" value="{{ hike.img_two }}" name="img_two">
+
+                                                <label for="img_three">Image</label>
+                                                <input type="text" value="{{ hike.img_three}}" name="img_three">
+
+                                                <label for="location">Location</label>
+                                                <input type="text" value="{{ hike.location}}" name="location" required>
+
+                                                <label for="hike_date"> Date Hiked</label>
+                                                <input type="date" value="{{ hike.hike_date|date:'Y-m-d'}}" placeholder="{{ hike.hike_date|date:'Y-m-d'}}" name="hike_date" required>
+
+                                                <label for="length"> Length </label>
+                                                <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.1">
+
+                                                <label for="elevation_gain"> Elevation Gain </label>
+                                                <input type="number" value="{{ hike.elevation_gain}}" name="elevation_gain" min="0">
+
+                                                <label for="hike_rating"> Hike Rating </label>
+                                                <input type="number" value="{{ hike.hike_rating}}" name="hike_rating" min="1" max="5" required>
+
+                                                <label for="description">Hike description</label>
+                                                <textarea type="text" value="{{hike.description}}" rows="10" cols="30" name="description">{{hike.description}}</textarea>
                             
-            <a class="card-footer-item has-text-warning-dark modal-delete-btn edit-link" id="hike-edit-btn">Edit</a>
-            <div class="modal" id="hike-edit-modal">
-                <div class="modal-background" id="edit-modal-background"></div>
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Update Hike</p>
-                        <button class="delete" aria-label="close" id="hike-edit-close"></button>
-                    </header>
-                    <footer class="modal-card-foot">
-                        <form class="card-footer-item" method="post" action="{% url 'hike_update' hike.pk %}">
-                            <div class="d-flex flex-column mb-3">
-                                {% csrf_token %}
+                                            {% if form.errors %}
+                                            {% for field in form %}
+                                            {% for error in field.errors %}
+                                            <div class="is-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                            </div>
+                                            {% endfor %}
+                                            {% endfor %}
+                                            {% for error in form.non_field_errors %}
+                                            <div class="is-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                            </div>
+                                            {% endfor %}
+                                            {% endif %}
 
-                            <label for="name">Hike Name</label>
-                            <input type="text" value="{{ hike.name }}" name="name" required>
-
-                            <label for="img_one">Image</label>
-                            <input type="text" value="{{ hike.img_one }}" name="img_one" required>
-
-                            <label for="img_two">Image</label>
-                            <input type="text" value="{{ hike.img_two }}" name="img_two">
-
-                            <label for="img_three">Image</label>
-                            <input type="text" value="{{ hike.img_three}}" name="img_three">
-
-                            <label for="location">Location</label>
-                            <input type="text" value="{{ hike.location}}" name="location" required>
-
-                            <label for="hike_date"> Date Hiked</label>
-                            <input type="date" value="{{ hike.hike_date|date:'Y-m-d'}}" placeholder="{{ hike.hike_date|date:'Y-m-d'}}" name="hike_date" required>
-
-                            <label for="length"> Length </label>
-                            <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.01">
-
-                            <label for="elevation_gain"> Elevation Gain </label>
-                            <input type="number" value="{{ hike.elevation_gain}}" name="elevation_gain" min="0">
-
-                            <label for="hike_rating"> Hike Rating </label>
-                            <input type="number" value="{{ hike.hike_rating}}" name="hike_rating" min="1" max="5" required>
-
-                            <label for="description">Hike description</label>
-                            <textarea type="text" value="{{hike.description}}" name="description">{{hike.description}}</textarea>
-                            
-                            {% if form.errors %}
-                            {% for field in form %}
-                                {% for error in field.errors %}
-                                    <div class="is-danger">
-                                        <strong>{{ error|escape }}</strong>
-                                    </div>
-                                {% endfor %}
-                            {% endfor %}
-                            {% for error in form.non_field_errors %}
-                                <div class="is-danger">
-                                    <strong>{{ error|escape }}</strong>
+                                            <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Update">
+                                            <input type="hidden" name="text" value="{{ next }}" />
+                                        </form> 
                                 </div>
-                            {% endfor %}
-                            {% endif %}
-
-                            <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Update">
-                            <input type="hidden" name="text" value="{{ next }}" />
-                        </form> 
+                                <button class="button is-success" aria-label="close" id="hike-edit-cancel-btn">Cancel</button>
+                        </footer>
                     </div>
-                        <button class="button is-success" aria-label="close" id="hike-edit-cancel-btn">Cancel</button>
-                    </footer>
                 </div>
-            </div>
                             <a class="card-footer-item has-text-danger-dark modal-delete-btn delete-link" id="delete-btn">Delete</a>
                             <div class="modal" id="delete-modal">
                                 <div class="modal-background" id="delete-modal-background"></div>

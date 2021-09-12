@@ -4,17 +4,10 @@
 
 {% block content%}
 
-<main class="gradient">
-    <div class="container login">
-        <div class="dropdown is-active">
-            <div class="field">
-                <p class="control is-expanded has-icons-right">
-                    <input class="input" type="search" placeholder="Search..."/>
-                    <span class="icon is-small is-right"><i class="fas fa-search"></i></span>
-                </p>
-            </div>
-        </div>
 
+
+<main class="gradient">
+    <div class="container page-card">
         <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -44,26 +37,26 @@
                 </div>
             </div>
         </div>
-
-        <div class="login-form">
+        
+        <div class="card-border">
             <h1 class="welcome-message">Hiking Journal</h1>
             <a class="button is-dark" href="{% url 'profile_update' profile.pk %}">Update Profile</a>
             <img src={{profile.avatar}} >
             <a class="button is-dark" href="{% url 'hike_create' profile.pk %}">Add Hike</a>
             {% for hike in user.hikes.all %}
-                <div class="card is-mobile is-centered" id="hike-list-card">
+                <div class="card is-mobile is-centered" style="margin-top: 20px;" id="hike-list-card">
                     <div class="card-header">
                         <p class="card-header-title">
                         {{hike.name}}
                         </p>
-                        <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+                        <nav class="breadcrumb is-right" aria-label="breadcrumbs" style="margin-top: 10px;">
                             <ul>
                                 <li>
                                     <a class="review-hike" href="{% url 'hike_detail' hike.pk %}">
                                     <span class="icon is-small">
                                         <i class="fas fa-book" aria-hidden="true" style="color: #28587b;"></i>
                                     </span>
-                                    <span class="review-hike"> Review Hike</span>
+                                    <span class="review-hike"> View Hike</span>
                                     </a>
                                 </li>
                             </ul>
@@ -76,16 +69,7 @@
                                 <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
                             </figure>
                         </a>
-                    <section class="content hike-details">
-                        <p><strong>Posted on</strong> {{hike.created_at|date}}</p>
-                        <p><strong>Location:</strong> {{hike.location}}</p>
-                        <P><strong>Length:</strong> {{hike.length}} Miles</p>
-                        <p><strong>Elevation Gain:</strong> {{hike.elevation_gain}} Feet</P>
-                        <p><strong>My Hike Rating:</strong> {{hike.hike_rating}}</p>
-                        <p><strong>Hiked on</strong> {{hike.hike_date}} </p>
-                        <p><strong>Details:</strong> {{hike.description}}</p>
-                    </section>
-                </div>
+                    </div>
                 <footer class="card-footer">
                     <form class="card-footer-item" action="{% url 'comment_create' profile.pk hike.pk%}" method="post">
                         {% csrf_token %}
@@ -93,13 +77,13 @@
                         {% if form.errors %}
                         {% for field in form %}
                             {% for error in field.errors %}
-                                <div class="is-danger">
+                                <div>
                                     <strong>{{ error|escape }}</strong>
                                 </div>
                             {% endfor %}
                         {% endfor %}
                         {% for error in form.non_field_errors %}
-                            <div class="is-danger">
+                            <div>
                                 <strong>{{ error|escape }}</strong>
                             </div>
                         {% endfor %}
@@ -119,7 +103,7 @@
                                     <span class="icon is-small">
                                         <i class="fas fa-book" aria-hidden="true" style="color: #28587b;"></i>
                                     </span>
-                                    <span class="review-note" >Review Note</span>
+                                    <span class="review-note"> View Note</span>
                                     </a>
                                 </li>
                             </ul>
