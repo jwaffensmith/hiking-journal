@@ -10,6 +10,8 @@ from .forms import UserCreationForm, ProfileForm, UpdateProfileForm, UpdateUserF
 from django.db.models.functions import Concat
 from django.db.models import Value as V
 from .filters import HikeFilter
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .models import Hike, User, Profile, Comment
 from django.contrib import messages
 
@@ -49,7 +51,7 @@ class Signup(View):
         model = User
         fields = ("username", "password1", "password2")
 
-
+@method_decorator(login_required, name='dispatch')
 class ProfileDetail(DetailView):
     model = Profile
     template_name = "profile.html"
@@ -61,6 +63,7 @@ class ProfileDetail(DetailView):
         context['comments'] = Comment.objects.filter(user=self.kwargs.get("pk"))
         return context
 
+@method_decorator(login_required, name='dispatch')
 class SearchView(View):
     template_name = 'search.html'
 
@@ -77,6 +80,7 @@ class SearchView(View):
         else: 
             return render(request, "search.html", {})
 
+@method_decorator(login_required, name='dispatch')
 class ProfileUpdate(TemplateView):
     template_name = "profile_update.html"
 
@@ -111,10 +115,12 @@ class ProfileUpdate(TemplateView):
                     "update_profile_form": update_user_form}
             return render(request, "profile_update.html", context)
 
+@method_decorator(login_required, name='dispatch')
 class HikeDetail(DetailView):
     model = Hike
     template_name = "hike_detail.html"
 
+@method_decorator(login_required, name='dispatch')
 class HikeCreate(CreateView):
     model = Hike
     template_name = "hike_create.html"
@@ -131,6 +137,7 @@ class HikeCreate(CreateView):
     def get_success_url(self):
         return reverse("hike_detail", kwargs={'pk': self.object.pk})
 
+@method_decorator(login_required, name='dispatch')
 class HikeUpdate(UpdateView):
     model = Hike
     fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating",  "description"]
@@ -138,13 +145,14 @@ class HikeUpdate(UpdateView):
     def get_success_url(self):
         return reverse("hike_detail", kwargs={"pk": self.object.pk})
 
-
+@method_decorator(login_required, name='dispatch')
 class HikeDelete(View):
     def post(self, request, pk):
         hike_to_delete = Hike.objects.get(id=pk)
         hike_to_delete.delete()
         return redirect("/profile/")
 
+@method_decorator(login_required, name='dispatch')
 class CommentCreate(CreateView):
     def post(self, request, pk, hike_pk):
         comment_content = request.POST.get("content")
@@ -152,23 +160,27 @@ class CommentCreate(CreateView):
         Comment.objects.create(content=comment_content, hike=related_hike, user=request.user)
         return redirect(f"/profile/{pk}")
 
+@method_decorator(login_required, name='dispatch')
 class CommentDetail(DetailView):
         model = Comment
         template_name= "comment_detail.html"
 
+@method_decorator(login_required, name='dispatch')
 class CommentUpdate(UpdateView):
     model = Comment
     fields = ["content"]
 
     def get_success_url(self):
         return reverse("comment_detail", kwargs={"pk": self.object.pk})
-        
+
+@method_decorator(login_required, name='dispatch')       
 class CommentDelete(View):
     def post(self, request, pk):
         comment_to_delete = Comment.objects.get(id=pk)
         comment_to_delete.delete()
         return redirect("/profile/")
-
+        
+@method_decorator(login_required, name='dispatch')
 class SortView(TemplateView):
     template_name = 'sort_hikes.html'
 

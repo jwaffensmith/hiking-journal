@@ -16,5 +16,3 @@ class HikeFilter(django_filters.FilterSet):
     hike_date_range = DateFromToRangeFilter(widget=RangeWidget(attrs={'type': 'date'}), field_name="hike_date", label="Hike Date Range")
     hike_date_range_dropdown = DateRangeFilter(field_name="hike_date", label="Recent Hikes")
 
-
-
