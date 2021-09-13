@@ -128,7 +128,6 @@ class HikeCreate(CreateView):
         return super(HikeCreate, self).form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, self.error_message)
         return super().form_invalid(form)
 
     def get_success_url(self):

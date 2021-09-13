@@ -48,7 +48,7 @@
             {% if profile.user == user %}
             <a class="button is-dark" href="{% url 'hike_create' profile.pk %}">Add Hike</a>
             {% endif %}
-            {% for hike in user.hikes.all %}
+            {% for hike in profile.user.hikes.all %}
                 <div class="card is-mobile is-centered" style="margin-top: 20px;" id="hike-list-card">
                     <div class="card-header">
                         <p class="card-header-title">
