@@ -17,24 +17,11 @@
                     </span>
                 </button>
             </div>
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                    <a href="#" class="dropdown-item">
-                    Alphabetical Order
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    Newest to Oldest
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    Oldest to Newest
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    Highest Rating to Lowest
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    Lowest Rating to Highest
-                    </a>
-                </div>
+            <div>
+                <form method="GET">
+                    {{hike_filter.form}}
+                </form>
+                
             </div>
         </div>
         

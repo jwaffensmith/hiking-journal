@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Search {% endblock%} 
+
+{% block content%}
+
+<main class="gradient">
+    <div class="container page-card">
+       
+         
+    </div>
+    <h1 class="welcome-message">{{user.username}}'s Hiking Journal</h1>
+    {% for hike in user.hikes.all %}
+    <div class="card is-mobile is-centered" style="margin-top: 20px;" id="hike-list-card">
+        <div class="card-header">
+            <p class="card-header-title">
+            {{hike.name}}
+            </p>
+            <nav class="breadcrumb is-right" aria-label="breadcrumbs" style="margin-top: 10px;">
+                <ul>
+                    <li>
+                        <a class="review-hike" href="{% url 'hike_detail' hike.pk %}">
+                        <span class="icon is-small">
+                            <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
+                        </span>
+                        <span class="review-hike"> View Hike</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+    </div>
+
+        <div class="card-image">
+            <a href="{% url 'hike_detail' hike.pk%}">
+                <figure class="image is-4by3">
+                    <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
+                </figure>
+            </a>
+        </div>
+    {% endfor %}
+</main>
+
+{% endblock %}

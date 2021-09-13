@@ -1,9 +1,7 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import HttpResponseRedirect
 from django.views import View
-from django.db.models import Q
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import get_object_or_404
@@ -61,6 +59,7 @@ class ProfileDetail(TemplateView):
         context['hikes'] = Hike.objects.filter(user=self.request.user)
         context['profile'] = Profile.objects.get(pk=self.kwargs.get("pk"))
         context['comments'] = Comment.objects.filter(user=self.kwargs.get("pk"))
+        context['hike_filter'] = HikeFilter()
         return context
 
 class SearchView(View):
@@ -173,3 +172,33 @@ class CommentDelete(View):
         comment_to_delete = Comment.objects.get(id=pk)
         comment_to_delete.delete()
         return redirect("/profile/")
+
+
+# class SortView(TemplateView):
+#     model = Hike
+#     template_name = "sort_hikes.html"
+
+    
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['hikes'] = Hike.objects.filter(user=self.request.user).order_by("hike_rating")
+#         return context
+
+class SortView(TemplateView):
+    template_name = 'sort_hikes.html'
+
+    def get(self, request):
+        return render(request, "sort_hikes.html", {})
+    
+    def post(self, request, pk_profile):
+        profile = Profile.objects.get(id=pk_profile)
+        hikes = profile.order_set.all()
+        hike_filter = HikeFilter()
+        context = {'profile': profile, 'hikes': hikes, 'hike_filter': hike_filter}
+        return render(request, "sort_hikes.html", context)
+
+# order by oldest to newest order_by("-created_at")
+# order by newest to oldest (default) order_by("created_at")
+# hike name alphabetical order_by("name")
+# rating order_by("hike_rating")
+# rating order_by("-hike_rating")

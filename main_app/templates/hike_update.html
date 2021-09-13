@@ -37,7 +37,7 @@
                             <label for="hike_rating"> Hike Rating </label>
                             <input type="number" value="{{ hike.hike_rating}}" name="hike_rating" min="1" max="5" required>
 
-                            <label for="description">Hike description</label>
+                            <label for="description">Journal Notes</label>
                             <textarea type="text" value="{{hike.description}}" name="description">{{hike.description}}</textarea>
                             {% if form.errors %}
                             {% for field in form %}
