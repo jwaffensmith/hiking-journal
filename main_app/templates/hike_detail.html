@@ -11,6 +11,10 @@
                         <p class="card-header-title"> 
                         {{hike.name}} 
                         </p>
+                        <p>Posted by:</p>
+                        <a href="{% url 'profile' hike.user.id %}">
+                        {{hike.user.username}}</p>
+                        </a>
                         <p>{{hike.created_at|date}}</p>
                     </div>
                     <div style="margin-top: 10px;">
@@ -78,6 +82,7 @@
                 </div>
                     <div class="card">
                         <footer class="card-footer">
+                            {% if hike.user == user %}
                             <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>
                             <a class="card-footer-item has-text-warning-dark modal-delete-btn edit-link" id="hike-edit-btn">Edit</a>
                                 <div class="modal" id="hike-edit-modal">
@@ -163,7 +168,7 @@
                                     </footer>
                                 </div>
                             </div>
-                        </footer>
+                            {% endif %}
                     </div>
                 </div>
             </div>
