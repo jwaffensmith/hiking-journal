@@ -40,10 +40,14 @@
         
         <div class="card-border">
             <h1 class="welcome-message">Hiking Journal</h1>
+            {% if profile.user == user %}
             <a class="button is-dark" href="{% url 'profile_update' profile.pk %}">Update Profile</a>
+            {% endif %}
             <img src={{profile.avatar}} >
             <p> {{ profile.user.username }}</p> 
+            {% if profile.user == user %}
             <a class="button is-dark" href="{% url 'hike_create' profile.pk %}">Add Hike</a>
+            {% endif %}
             {% for hike in user.hikes.all %}
                 <div class="card is-mobile is-centered" style="margin-top: 20px;" id="hike-list-card">
                     <div class="card-header">
@@ -99,7 +103,9 @@
                     <div>
                         <p>{{comment.content}}</p>
                         <p>{{comment.created_at|date}}</p>
-                        <p>{{comment.user}}</p>
+                        <a href="{% url 'profile' comment.user.id %}">
+                            <p>{{comment.user}}</p>
+                        </a>
                         {% if comment.user == user %}
                         <nav class="breadcrumb is-right" aria-label="breadcrumbs">
                             <ul>

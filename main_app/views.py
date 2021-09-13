@@ -153,9 +153,7 @@ class CommentCreate(CreateView):
     def post(self, request, pk, hike_pk):
         comment_content = request.POST.get("content")
         related_hike = Hike.objects.get(id=hike_pk)
-        # user = User.objects.get(pk=self.kwargs.get("pk"))
-        user = User.objects.get(id=pk)
-        Comment.objects.create(content=comment_content, hike=related_hike, user=user)
+        Comment.objects.create(content=comment_content, hike=related_hike, user=request.user)
         return redirect('/profile/')
 
 class CommentDetail(DetailView):
