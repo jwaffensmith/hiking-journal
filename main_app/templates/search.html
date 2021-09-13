@@ -9,20 +9,22 @@
         <div class="control">
             <form action="" method="POST" action="{% url 'search' %}">
                 {% csrf_token %}
-                <input class="input" type="search" placeholder="Search Hikes" name="searched"/>
+                <input class="input" type="text" placeholder="Search Hikes or Friends" name="searched"/>
                 <input class="button is-success" type="submit" name="submit" value="Search" />
             </form>
         </div>  
         {% if searched %}
         <h1>You Searched For {{ searched }}</h1>
+
             {% for hike in hikes %}
                 <br/>
-                <h3>{{ hike }}</h3>
+                <a href="{% url 'hike_detail' hike.id %}"><h3>{{ hike }}</h3></a>
             {% endfor %}
             {% for user in users %}
             <br/>
-            <h3>{{ user }}</h3>
-            {% endfor %}    
+            <a href="{% url 'profile' user.profile.id %}"><h3>{{ user }}</h3></a>
+            {% endfor %} 
+
         {% else %}
             <h1>Search for Friends or Hikes</h1>
         {% endif %}

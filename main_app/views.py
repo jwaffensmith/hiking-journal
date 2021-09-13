@@ -8,6 +8,8 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
 from .forms import UserCreationForm, ProfileForm, UpdateProfileForm, UpdateUserForm
+from django.db.models.functions import Concat
+from django.db.models import Value as V
 from .filters import HikeFilter
 from .models import Hike, User, Profile, Comment
 from django.contrib import messages
@@ -70,7 +72,8 @@ class SearchView(View):
         if request.method == "POST":
             searched = request.POST['searched']
             hikes = Hike.objects.filter(name__icontains=searched)
-            users = User.objects.filter(username__icontains=searched)
+            users = User.objects.annotate(full_name=Concat('first_name', V(' '), 'last_name')).\
+                filter(full_name__icontains=searched)
             return render(request, 'search.html', {'searched': searched, 'hikes': hikes, 'users': users})
         else: 
             return render(request, "search.html", {})
