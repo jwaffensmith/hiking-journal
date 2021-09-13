@@ -5,43 +5,84 @@
 {% block content%}
 
 <main class="gradient">
-    <div class="container page-card">
+    <div class="container page-card" style="margin-bottom: 200px;">
         <div>
             <form method="GET">
                 {{hike_filter.form}}
                 <button class="button is-success" type="submit">Search</button>
             </form>
+        <a href="{% url 'sort_hikes' %}"> <button class="button is-success">Clear Search</button></a>
         </div>
     </div>
-    <h1 class="welcome-message">{{user.username}}'s Hiking Journal</h1>
+    <h1 class="welcome-message">{{user.first_name}}'s Hikes</h1>
     {% for hike in hikes %}
-    <div class="card is-mobile is-centered" style="margin-top: 200px;" id="hike-list-card">
-        <div class="card-header">
-            <p class="card-header-title">
-            {{hike.name}}
-            </p>
-            <nav class="breadcrumb is-right" aria-label="breadcrumbs" style="margin-top: 10px;">
-                <ul>
-                    <li>
-                        <a class="review-hike" href="{% url 'hike_detail' hike.pk %}">
-                        <span class="icon is-small">
-                            <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
-                        </span>
-                        <span class="review-hike"> View Hike</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-    </div>
-
-        <div class="card-image">
-            <a href="{% url 'hike_detail' hike.pk%}">
-                <figure class="image is-4by3">
-                    <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
-                </figure>
-            </a>
+    <div class="card-border" style="margin-top: 50px;">
+        <div class="column card">
+            <div class="card-header">
+                <p class="card-header-title"> 
+                {{hike.name}} 
+                </p>
+                <p>Posted {{hike.created_at|date}}</p>
+            </div>
+            <div style="margin-top: 10px;">
+                {{hike.location}}
+            </div>
+            <div class="card-image">
+                <a href="{% url 'hike_detail' hike.pk%}">
+                    <figure class="image is-4by3">
+                        <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
+                    </figure>
+                </a>
+            <section class="content hike-details">
+                <div style="display: flex; justify-content: space-between;">
+                    <P><strong>Length | </strong> {{hike.length}} Miles</p>
+                    <p><strong>Elevation Gain | </strong> {{hike.elevation_gain}} Feet</P>
+                    <p><strong>Hiked | </strong> {{hike.hike_date}} </p>
+                </div>
+                <div>
+                    <div>
+                        <spn><p><strong>Hike Rating</strong></p></spn>
+                        {% if hike.hike_rating == 5 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        {% elif hike.hike_rating == 4 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        {% elif hike.hike_rating == 3 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        {% elif hike.hike_rating == 2 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span>  
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        {% elif hike.hike_rating == 1 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        {% endif %}
+                    </div>
+                    <p><i class="fas fa-book"></i> <strong>Journal Notes: </strong>{{hike.description}}</p>
+                </div>
+            </section>
         </div>
+    </div>
+    {% empty %}
+    <h1>Sorry, no hikes matched that search.</h1>
     {% endfor %}
 </main>
 
 {% endblock %}
+
