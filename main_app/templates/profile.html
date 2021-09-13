@@ -8,43 +8,22 @@
 
 <main class="gradient">
     <div class="container page-card">
-        <div class="dropdown is-hoverable">
-            <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span>Sort Hikes</span>
-                    <span class="icon is-small">
-                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                </button>
-            </div>
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                    <a href="#" class="dropdown-item">
-                    Alphabetical Order
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    Newest to Oldest
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    Oldest to Newest
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    Highest Rating to Lowest
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    Lowest Rating to Highest
-                    </a>
-                </div>
+            <div>
+                <a href="{% url 'sort_hikes' %}"><button class="button">Search Your Hikes</button></a>
             </div>
         </div>
         
         <div class="card-border">
             <h1 class="welcome-message">Hiking Journal</h1>
+            {% if profile.user == user %}
             <a class="button is-dark" href="{% url 'profile_update' profile.pk %}">Update Profile</a>
+            {% endif %}
             <img src={{profile.avatar}} >
             <p> {{ profile.user.username }}</p> 
+            {% if profile.user == user %}
             <a class="button is-dark" href="{% url 'hike_create' profile.pk %}">Add Hike</a>
-            {% for hike in user.hikes.all %}
+            {% endif %}
+            {% for hike in profile.user.hikes.all %}
                 <div class="card is-mobile is-centered" style="margin-top: 20px;" id="hike-list-card">
                     <div class="card-header">
                         <p class="card-header-title">
@@ -99,7 +78,9 @@
                     <div>
                         <p>{{comment.content}}</p>
                         <p>{{comment.created_at|date}}</p>
-                        <p>{{comment.user}}</p>
+                        <a href="{% url 'profile' comment.user.id %}">
+                            <p>{{comment.user}}</p>
+                        </a>
                         {% if comment.user == user %}
                         <nav class="breadcrumb is-right" aria-label="breadcrumbs">
                             <ul>

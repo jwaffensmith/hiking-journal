@@ -2,7 +2,6 @@ from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from django.db.models import Q
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import get_object_or_404
@@ -51,7 +50,7 @@ class Signup(View):
         fields = ("username", "password1", "password2")
 
 
-class ProfileDetail(TemplateView):
+class ProfileDetail(DetailView):
     model = Profile
     template_name = "profile.html"
 
@@ -128,7 +127,6 @@ class HikeCreate(CreateView):
         return super(HikeCreate, self).form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, self.error_message)
         return super().form_invalid(form)
 
     def get_success_url(self):
@@ -153,10 +151,9 @@ class CommentCreate(CreateView):
     def post(self, request, pk, hike_pk):
         comment_content = request.POST.get("content")
         related_hike = Hike.objects.get(id=hike_pk)
-        # user = User.objects.get(pk=self.kwargs.get("pk"))
-        user = User.objects.get(id=pk)
-        Comment.objects.create(content=comment_content, hike=related_hike, user=user)
-        return redirect('/profile/')
+        Comment.objects.create(content=comment_content, hike=related_hike, user=request.user)
+        return redirect(f"/profile/{pk}")
+
 
 class CommentDetail(DetailView):
         model = Comment
@@ -174,3 +171,51 @@ class CommentDelete(View):
         comment_to_delete = Comment.objects.get(id=pk)
         comment_to_delete.delete()
         return redirect("/profile/")
+
+
+# class SortView(TemplateView):
+#     model = Hike
+#     template_name = "sort_hikes.html"
+
+    
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['hikes'] = Hike.objects.filter(user=self.request.user).order_by("hike_rating")
+#         return context
+
+class SortView(TemplateView):
+    template_name = 'sort_hikes.html'
+
+    def get(self, request):
+        hikes = Hike.objects.filter(user=request.user)
+        hike_filter = HikeFilter(request.GET, queryset=hikes)
+        hikes = hike_filter.qs
+        context = {'hikes': hikes, 'hike_filter': hike_filter}
+        return render(request, "sort_hikes.html", context)
+
+
+
+
+    # def post(self, request):
+    #     hikes = Hike.objects.filter(user=request.user)
+    #     hike_filter = HikeFilter(request.GET, queryset=hikes)
+    #     hikes = hike_filter.qs
+    #     context = {'hikes': hikes, 'hike_filter': hike_filter}
+    #     return render(self.request, "sort_hikes.html", context)
+
+
+
+# order by oldest to newest order_by("-created_at")
+# order by newest to oldest (default) order_by("created_at")
+# hike name alphabetical order_by("name")
+# rating order_by("hike_rating")
+# rating order_by("-hike_rating")
+# def get(self, request):
+#         return render(request, "sort_hikes.html", {})
+    
+#     def post(self, request, pk_profile):
+#         profile = Profile.objects.get(id=pk_profile)
+#         hikes = profile.order_set.all()
+#         hike_filter = HikeFilter()
+#         context = {'profile': profile, 'hikes': hikes, 'hike_filter': hike_filter}
+#         return render(request, "sort_hikes.html", context)

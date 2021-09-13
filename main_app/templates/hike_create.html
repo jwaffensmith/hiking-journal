@@ -10,7 +10,7 @@
                         <div class="d-flex flex-column mb-3">
                             {% csrf_token %}
                             <label for="name">Hike Name</label>
-                            <input type="text" name="name" placeholder="Hike Name" >
+                            <input type="text" name="name" placeholder="Hike Name" required>
 
                             <label for="img_one">Image</label>
                             <input type="text" value="https://source.unsplash.com/Bkci_8qcdvQ" name="img_one">
@@ -28,7 +28,7 @@
                             <input type="date" name="hike_date" required>
 
                             <label for="length"> Length </label>
-                            <input type="number"  name="length" min="0" step="0.1"><span>Miles</span>
+                            <input type="number"  name="length" min="0" step="0.1" required><span>Miles</span>
 
                             <label for="elevation_gain"> Elevation Gain </label>
                             <input type="number" name="elevation_gain" min="0"><span>Feet</span>
@@ -36,7 +36,7 @@
                             <label for="hike_rating"> Hike Rating </label>
                             <input type="number" name="hike_rating" min="1" max="5" required>
 
-                            <label for="description">Hike description</label>
+                            <label for="description">Hike Notes</label>
                             <textarea type="text" name="description" placeholder="Write about the hike"></textarea>
 
                             {% if form.errors %}
