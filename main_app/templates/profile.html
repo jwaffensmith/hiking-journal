@@ -8,15 +8,13 @@
 
 <main class="gradient">
     <div class="container page-card">
+        <div class="card-border">
+            <h1 class="welcome-message">{{ profile.user.username }}'s Hiking Journal</h1>
+            {% if profile.user == user %}
+            <a class="button is-dark" href="{% url 'profile_update' profile.pk %}">Update Account</a>
             <div>
                 <a href="{% url 'sort_hikes' %}"><button class="button">Search Your Hikes</button></a>
             </div>
-        </div>
-        
-        <div class="card-border">
-            <h1 class="welcome-message">Hiking Journal</h1>
-            {% if profile.user == user %}
-            <a class="button is-dark" href="{% url 'profile_update' profile.pk %}">Update Account</a>
             {% endif %}
             <img src={{profile.avatar}} >
             <p> {{ profile.user.username }}</p> 

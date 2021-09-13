@@ -11,10 +11,14 @@
                         <p class="card-header-title"> 
                         {{hike.name}} 
                         </p>
+                        {% if hike.user == user %}
+                        <p>Posted</p>
+                        {% else %}
                         <p>Posted by</p>
                         <a href="{% url 'profile' hike.user.id %}">
                         {{hike.user.username}} </p>
                         </a>
+                        {% endif %}
                         <p>{{hike.created_at|date}}</p>
                     </div>
                     <div style="margin-top: 10px;">

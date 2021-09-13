@@ -22,19 +22,17 @@
                 <p class="card-header-title"> 
                 {{hike.name}} 
                 </p>
-                <p>Posted by</p>
-                <a href="{% url 'profile' hike.user.id %}">
-                {{hike.user.username}} </p>
-                </a>
-                <p>{{hike.created_at|date}}</p>
+                <p>Posted {{hike.created_at|date}}</p>
             </div>
             <div style="margin-top: 10px;">
                 {{hike.location}}
             </div>
             <div class="card-image">
-                <figure class="image is-square" style="margin-top: 5px;">
-                    <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
-                </figure>
+                <a href="{% url 'hike_detail' hike.pk%}">
+                    <figure class="image is-4by3">
+                        <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
+                    </figure>
+                </a>
             <section class="content hike-details">
                 <div style="display: flex; justify-content: space-between;">
                     <P><strong>Length | </strong> {{hike.length}} Miles</p>
