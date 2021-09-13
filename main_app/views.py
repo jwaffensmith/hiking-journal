@@ -132,7 +132,6 @@ class HikeCreate(CreateView):
     def get_success_url(self):
         return reverse("hike_detail", kwargs={'pk': self.object.pk})
 
-
 class HikeUpdate(UpdateView):
     model = Hike
     fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating",  "description"]
@@ -154,7 +153,6 @@ class CommentCreate(CreateView):
         Comment.objects.create(content=comment_content, hike=related_hike, user=request.user)
         return redirect(f"/profile/{pk}")
 
-
 class CommentDetail(DetailView):
         model = Comment
         template_name= "comment_detail.html"
@@ -172,17 +170,6 @@ class CommentDelete(View):
         comment_to_delete.delete()
         return redirect("/profile/")
 
-
-# class SortView(TemplateView):
-#     model = Hike
-#     template_name = "sort_hikes.html"
-
-    
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['hikes'] = Hike.objects.filter(user=self.request.user).order_by("hike_rating")
-#         return context
-
 class SortView(TemplateView):
     template_name = 'sort_hikes.html'
 
@@ -192,30 +179,3 @@ class SortView(TemplateView):
         hikes = hike_filter.qs
         context = {'hikes': hikes, 'hike_filter': hike_filter}
         return render(request, "sort_hikes.html", context)
-
-
-
-
-    # def post(self, request):
-    #     hikes = Hike.objects.filter(user=request.user)
-    #     hike_filter = HikeFilter(request.GET, queryset=hikes)
-    #     hikes = hike_filter.qs
-    #     context = {'hikes': hikes, 'hike_filter': hike_filter}
-    #     return render(self.request, "sort_hikes.html", context)
-
-
-
-# order by oldest to newest order_by("-created_at")
-# order by newest to oldest (default) order_by("created_at")
-# hike name alphabetical order_by("name")
-# rating order_by("hike_rating")
-# rating order_by("-hike_rating")
-# def get(self, request):
-#         return render(request, "sort_hikes.html", {})
-    
-#     def post(self, request, pk_profile):
-#         profile = Profile.objects.get(id=pk_profile)
-#         hikes = profile.order_set.all()
-#         hike_filter = HikeFilter()
-#         context = {'profile': profile, 'hikes': hikes, 'hike_filter': hike_filter}
-#         return render(request, "sort_hikes.html", context)
