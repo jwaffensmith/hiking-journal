@@ -50,7 +50,7 @@ class Signup(View):
         fields = ("username", "password1", "password2")
 
 
-class ProfileDetail(TemplateView):
+class ProfileDetail(DetailView):
     model = Profile
     template_name = "profile.html"
 
@@ -59,7 +59,6 @@ class ProfileDetail(TemplateView):
         context['hikes'] = Hike.objects.filter(user=self.request.user)
         context['profile'] = Profile.objects.get(pk=self.kwargs.get("pk"))
         context['comments'] = Comment.objects.filter(user=self.kwargs.get("pk"))
-        context['hike_filter'] = HikeFilter()
         return context
 
 class SearchView(View):
@@ -188,17 +187,35 @@ class SortView(TemplateView):
     template_name = 'sort_hikes.html'
 
     def get(self, request):
-        return render(request, "sort_hikes.html", {})
-    
-    def post(self, request, pk_profile):
-        profile = Profile.objects.get(id=pk_profile)
-        hikes = profile.order_set.all()
-        hike_filter = HikeFilter()
-        context = {'profile': profile, 'hikes': hikes, 'hike_filter': hike_filter}
+        hikes = Hike.objects.filter(user=request.user)
+        hike_filter = HikeFilter(request.GET, queryset=hikes)
+        hikes = hike_filter.qs
+        context = {'hikes': hikes, 'hike_filter': hike_filter}
         return render(request, "sort_hikes.html", context)
+
+
+
+
+    # def post(self, request):
+    #     hikes = Hike.objects.filter(user=request.user)
+    #     hike_filter = HikeFilter(request.GET, queryset=hikes)
+    #     hikes = hike_filter.qs
+    #     context = {'hikes': hikes, 'hike_filter': hike_filter}
+    #     return render(self.request, "sort_hikes.html", context)
+
+
 
 # order by oldest to newest order_by("-created_at")
 # order by newest to oldest (default) order_by("created_at")
 # hike name alphabetical order_by("name")
 # rating order_by("hike_rating")
 # rating order_by("-hike_rating")
+# def get(self, request):
+#         return render(request, "sort_hikes.html", {})
+    
+#     def post(self, request, pk_profile):
+#         profile = Profile.objects.get(id=pk_profile)
+#         hikes = profile.order_set.all()
+#         hike_filter = HikeFilter()
+#         context = {'profile': profile, 'hikes': hikes, 'hike_filter': hike_filter}
+#         return render(request, "sort_hikes.html", context)

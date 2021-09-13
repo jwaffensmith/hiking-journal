@@ -6,12 +6,16 @@
 
 <main class="gradient">
     <div class="container page-card">
-       
-         
+        <div>
+            <form method="GET">
+                {{hike_filter.form}}
+                <button class="button is-success" type="submit">Search</button>
+            </form>
+        </div>
     </div>
     <h1 class="welcome-message">{{user.username}}'s Hiking Journal</h1>
-    {% for hike in user.hikes.all %}
-    <div class="card is-mobile is-centered" style="margin-top: 20px;" id="hike-list-card">
+    {% for hike in hikes %}
+    <div class="card is-mobile is-centered" style="margin-top: 200px;" id="hike-list-card">
         <div class="card-header">
             <p class="card-header-title">
             {{hike.name}}

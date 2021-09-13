@@ -8,20 +8,8 @@
 
 <main class="gradient">
     <div class="container page-card">
-        <div class="dropdown is-hoverable">
-            <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span>Sort Hikes</span>
-                    <span class="icon is-small">
-                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                </button>
-            </div>
             <div>
-                <form method="GET">
-                    {{hike_filter.form}}
-                </form>
-                
+                <a href="{% url 'sort_hikes' %}"><button class="button">Search Your Hikes</button></a>
             </div>
         </div>
         
