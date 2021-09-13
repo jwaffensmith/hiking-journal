@@ -6,11 +6,6 @@
 
 <main class="gradient">
     <div class="container page-card" style="margin-bottom: 200px;">
-        <!-- {% if hikes %}
-        <h1>You Searched For {{ hikes }}</h1>
-        {% else %}
-        <h1>All Hikes</h1>
-        {% endif %} -->
         <div>
             <form method="GET">
                 {{hike_filter.form}}
@@ -86,6 +81,8 @@
             </section>
         </div>
     </div>
+    {% empty %}
+    <h1>Sorry, no hikes matched that search.</h1>
     {% endfor %}
 </main>
 

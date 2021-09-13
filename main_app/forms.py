@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.db.models import fields
 from .models import Profile
 
 class UserCreationForm(UserCreationForm):
@@ -20,12 +19,10 @@ class UserCreationForm(UserCreationForm):
             user.save()
         return user
 
-
 class ProfileForm(forms.ModelForm):
         class Meta:
             model = Profile
             fields = ('location', 'avatar')
-
 
 class UpdateProfileForm(forms.ModelForm):
     class Meta:

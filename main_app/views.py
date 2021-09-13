@@ -77,7 +77,6 @@ class SearchView(View):
         else: 
             return render(request, "search.html", {})
 
-
 class ProfileUpdate(TemplateView):
     template_name = "profile_update.html"
 
