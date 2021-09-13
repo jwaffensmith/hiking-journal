@@ -1,6 +1,7 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.http import HttpResponseRedirect
 from django.views import View
 from django.db.models import Q
 from django.views.generic.base import TemplateView
@@ -153,7 +154,8 @@ class CommentCreate(CreateView):
         comment_content = request.POST.get("content")
         related_hike = Hike.objects.get(id=hike_pk)
         Comment.objects.create(content=comment_content, hike=related_hike, user=request.user)
-        return redirect('/profile/')
+        return redirect(f"/profile/{pk}")
+
 
 class CommentDetail(DetailView):
         model = Comment
