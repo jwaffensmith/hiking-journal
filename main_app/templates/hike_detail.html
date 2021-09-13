@@ -11,6 +11,10 @@
                         <p class="card-header-title"> 
                         {{hike.name}} 
                         </p>
+                        <p>Posted by:</p>
+                        <a href="{% url 'profile' hike.user.id %}">
+                        {{hike.user.username}}</p>
+                        </a>
                         <p>{{hike.created_at|date}}</p>
                     </div>
                     <div style="margin-top: 10px;">

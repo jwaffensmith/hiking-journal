@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import fields
-from .models import Profile
+from .models import Comment, Profile
 
 class UserCreationForm(UserCreationForm):
     first_name = forms.CharField(required=True, label='First Name')
@@ -39,3 +39,7 @@ class UpdateUserForm(forms.ModelForm):
         fields = ['username', 'first_name', 'last_name']
 
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["content"]
