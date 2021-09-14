@@ -14,6 +14,7 @@ body, html {
     height: 100%;
     width: 100%;
     margin: 0;
+    position: relative;
     box-sizing: border-box;
     background-color: $footer;
     color: #36454F;
@@ -30,12 +31,12 @@ body, html {
     $gradient_six, $gradient_six, $footer, $background, $footer, $footer, $footer);
 }
 
-.background {
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    margin-bottom: 100px;
+.main-container {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px; /* height of your footer */
     background: $footer;
 }
 
@@ -93,6 +94,8 @@ nav.navbar.is-fixed-top {
     padding: 20px;
     background: $footer;
     width:100%;
+    bottom: 0;
+    position: fixed;
 
     .contact-info {
         margin: 0;
@@ -253,35 +256,32 @@ a.edit-link:hover, a.delete-link:hover  {
 
 }
 
-
-.site-btn {
+#site-btn {
     color: $btn;
     outline: none !important;
 }
 
-.site-btn:hover {
-    color: $btn;
-    border-color: $btn;
-}
-
-.site-btn:active {
+#site-btn:hover {
     color: $btn;
     border-color: $btn;
+}
+
+#site-btn:active {
+    color: $btn;
+    border-color: $btn;
     box-shadow: none;
     outline: none !important;
 }
 
-.site-btn:focus {
-    box-shadow: none;
-    pointer-events: none;
-    outline: none !important;
-    outline-color: $footer;
+#site-btn:focus {
+    box-shadow: 0 0 5px $trim;
 }
 
-.site-btn:hover:after {
-    box-shadow: none;
+#site-btn:hover:after {
     pointer-events: none;
     outline: none !important;
+    border-color: $btn;
+    box-shadow: none;
 }
 
 .search-header {
@@ -294,6 +294,19 @@ a.edit-link:hover, a.delete-link:hover  {
     font-size: 30px; 
     margin-bottom: 20px;
     font-weight: 700;
+}
+
+.site-form {
+    input:focus { 
+        outline: none !important;
+        border-color: $navbar;
+        box-shadow: 0 0 5px $trim;
+    }
+    textarea:focus { 
+        outline: none !important;
+        border-color: $navbar;
+        box-shadow: 0 0 5px $trim;
+    }
 }
 
 

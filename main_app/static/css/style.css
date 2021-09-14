@@ -3,6 +3,7 @@ body, html {
   height: 100%;
   width: 100%;
   margin: 0;
+  position: relative;
   box-sizing: border-box;
   background-color: #e7ede6;
   color: #36454F;
@@ -17,12 +18,14 @@ body, html {
   background: linear-gradient(#467383, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6, #e7ede6, #e7ede6);
 }
 
-.background {
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  top: 0px;
-  margin-bottom: 100px;
+.main-container {
+  min-height: 100vh;
+  /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px;
+  /* height of your footer */
   background: #e7ede6;
 }
 
@@ -62,6 +65,8 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   padding: 20px;
   background: #e7ede6;
   width: 100%;
+  bottom: 0;
+  position: fixed;
 }
 .footer .contact-info {
   margin: 0;
@@ -204,34 +209,32 @@ a.edit-link:hover, a.delete-link:hover {
   transform: scale(1.05);
 }
 
-.site-btn {
+#site-btn {
   color: #467383;
   outline: none !important;
 }
 
-.site-btn:hover {
-  color: #467383;
-  border-color: #467383;
-}
-
-.site-btn:active {
+#site-btn:hover {
   color: #467383;
   border-color: #467383;
+}
+
+#site-btn:active {
+  color: #467383;
+  border-color: #467383;
   box-shadow: none;
   outline: none !important;
 }
 
-.site-btn:focus {
-  box-shadow: none;
-  pointer-events: none;
-  outline: none !important;
-  outline-color: #e7ede6;
+#site-btn:focus {
+  box-shadow: 0 0 5px #64888a;
 }
 
-.site-btn:hover:after {
-  box-shadow: none;
+#site-btn:hover:after {
   pointer-events: none;
   outline: none !important;
+  border-color: #467383;
+  box-shadow: none;
 }
 
 .search-header {
@@ -244,6 +247,17 @@ a.edit-link:hover, a.delete-link:hover {
   font-size: 30px;
   margin-bottom: 20px;
   font-weight: 700;
+}
+
+.site-form input:focus {
+  outline: none !important;
+  border-color: #28587b;
+  box-shadow: 0 0 5px #64888a;
+}
+.site-form textarea:focus {
+  outline: none !important;
+  border-color: #28587b;
+  box-shadow: 0 0 5px #64888a;
 }
 
 @media screen and (max-width: 1024px) {

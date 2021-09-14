@@ -4,21 +4,22 @@
 
 {% block content%}
 
-    <main class="background">
-            <div class="columns is-mobile is-centered" style="margin-top: 50px;">
-                <div class="column is-half">
-                    <form class="box" style="margin-top: 20px;" action="" method="POST" action="{% url 'search' %}">
-                        <div class="field">
-                            <label class="label" style="text-align: center;">Search for Hikes or Friends</label>
-                                <p class="control has-icons-left">
-                                    {% csrf_token %}
-                                    <input class="input" type="text" placeholder="" name="searched"/>
-                                    <span class="icon is-left"><i class="fas fa-search"></i></span>
-                                </p>
-                            <button class="button site-btn" type="submit" name="submit" style="margin-top: 5px;">Search</button>
-                        </div>
-                    </form>
-                </div>
+    <main class="main-container">
+        <div class="columns is-mobile is-centered" style="margin-top: 50px;">
+            <div class="column is-half">
+                <form class="box site-form" method="POST" action="{% url 'search' %}">
+                    <div class="field">
+                        <label class="label" style="text-align: center;">Search for Hikes or Friends</label>
+                        <p class="control has-icons-left">
+                            {% csrf_token %}
+                            <input class="input" type="text" name="searched"/>
+                            <span class="icon is-left"><i class="fas fa-search"></i></span>
+                        </p>
+                    </div>
+                    <div class="control">
+                        <button class="button" id="site-btn" type="submit" name="submit">Search</button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -29,49 +30,49 @@
                 <p>You searched for {{ searched }}</p>
             </div>
         </div>
+        <section class="main-content">
+            <div class="columns is-mobile is-centered">
 
-        <div class="columns is-mobile is-centered">
-
-            <div class="column is-half border search-column" style="text-align: center;">
-                <h2 class="search-title">Hikes</h2>
-                {% for hike in hikes %}
-                <a href="{% url 'hike_detail' hike.id %}">
-                <div class="card" style="margin: 30px;">
-                    <div class="card-image">
-                        <p class="image is-4by3">
-                            <img src="{{hike.img_one}}">
-                        </p>
-                    </div>
-                    <div class="content" style="padding: 20px">
-                        <strong style="font-size: 15px;">{{hike}}</strong> 
-                    </div>
-                </div>
-                {% empty %}
-                <p>No hikes matched that search.</p>
-                {% endfor %}
-            </div>
-            </a>
-
-            <div class="column is-half border search-column" style="text-align: center;">
-                <h2 class="search-title">Users</h2>
-                {% for user in users %}
-                <a href="{% url 'profile' user.profile.id %}">
+                <div class="column is-half border search-column" style="text-align: center;">
+                    <h2 class="search-title">Hikes</h2>
+                    {% for hike in hikes %}
+                    <a href="{% url 'hike_detail' hike.id %}">
                     <div class="card" style="margin: 30px;">
                         <div class="card-image">
                             <p class="image is-4by3">
-                                <img src="{{user.profile.avatar}}">
+                                <img src="{{hike.img_one}}">
                             </p>
                         </div>
                         <div class="content" style="padding: 20px">
-                            <strong style="font-size: 15px;">{{user}}</strong> 
+                            <strong style="font-size: 15px;">{{hike}}</strong> 
                         </div>
                     </div>
-                {% empty %}
-                <p>No users matched that search.</p>
-                {% endfor %}
-            </div>
+                    {% empty %}
+                    <p>No hikes matched that search.</p>
+                    {% endfor %}
+                </div>
+                </a>
 
-        </div>
+                <div class="column is-half border search-column" style="text-align: center;">
+                    <h2 class="search-title">Users</h2>
+                    {% for user in users %}
+                    <a href="{% url 'profile' user.profile.id %}">
+                        <div class="card" style="margin: 30px;">
+                            <div class="card-image">
+                                <p class="image is-4by3">
+                                    <img src="{{user.profile.avatar}}">
+                                </p>
+                            </div>
+                            <div class="content" style="padding: 20px">
+                                <strong style="font-size: 15px;">{{user}}</strong> 
+                            </div>
+                        </div>
+                    {% empty %}
+                    <p>No users matched that search.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
         {% endif %}
     </main>
 
