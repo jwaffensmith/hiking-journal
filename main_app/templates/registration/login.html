@@ -4,7 +4,7 @@
 {% block content%}
 
 <main class="gradient">
-    <div class="container page-card">
+    <div class="container is-max-desktop page-card">
         <div class="card-border">
             <h1>Log In</h1>
             <form method="post" action="{% url 'login' %}">
@@ -35,3 +35,21 @@
 </main>
     
 {% endblock %}
+
+<form class="box">
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" placeholder="e.g. alex@example.com">
+      </div>
+    </div>
+  
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input class="input" type="password" placeholder="********">
+      </div>
+    </div>
+  
+    <button class="button is-primary">Sign in</button>
+  </form>

@@ -5,10 +5,10 @@
 {% block content%}
 
 <main class="gradient">
-    <div class="container signup"> 
+    <div class="container is-max-desktop signup"> 
         <div class="signup-form">
             <h1>Sign Up</h1>
-            <form method="POST" action="{% url 'signup' %}">
+            <form class="box" method="POST" action="{% url 'signup' %}">
                 {% csrf_token %}   
                 {{ signup_form.as_p }}
                 {{ profile_form.as_p }}
