@@ -12,9 +12,31 @@ $primary-font: 'Poppins', sans-serif;
 body, html {
     font-family: $primary-font;
     height: 100%;
+    width: 100%;
     margin: 0;
+    box-sizing: border-box;
     background-color: $footer;
-   color: #36454F;
+    color: #36454F;
+}
+
+.gradient {
+    width: 100%;
+    height: 80%;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    background: linear-gradient($btn, $btn, $btn, $trim, $trim, 
+    $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
+    $gradient_six, $gradient_six, $footer, $background, $footer, $footer, $footer);
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    margin-bottom: 100px;
+    background: $footer;
 }
 
 nav.navbar.is-fixed-top {
@@ -81,25 +103,6 @@ nav.navbar.is-fixed-top {
             font-size: 15px;
         }
     }
-}
-.gradient {
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    background: linear-gradient($btn, $btn, $btn, $trim, $trim, 
-    $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
-    $gradient_six, $gradient_six, $footer, $background, $footer, $footer, $footer);
-}
-
-.background {
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    background: $footer;
 }
 
 .border {
@@ -288,7 +291,7 @@ a.edit-link:hover, a.delete-link:hover  {
 }
 
 .search-title {
-    font-size: 20px; 
+    font-size: 30px; 
     margin-bottom: 20px;
     font-weight: 700;
 }

@@ -16,7 +16,6 @@
     <title>The Hiking Journal - {% block title %} {% endblock%} </title>
 </head>
     <body>
-    <section>
         <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand" style="background: linear-gradient(#28587b, #467383);">
                 <a class="navbar-item" id="home-link" href="{% url 'home' %}" style="background: linear-gradient(#28587b, #467383);">
@@ -56,11 +55,10 @@
             </div>
             {% endif %}
         </nav>
-    </section>
+    
 
             {% block content %} 
             {% endblock %}
-    <section>
         <footer class="footer">
             <div class="content has-text-centered">
                 <p class="contact-info">
@@ -71,6 +69,5 @@
                 </p>
             </div>
         </footer>
-    </section>
     </body>
 </html class="has-navbar-fixed-top">
