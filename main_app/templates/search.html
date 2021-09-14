@@ -4,18 +4,19 @@
 
 {% block content%}
 
-    <main class="gradient">
+    <main class="background">
             <div class="columns is-mobile is-centered" style="margin-top: 50px;">
                 <div class="column is-half">
-                    <form class="box" action="" method="POST" action="{% url 'search' %}">
-                        <div class="field">
-                            <div class="control">
-                                {% csrf_token %}
-                                <input class="input" type="text" placeholder="Search for hikes and friends" name="searched"/>
-                            </div>
-                        </div>
-                        <button class="button" type="submit" name="submit">Search</button>
-                    </form>
+                    <div class="field">
+                        <form action="" method="POST" action="{% url 'search' %}">
+                                <p class="control has-icons-left">
+                                    {% csrf_token %}
+                                    <input class="input" type="text" placeholder="Find hikes or friends" name="searched"/>
+                                    <span class="icon is-left"><i class="fas fa-search"></i></span>
+                                </p>
+                                <button class="button site-btn" type="submit" name="submit" style="margin-top: 5px;">Search</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -23,24 +24,35 @@
         {% if searched %}
 
         <div class="columns is-mobile is-centered">
-            <div class="column is-half" style="text-align: center;">
-                <p>You Searched for {{ searched }}</p>
+            <div class="column is-half search-header">
+                <p>You searched for {{ searched }}</p>
             </div>
         </div>
 
         <div class="columns is-mobile is-centered">
 
-            <div class="column is-half" style="text-align: center;">
-                <h2>Hikes</h2>
+            <div class="column is-half border search-column" style="text-align: center;">
+                <h2 class="search-title">Hikes</h2>
                 {% for hike in hikes %}
-                <a href="{% url 'hike_detail' hike.id %}"><h3>{{ hike }}</h3></a>
+                <a href="{% url 'hike_detail' hike.id %}">
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="card-image">
+                        <p class="image is-4by3">
+                            <img src="{{hike.img_one}}">
+                        </p>
+                    </div>
+                    <div class="content">
+                        <strong>{{hike}}</strong> 
+                    </div>
+                </div>
                 {% empty %}
                 <p>No hikes matched that search.</p>
                 {% endfor %}
             </div>
+            </a>
 
-            <div class="column is-half" style="text-align: center;">
-                <h2>Users</h2>
+            <div class="column is-half border search-column" style="text-align: center;">
+                <h2 class="search-title">Users</h2>
                 {% for user in users %}
                 <a href="{% url 'profile' user.profile.id %}"><p>{{ user }}</p></a>
                 {% empty %}
@@ -53,3 +65,5 @@
     </main>
 
 {% endblock %}
+
+

@@ -3,6 +3,7 @@ body, html {
   height: 100%;
   margin: 0;
   background-color: #e7ede6;
+  color: #36454F;
 }
 
 nav.navbar.is-fixed-top {
@@ -58,6 +59,20 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   top: 0px;
   z-index: -1;
   background: linear-gradient(#467383, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6, #e7ede6, #e7ede6);
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  background: #e7ede6;
+}
+
+.border {
+  border-color: #36454F;
+  border-left: 3px groove;
 }
 
 .img-container {
@@ -187,8 +202,46 @@ a.edit-link:hover, a.delete-link:hover {
   transform: scale(1.05);
 }
 
-div.dropdown {
-  border-radius: 40px !important;
+.site-btn {
+  color: #467383;
+  outline: none !important;
+}
+
+.site-btn:hover {
+  color: #467383;
+  border-color: #467383;
+}
+
+.site-btn:active {
+  color: #467383;
+  border-color: #467383;
+  box-shadow: none;
+  outline: none !important;
+}
+
+.site-btn:focus {
+  box-shadow: none;
+  pointer-events: none;
+  outline: none !important;
+  outline-color: #e7ede6;
+}
+
+.site-btn:hover:after {
+  box-shadow: none;
+  pointer-events: none;
+  outline: none !important;
+}
+
+.search-header {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.search-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 1024px) {
