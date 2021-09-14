@@ -54,7 +54,7 @@ class Signup(View):
 @method_decorator(login_required, name='dispatch')
 class ProfileDetail(DetailView):
     model = Profile
-    template_name = "profile.html"
+    template_name = "profile/profile.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -65,10 +65,10 @@ class ProfileDetail(DetailView):
 
 @method_decorator(login_required, name='dispatch')
 class SearchView(View):
-    template_name = 'search.html'
+    template_name = 'search/search.html'
 
     def get(self, request):
-       return render(request, "search.html", {})
+       return render(request, "search/search.html", {})
 
     def post(self, request):
         if request.method == "POST":
@@ -76,13 +76,13 @@ class SearchView(View):
             hikes = Hike.objects.filter(name__icontains=searched)
             users = User.objects.annotate(full_name=Concat('first_name', V(' '), 'last_name')).\
                 filter(full_name__icontains=searched)
-            return render(request, 'search.html', {'searched': searched, 'hikes': hikes, 'users': users})
+            return render(request, 'search/search.html', {'searched': searched, 'hikes': hikes, 'users': users})
         else: 
-            return render(request, "search.html", {})
+            return render(request, "search/search.html", {})
 
 @method_decorator(login_required, name='dispatch')
 class ProfileUpdate(TemplateView):
-    template_name = "profile_update.html"
+    template_name = "profile/profile_update.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -113,17 +113,17 @@ class ProfileUpdate(TemplateView):
 
             context = {"update_user_form": update_profile_form,
                     "update_profile_form": update_user_form}
-            return render(request, "profile_update.html", context)
+            return render(request, "profile/profile_update.html", context)
 
 @method_decorator(login_required, name='dispatch')
 class HikeDetail(DetailView):
     model = Hike
-    template_name = "hike_detail.html"
+    template_name = "hike/hike_detail.html"
 
 @method_decorator(login_required, name='dispatch')
 class HikeCreate(CreateView):
     model = Hike
-    template_name = "hike_create.html"
+    template_name = "hike/hike_create.html"
     fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating",  "description"]
 
     def form_valid(self, form):
@@ -135,7 +135,7 @@ class HikeCreate(CreateView):
         return super().form_invalid(form)
 
     def get_success_url(self):
-        return reverse("hike_detail", kwargs={'pk': self.object.pk})
+        return reverse("hike/hike_detail", kwargs={'pk': self.object.pk})
 
 @method_decorator(login_required, name='dispatch')
 class HikeUpdate(UpdateView):
@@ -143,7 +143,7 @@ class HikeUpdate(UpdateView):
     fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating",  "description"]
 
     def get_success_url(self):
-        return reverse("hike_detail", kwargs={"pk": self.object.pk})
+        return reverse("hike/hike_detail", kwargs={"pk": self.object.pk})
 
 @method_decorator(login_required, name='dispatch')
 class HikeDelete(View):
@@ -163,7 +163,7 @@ class CommentCreate(CreateView):
 @method_decorator(login_required, name='dispatch')
 class CommentDetail(DetailView):
         model = Comment
-        template_name= "comment_detail.html"
+        template_name= "comment/comment_detail.html"
 
 @method_decorator(login_required, name='dispatch')
 class CommentUpdate(UpdateView):
@@ -171,7 +171,7 @@ class CommentUpdate(UpdateView):
     fields = ["content"]
 
     def get_success_url(self):
-        return reverse("comment_detail", kwargs={"pk": self.object.pk})
+        return reverse("comment/comment_detail", kwargs={"pk": self.object.pk})
 
 @method_decorator(login_required, name='dispatch')       
 class CommentDelete(View):
@@ -182,14 +182,14 @@ class CommentDelete(View):
         
 @method_decorator(login_required, name='dispatch')
 class SortView(TemplateView):
-    template_name = 'sort_hikes.html'
+    template_name = 'search/sort_hikes.html'
 
     def get(self, request):
         hikes = Hike.objects.filter(user=request.user)
         hike_filter = HikeFilter(request.GET, queryset=hikes)
         hikes = hike_filter.qs
         context = {'hikes': hikes, 'hike_filter': hike_filter}
-        return render(request, "sort_hikes.html", context)
+        return render(request, "search/sort_hikes.html", context)
 
 def custom_page_not_found_view(request, exception):
     return render(request, "errors/404.html", {})
