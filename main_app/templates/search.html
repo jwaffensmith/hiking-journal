@@ -4,30 +4,52 @@
 
 {% block content%}
 
-<main class="gradient">
-    <div class="container page-card">
-        <div class="control">
-            <form action="" method="POST" action="{% url 'search' %}">
-                {% csrf_token %}
-                <input class="input" type="text" placeholder="Search Hikes or Friends" name="searched"/>
-                <input class="button is-success" type="submit" name="submit" value="Search" />
-            </form>
-        </div>  
+    <main class="gradient">
+            <div class="columns is-mobile is-centered" style="margin-top: 50px;">
+                <div class="column is-half">
+                    <form class="box" action="" method="POST" action="{% url 'search' %}">
+                        <div class="field">
+                            <div class="control">
+                                {% csrf_token %}
+                                <input class="input" type="text" placeholder="Search for hikes and friends" name="searched"/>
+                            </div>
+                        </div>
+                        <button class="button" type="submit" name="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         {% if searched %}
-        <h1>You Searched For {{ searched }}</h1>
 
-            {% for hike in hikes %}
-                <br/>
+        <div class="columns is-mobile is-centered">
+            <div class="column is-half" style="text-align: center;">
+                <p>You Searched for {{ searched }}</p>
+            </div>
+        </div>
+
+        <div class="columns is-mobile is-centered">
+
+            <div class="column is-half" style="text-align: center;">
+                <h2>Hikes</h2>
+                {% for hike in hikes %}
                 <a href="{% url 'hike_detail' hike.id %}"><h3>{{ hike }}</h3></a>
-            {% endfor %}
-            {% for user in users %}
-            <br/>
-            <a href="{% url 'profile' user.profile.id %}"><h3>{{ user }}</h3></a>
-            {% endfor %} 
+                {% empty %}
+                <p>No hikes matched that search.</p>
+                {% endfor %}
+            </div>
 
-        {% else %}
-            <h1>Search for Friends or Hikes</h1>
+            <div class="column is-half" style="text-align: center;">
+                <h2>Users</h2>
+                {% for user in users %}
+                <a href="{% url 'profile' user.profile.id %}"><p>{{ user }}</p></a>
+                {% empty %}
+                <p>No users matched that search.</p>
+                {% endfor %}
+            </div>
+
+        </div>
         {% endif %}
-</main>
+    </main>
 
 {% endblock %}
