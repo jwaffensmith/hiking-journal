@@ -252,20 +252,16 @@ nav.navbar.is-fixed-top {
 
 .container.page-card {
     left: 0;
-    top: 20%;
+    top: 30%;
     text-align: center;
     background: $footer;
     width: 100%;
     padding: 50px;
-    border-radius: 7px;
-    border-color: $btn;
-    border-style: solid;
-    border-width: 5px;
 
     .card-border {
         margin-top: 10px;
         color: rgb(45, 42, 42);
-        font-size: 20px;
+        font-size: 15px;
     }
 }
 

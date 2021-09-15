@@ -2,29 +2,27 @@
 {% block title %} Hike Details {% endblock %}
 {% load static %}
 {% block content %}
-<main>
-    <main class="gradient">
+
+    <main class="main-container">
         <div class="container page-card">
             <div class="card-border">
-                <div class="column card">
-                    <div class="card-header">
-                        <p class="card-header-title"> 
+                <div class="card">
+                    <div class="card-header" style="padding-top: 10px">
+                        <p class="card-header-title" style="font-size: 20px;"> 
                         {{hike.name}} 
                         </p>
                         {% if hike.user == user %}
-                        <p>Posted</p>
+                        <p style="margin-right: 5px;">Posted on {{hike.created_at|date}}</p>
                         {% else %}
-                        <p>Posted by</p>
-                        <a href="{% url 'profile' hike.user.id %}">
-                        {{hike.user.username}} </p>
-                        </a>
+                        <p style="margin-right: 5px;">Posted by </p>
+                        <span style="margin-right: 5px;"><a href="{% url 'profile' hike.user.id %}"> {{hike.user.username}}</a></span>
+                        <p style="margin-right: 10px;"> on {{hike.created_at|date}} </p>
                         {% endif %}
-                        <p>{{hike.created_at|date}}</p>
                     </div>
-                    <div style="margin-top: 10px;">
+                    <div style="margin-top: 10px; font-size: 20px;">
                         {{hike.location}}
                     </div>
-                    <div class="card-image">
+                    <div class="card-image is-96x96">
                         <figure class="image is-square" style="margin-top: 5px;">
                             <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
                         </figure>
@@ -39,14 +37,19 @@
                         </figure>
                         {% endif %} 
                     </div>
-                    <section class="content hike-details">
+                    <section class="card-content hike-details">
                         <div style="display: flex; justify-content: space-between;">
-                            <P><strong>Length | </strong> {{hike.length}} Miles</p>
-                            <p><strong>Elevation Gain | </strong> {{hike.elevation_gain}} Feet</P>
-                            <p><strong>Hiked | </strong> {{hike.hike_date}} </p>
+                            <P><strong>Length</strong></p>
+                            <p><strong>Elevation Gain</strong></P>
+                            <p><strong>Hiked</strong></p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <P>{{hike.length}} Miles</p>
+                            <p>{{hike.elevation_gain}} Feet</P>
+                            <p>{{hike.hike_date}} </p>
                         </div>
                         <div>
-                            <div>
+                            <div style="margin-bottom: 20px; margin-top: 20px;">
                                 <spn><p><strong>Hike Rating</strong></p></spn>
                                 {% if hike.hike_rating == 5 %}
                                 <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
@@ -80,7 +83,8 @@
                                 <span><i class="fas fa-star" style="color: gray;"></i></span> 
                                 {% endif %}
                             </div>
-                            <p><i class="fas fa-book"></i> <strong>Journal Notes: </strong>{{hike.description}}</p>
+                            <i class="fas fa-book"></i> <strong>Journal Notes</strong>
+                            <p>{{hike.description}}</p>
                         </div>
                     </section>
                 </div>
@@ -134,14 +138,14 @@
                                             {% if form.errors %}
                                             {% for field in form %}
                                             {% for error in field.errors %}
-                                            <div class="is-danger">
-                                                <strong>{{ error|escape }}</strong>
+                                            <div> 
+                                                <strong class="has-text-danger-dark">{{ error|escape }}</strong>
                                             </div>
                                             {% endfor %}
                                             {% endfor %}
                                             {% for error in form.non_field_errors %}
-                                            <div class="is-danger">
-                                                <strong>{{ error|escape }}</strong>
+                                            <div>
+                                                <strong class="has-text-danger-dark">{{ error|escape }}</strong>
                                             </div>
                                             {% endfor %}
                                             {% endif %}
@@ -165,10 +169,10 @@
                                     <footer class="modal-card-foot">
                                         <form method="post" action="{% url 'hike_delete' hike.pk %}">
                                             {% csrf_token %}
-                                            <input type="submit" class="button is-danger" value="Delete" />
+                                            <input type="submit" class="button has-background-danger-dark has-text-link-light" value="Delete" />
                                             <input type="hidden" name="text" value="{{ next }}" />
                                         </form>
-                                        <button class="button is-success" aria-label="close" id="delete-cancel-btn">Cancel</button>
+                                        <button class="button has-background-primary-dark has-text-link-light" aria-label="close" id="delete-cancel-btn">Cancel</button>
                                     </footer>
                                 </div>
                             </div>
@@ -178,6 +182,6 @@
             </div>
         </div>
     </main>
-</main>
+
 {% endblock %}
 

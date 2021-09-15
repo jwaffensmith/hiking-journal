@@ -85,10 +85,10 @@
                                     <footer class="modal-card-foot">
                                         <form method="post" action="{% url 'comment_delete' comment.pk %}">
                                             {% csrf_token %}
-                                            <input type="submit" class="button is-danger" value="Delete" />
+                                            <input type="submit" class="button has-background-danger-dark has-text-link-light" value="Delete" />
                                             <input type="hidden" name="text" value="{{ next }}"/>
                                         </form>
-                                        <button class="button is-success" aria-label="close" id="delete-comment-cancel-btn">Cancel</button>
+                                        <button class="button has-background-primary-dark has-text-link-light" aria-label="close" id="delete-comment-cancel-btn">Cancel</button>
                                     </footer>
                                 </div>
                             </div>
@@ -108,10 +108,10 @@
                                     <footer class="modal-card-foot">
                                         <form method="post" action="{% url 'comment_delete' comment.pk %}">
                                             {% csrf_token %}
-                                            <input type="submit" class="button is-danger" value="Delete" />
+                                            <input type="submit" class="button has-background-danger-dark has-text-link-light" value="Delete" />
                                             <input type="hidden" name="text" value="{{ next }}"/>
                                         </form>
-                                        <button class="button is-success" aria-label="close" id="delete-comment-cancel-btn">Cancel</button>
+                                        <button class="button has-background-primary-dark has-text-link-light" aria-label="close" id="delete-comment-cancel-btn">Cancel</button>
                                     </footer>
                                 </div>
                             </div>
