@@ -37,7 +37,8 @@
                     <h2 class="search-title">Hikes</h2>
                     {% for hike in hikes %}
                     <a href="{% url 'hike_detail' hike.id %}">
-                        <div class="card">
+                        <div class="card" style="max-width: 300px; margin-left: auto;
+                        margin-right: auto; margin-bottom: 30px;">
                         <div class="card-image">
                             <p class="image is-4by3">
                                 <img src="{{hike.img_one}}">
@@ -57,7 +58,8 @@
                     <h2 class="search-title">Users</h2>
                     {% for user in users %}
                     <a href="{% url 'profile' user.profile.id %}">
-                        <div class="card" style="margin: 30px;">
+                        <div class="card" style="max-width: 300px; margin-left: auto;
+                        margin-right: auto; margin-bottom: 30px;">
                             <div class="card-image">
                                 <p class="image is-4by3">
                                     <img src="{{user.profile.avatar}}">

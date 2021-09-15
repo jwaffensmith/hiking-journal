@@ -21,6 +21,15 @@
                                         <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
                                     </span>
                                     <span class="review-hike"> View Hike</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'profile' comment.hike.user.id %}"> 
+                                    <span class="icon is-small">
+                                        <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
+                                    </span>
+                                    <span class="review-hike"> View {{comment.hike.user.username}}'s Profile</span>
+                                    </a>
                                 </li>
                             </ul>
                         </nav>
