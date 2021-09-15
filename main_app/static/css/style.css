@@ -328,8 +328,46 @@ a.edit-link:hover, a.delete-link:hover {
   box-shadow: 0 0 5px #64888a;
 }
 
+.hike-create-form p input {
+  margin-bottom: 20px;
+  width: 50%;
+}
+.hike-create-form p input:focus {
+  outline: none !important;
+  border-color: #64888a;
+}
+.hike-create-form label {
+  margin-right: 20px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.hike-create-form textarea:focus {
+  outline: none !important;
+  border-color: #64888a;
+}
+
+.profile-update-form input {
+  margin-bottom: 20px;
+  width: 50%;
+}
+.profile-update-form input:focus {
+  outline: none !important;
+  border-color: #64888a;
+}
+.profile-update-form label {
+  margin-right: 20px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.profile-update-form textarea:focus {
+  outline: none !important;
+  border-color: #64888a;
+}
+
 .class-footer-item form input {
   margin-bottom: 20px;
+  padding: 8px 8px;
+  margin: 8px 0;
 }
 .class-footer-item form input:focus {
   outline: none !important;
