@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Update Profile {% endblock %}
+
+{% block content %}
+<main>
+    <main class="gradient">
+        <div class="container login">
+            <div class="login-form">
+                <h1>Update Your Profile</h1>
+                    <form method="post" action="{% url 'profile_update' user.pk %}">
+                        {% csrf_token %}
+                        {{ update_user_form }}
+                        {{ update_profile_form }}
+                        <input type="submit" value="Update" />
+                        <input type="hidden" name="text" value="{{ next }}" />
+                      </form>
+                <a class="button is-warning" href="{% url 'profile' user.profile.pk %}">Cancel</a>
+            </div>
+            <div>
+                <a class="button" href="{% url 'password_change' %}">Change Password</a>
+            </div>
+        </div>
+    </main>
+</main>
+{% endblock %}

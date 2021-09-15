@@ -12,8 +12,32 @@ $primary-font: 'Poppins', sans-serif;
 body, html {
     font-family: $primary-font;
     height: 100%;
+    width: 100%;
     margin: 0;
+    position: relative;
+    box-sizing: border-box;
     background-color: $footer;
+    color: #36454F;
+}
+
+.gradient {
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    background: linear-gradient($btn, $btn, $btn, $trim, $trim, 
+    $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
+    $gradient_six, $gradient_six, $footer, $background, $footer, $footer, $footer);
+}
+
+.main-container {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    margin-top: 50px;
+    padding-bottom: 200px; /* height of your footer */
+    background: $footer;
 }
 
 nav.navbar.is-fixed-top {
@@ -67,9 +91,9 @@ nav.navbar.is-fixed-top {
     } 
 
 .footer {
-    padding: 20px;
     background: $footer;
     width:100%;
+    position: fixed;
 
     .contact-info {
         margin: 0;
@@ -81,16 +105,12 @@ nav.navbar.is-fixed-top {
         }
     }
 }
-.gradient {
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    background: linear-gradient($btn, $btn, $btn, $trim, $trim, 
-    $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
-    $gradient_six, $gradient_six, $footer, $background, $footer, $footer, $footer);
+
+.border {
+    border-color: #36454F;
+    border-left: 3px groove;
 }
+
 
 .img-container {
     background-color: $background;
@@ -178,31 +198,93 @@ nav.navbar.is-fixed-top {
     border-style: solid;
     border-width: 5px;
     text-align: justify;
+}
 
 
-    .signup-form {
+.signup-page {
         margin-top: 10px;
         color: rgb(45, 42, 42);
-        font-size: 20px;
+
+        p {
+            font-size: 17px;
+            margin: 10px;
+            padding: 10px;
+
+            input {
+                    width: 100%;
+                    padding: 8px 14px;
+                    margin: 8px 0;
+                    box-sizing: border-box;
+            }
+
+            input:focus {
+                outline: none !important;
+                border-color: none;
+                box-shadow: none;
+            }
+
+            .helptext {
+                font-size: 15px;
+                list-style-type: square;
+            }
+        }
+
+        ul {
+            margin: 10px;
+
+            li {
+                font-size: 15px;
+                list-style-type: square;
+            }
+        }
+
+        ul.errorlist {
+            margin: 10px;
+            color: hsl(348, 86%, 43%);
+
+            li {
+                font-size: 20px;
+                list-style-type: none;
+                
+            }
+        }
     }
+
+
+.update-modal {
+        color: rgb(45, 42, 42);
+        font-weight: 700;
+        font-size: 15px;
+        text-align: left;
+        margin-left: 50px;
+
+    p {   
+        
+        input {
+            margin-bottom: 20px;
+        }
+
+        input:focus {
+            outline: none !important;
+            border-color: none;
+            box-shadow: none;
+        }
+
+    }
+
 }
 
 .container.page-card {
-    left: 0;
-    top: 20%;
+    margin-top: 20px;
     text-align: center;
     background: $footer;
     width: 100%;
-    padding: 50px;
-    border-radius: 7px;
-    border-color: $btn;
-    border-style: solid;
-    border-width: 5px;
+    padding: 40px;
 
     .card-border {
         margin-top: 10px;
         color: rgb(45, 42, 42);
-        font-size: 20px;
+        font-size: 17px;
     }
 }
 
@@ -234,8 +316,57 @@ a.edit-link:hover, a.delete-link:hover  {
 
 }
 
-div.dropdown {
-    border-radius: 40px !important;
+.site-btn {
+    color: $navbar;
+    border-color: $btn !important;
+}
+
+.site-btn:hover {
+    color: $btn;
+    border-color: $btn;
+}
+
+.site-btn:active {
+    color: $btn;
+    border-color: $btn;
+    box-shadow: none;
+    outline: none !important;
+}
+
+.site-btn:focus {
+    box-shadow: 0 0 5px $trim;
+}
+
+.site-btn:hover:after {
+    pointer-events: none;
+    outline: none !important;
+    border-color: $btn;
+    box-shadow: none;
+}
+
+.search-header {
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 20px;
+}
+
+.search-title {
+    font-size: 30px; 
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.site-form {
+    input:focus { 
+        outline: none !important;
+        border-color: $navbar;
+        box-shadow: 0 0 5px $trim;
+    }
+    textarea:focus { 
+        outline: none !important;
+        border-color: $navbar;
+        box-shadow: 0 0 5px $trim;
+    }
 }
 
 
@@ -245,3 +376,4 @@ div.dropdown {
         margin-left: -512px;  
     }
 }
+
