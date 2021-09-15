@@ -302,6 +302,9 @@ span.review-hike {
     color: $navbar !important;
 }
 
+.journal-link {
+    color: $navbar;
+}
 
 a.journal-link:hover {
     color: $trim !important;
@@ -354,6 +357,26 @@ a.edit-link:hover, a.delete-link:hover  {
     font-size: 30px; 
     margin-bottom: 20px;
     font-weight: 700;
+    border-radius: 2px;
+    border-bottom: 1px solid #36454F; 
+    max-width: 200px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.profile-card {
+    max-width: 500px; 
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 30px;
+}
+
+.profile-hike-card {
+    max-width: 400px; 
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 30px;
 }
 
 .site-form {
@@ -369,6 +392,50 @@ a.edit-link:hover, a.delete-link:hover  {
     }
 }
 
+.class-footer-item {
+    form {   
+        
+        input {
+            margin-bottom: 20px;
+        }
+
+        input:focus {
+            outline: none !important;
+            border-color: none;
+            box-shadow: none;
+        }
+
+    }
+}
+
+.box.sort-form {
+
+    max-width: 500px; 
+    margin-left: auto;
+    margin-right: auto; 
+
+    label {
+       
+        margin-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        }    
+
+    input {
+        width: 100%;
+        padding: 8px 8px;
+        margin: 8px 0;
+    }   
+ 
+    input:focus { 
+        outline: none !important;
+        border-color: $trim;
+    }
+    textarea:focus { 
+        outline: none !important;
+        border-color: $trim;
+    }
+}
 
 @media screen and (max-width: 1024px) { 
     .img-container {

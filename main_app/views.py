@@ -171,7 +171,7 @@ class CommentUpdate(UpdateView):
     fields = ["content"]
 
     def get_success_url(self):
-        return reverse("comment/comment_detail", kwargs={"pk": self.object.pk})
+        return reverse("comment_detail", kwargs={"pk": self.object.pk})
 
 @method_decorator(login_required, name='dispatch')       
 class CommentDelete(View):

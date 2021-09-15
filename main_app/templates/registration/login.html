@@ -40,12 +40,12 @@
                 {% endfor %}
                 {% endif %}
 
-                <div style="display: flex; justify-content: space-between; margin-top: 10px;"> 
+                <div style="margin-top: 10px;"> 
                     <div class="control">
                         <input class="button site-btn" type="submit" value="Login" name="Login"/>
                         <input type="hidden" name="next" value="{{ next }}" />
                     </div>
-                    <div class="control">
+                    <div class="control" style="margin-top: 50px; text-align: center">
                         <a class="button site-btn" href="{% url 'password_reset' %}">Reset Password</a>
                     </div>
                 </div>

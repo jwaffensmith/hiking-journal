@@ -21,6 +21,15 @@
                                         <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
                                     </span>
                                     <span class="review-hike"> View Hike</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'profile' comment.hike.user.id %}"> 
+                                    <span class="icon is-small">
+                                        <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
+                                    </span>
+                                    <span class="review-hike"> View {{comment.hike.user.username}}'s Profile</span>
+                                    </a>
                                 </li>
                             </ul>
                         </nav>
@@ -32,7 +41,7 @@
                         </a>
                     </div>
                     <section class="content hike-details" style="margin-top: 10px;">
-                        <strong>Comment posted on {{comment.created_at|date}}</strong> 
+                        <strong>{{comment.user.first_name}}'s comment posted on {{comment.created_at|date}}</strong> 
                         <p>{{comment.content}}</p>
                     </section>
                     <div class="card" style="width: 500px; margin-left: auto;
