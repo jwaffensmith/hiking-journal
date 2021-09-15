@@ -135,7 +135,7 @@ class HikeCreate(CreateView):
         return super().form_invalid(form)
 
     def get_success_url(self):
-        return reverse("hike/hike_detail", kwargs={'pk': self.object.pk})
+        return reverse("hike_detail", kwargs={'pk': self.object.pk})
 
 @method_decorator(login_required, name='dispatch')
 class HikeUpdate(UpdateView):

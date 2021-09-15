@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Model, CharField, TextField, DateTimeField, ForeignKey, ImageField
+from django.db.models import Model, CharField, TextField, DateTimeField, ForeignKey
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import DateField, IntegerField, DecimalField
 from django.contrib.auth.models import User

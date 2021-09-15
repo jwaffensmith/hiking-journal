@@ -8,7 +8,7 @@
 
 <main class="main-container">
     <div class="container page-card">
-        <div class="card profile-card" style="background-color: #e7ede6;">
+        <div class="card profile-card" style="background-color: #f4f4f4">
             <header class="card-header">
                 <p class="card-header-title is-centered">
                     {{ profile.user.first_name }}'s Hiking Journal
@@ -16,13 +16,13 @@
             </header>
 
             <div class="card-content is-centered">
-                <div class="media">
+                <div class="media" style="justify-content: center;">
                         <figure class="image is-128x128">
-                            <img src="{{profile.avatar}}" alt="profile avatar"/>
+                            <img src="{{profile.avatar}}" alt="profile avatar" style="border-radius: 5px;"/>
                         </figure>
                     <div class="content" style="margin-left: 20px">
                         <p class="title is-5">{{profile.user.username}}</p>
-                        <p class="subtitle is-7">{{user.profile.location}}</p>
+                        <p class="subtitle is-6">{{user.profile.location}}</p>
                     </div>
                 </div>
             </div>

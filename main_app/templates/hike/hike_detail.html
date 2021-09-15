@@ -151,7 +151,7 @@
     
                                                     <label for="description">Hike description</label>
                                                     <p>
-                                                    <textarea type="text" value="{{hike.description}}" rows="10" cols="50" name="description">{{hike.description}}</textarea>
+                                                    <textarea type="text" maxlength="1000" value="{{hike.description}}" rows="10" cols="50" name="description">{{hike.description}}</textarea>
                                                     </p>
     
                                                     {% if form.errors %}

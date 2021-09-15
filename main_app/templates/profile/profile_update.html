@@ -2,24 +2,40 @@
 {% block title %} Update Profile {% endblock %}
 
 {% block content %}
-<main>
-    <main class="gradient">
-        <div class="container login">
-            <div class="login-form">
-                <h1>Update Your Profile</h1>
-                    <form method="post" action="{% url 'profile_update' user.pk %}">
+
+<main class="main-container">
+    <div class="columns is-centered">
+        <div class="column is-half"> 
+                <form method="POST" action="{% url 'profile_update' user.pk %}" class="box profile-upate-form" style="margin-top: 100px;">
+                    <p style="font-weight: 700; font-size: 20px; margin-bottom: 20px; text-align: center;">Update Account</p>
                         {% csrf_token %}
                         {{ update_user_form }}
                         {{ update_profile_form }}
-                        <input type="submit" value="Update" />
-                        <input type="hidden" name="text" value="{{ next }}" />
-                    </form>
-                <a class="button is-warning" href="{% url 'profile' user.profile.pk %}">Cancel</a>
-            </div>
-            <div>
-                <a class="button" href="{% url 'password_change' %}">Change Password</a>
-            </div>
+            
+                        {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div style="padding: 10px;">
+                                    <strong class="has-text-danger-dark">{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div style="padding: 10px;">
+                                <strong class="has-text-danger-dark">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+
+                    <input class="button has-background-primary-dark has-text-link-light" type="submit" value="Update Account">
+                    <input type="hidden" name="text" value="{{ next }}" />
+                    <a href="{% url 'profile' user.profile.pk %}"><button  class="button site-btn">Cancel</button></a>
+                </form> 
+                    <a class="button" href="{% url 'password_change' %}">Change Password</a>
+                </div>
         </div>
-    </main>
+    </div>
 </main>
+
 {% endblock %}
+

@@ -392,11 +392,72 @@ a.edit-link:hover, a.delete-link:hover  {
     }
 }
 
+.hike-create-form {
+
+    p {   
+        
+        input {
+            margin-bottom: 20px;
+            width: 50%;
+        }
+
+        input:focus { 
+            outline: none !important;
+            border-color: $trim;
+    
+        }
+    }
+
+    label {
+       
+        margin-right: 20px;
+        font-weight: 700;
+        font-size: 14px;
+
+        }   
+
+    textarea:focus { 
+        outline: none !important;
+        border-color: $trim;
+        
+    }
+}
+
+.profile-update-form {
+  
+        
+        input {
+            margin-bottom: 20px;
+            width: 50%;
+        }
+
+        input:focus { 
+            outline: none !important;
+            border-color: $trim;
+    
+    }
+
+    label {
+        margin-right: 20px;
+        font-weight: 700;
+        font-size: 14px;
+
+        }   
+
+    textarea:focus { 
+        outline: none !important;
+        border-color: $trim;
+        
+    }
+}
+
 .class-footer-item {
     form {   
         
         input {
             margin-bottom: 20px;
+            padding: 8px 8px;
+            margin: 8px 0;
         }
 
         input:focus {
