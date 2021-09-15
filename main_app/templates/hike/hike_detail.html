@@ -4,9 +4,10 @@
 {% block content %}
 
     <main class="main-container">
-        <div class="container page-card">
+        <div class="container  is-centered page-card">
             <div class="card-border">
-                <div class="card">
+                <div class="card  is-centered" style="width: 500px; margin-left: auto;
+                margin-right: auto;">
                     <div class="card-header" style="padding-top: 10px">
                         <p class="card-header-title" style="font-size: 20px;"> 
                         {{hike.name}} 
@@ -22,7 +23,7 @@
                     <div style="margin-top: 10px; font-size: 20px;">
                         {{hike.location}}
                     </div>
-                    <div class="card-image is-96x96">
+                    <div class="card-image is-3by2">
                         <figure class="image is-square" style="margin-top: 5px;">
                             <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
                         </figure>
@@ -38,15 +39,10 @@
                         {% endif %} 
                     </div>
                     <section class="card-content hike-details">
-                        <div style="display: flex; justify-content: space-between;">
-                            <P><strong>Length</strong></p>
-                            <p><strong>Elevation Gain</strong></P>
-                            <p><strong>Hiked</strong></p>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <P>{{hike.length}} Miles</p>
-                            <p>{{hike.elevation_gain}} Feet</P>
-                            <p>{{hike.hike_date}} </p>
+                        <div>
+                            <P><strong>Length | </strong> {{hike.length}} Miles</p>
+                            <p><strong>Elevation Gain | </strong> {{hike.elevation_gain}} Feet</P>
+                            <p><strong>Hiked | </strong> {{hike.hike_date}}</p>
                         </div>
                         <div>
                             <div style="margin-bottom: 20px; margin-top: 20px;">
@@ -88,7 +84,8 @@
                         </div>
                     </section>
                 </div>
-                    <div class="card">
+                    <div class="card" style="width: 500px; margin-left: auto;
+                    margin-right: auto;">
                         <footer class="card-footer">
                             {% if hike.user == user %}
                             <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>

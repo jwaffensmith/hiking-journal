@@ -143,7 +143,7 @@ class HikeUpdate(UpdateView):
     fields= ["name", "img_one", "img_two", "img_three", "location", "hike_date", "length", "elevation_gain", "hike_rating",  "description"]
 
     def get_success_url(self):
-        return reverse("hike/hike_detail", kwargs={"pk": self.object.pk})
+        return reverse("hike_detail", kwargs={"pk": self.object.pk})
 
 @method_decorator(login_required, name='dispatch')
 class HikeDelete(View):
