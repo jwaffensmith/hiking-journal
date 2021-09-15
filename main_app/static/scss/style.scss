@@ -250,18 +250,41 @@ nav.navbar.is-fixed-top {
         }
     }
 
+
+.update-modal {
+        color: rgb(45, 42, 42);
+        font-weight: 700;
+        font-size: 15px;
+        text-align: left;
+        margin-left: 50px;
+
+    p {   
+        
+        input {
+            margin-bottom: 20px;
+        }
+
+        input:focus {
+            outline: none !important;
+            border-color: none;
+            box-shadow: none;
+        }
+
+    }
+
+}
+
 .container.page-card {
-    left: 0;
-    top: 30%;
+    margin-top: 20px;
     text-align: center;
     background: $footer;
     width: 100%;
-    padding: 50px;
+    padding: 40px;
 
     .card-border {
         margin-top: 10px;
         color: rgb(45, 42, 42);
-        font-size: 15px;
+        font-size: 17px;
     }
 }
 

@@ -4,7 +4,7 @@
 {% block content %}
 
     <main class="main-container">
-        <div class="container  is-centered page-card">
+        <div class="container page-card">
             <div class="card-border">
                 <div class="card  is-centered" style="width: 500px; margin-left: auto;
                 margin-right: auto;">
@@ -23,7 +23,7 @@
                     <div style="margin-top: 10px; font-size: 20px;">
                         {{hike.location}}
                     </div>
-                    <div class="card-image is-3by2">
+                    <div class="card-image 64x64px">
                         <figure class="image is-square" style="margin-top: 5px;">
                             <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
                         </figure>
@@ -90,72 +90,99 @@
                             {% if hike.user == user %}
                             <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>
                             <a class="card-footer-item has-text-warning-dark modal-delete-btn edit-link" id="hike-edit-btn">Edit</a>
+                            <a class="card-footer-item has-text-danger-dark modal-delete-btn delete-link" id="delete-btn">Delete</a>
+                        </footer>
                                 <div class="modal" id="hike-edit-modal">
                                     <div class="modal-background" id="edit-modal-background"></div>
                                         <div class="modal-card">
                                             <header class="modal-card-head">
-                                                <p class="modal-card-title">Update Hike</p>
+                                                <p class="modal-card-title">Edit Hike {{hike.name}}</p>
                                                 <button class="delete" aria-label="close" id="hike-edit-close"></button>
                                             </header>
+                                            <section class="modal-card-body"> 
+                                                <form class="update-modal" method="post" action="{% url 'hike_update' hike.pk %}">
+                                                    <div>
+                                                    {% csrf_token %}
+                                                    
+                                                    <p>
+                                                    <label for="name">Hike Name</label>
+                                                    <input type="text" value="{{ hike.name }}" name="name" required>
+                                                    </p>
+    
+                                                    <p>
+                                                    <label for="img_one">Image</label>
+                                                    <input type="text" value="{{ hike.img_one }}" name="img_one" required>
+                                                    </p>
+    
+                                                    <p>
+                                                    <label for="img_two">Image</label>
+                                                    <input type="text" value="{{ hike.img_two }}" name="img_two">
+                                                    </p>
+    
+                                                    <p>
+                                                    <label for="img_three">Image</label>
+                                                    <input type="text" value="{{ hike.img_three}}" name="img_three">
+                                                    </p>
+    
+                                                    <p>
+                                                    <label for="location">Location</label>
+                                                    <input type="text" value="{{ hike.location}}" name="location" required>
+                                                    </p>
+    
+                                                    <p>
+                                                    <label for="hike_date"> Date Hiked</label>
+                                                    <input type="date" value="{{ hike.hike_date|date:'Y-m-d'}}" placeholder="{{ hike.hike_date|date:'Y-m-d'}}" name="hike_date" required>
+                                                    </p>
+    
+                                                    <p>
+                                                    <label for="length"> Length </label>
+                                                    <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.1">
+                                                    </p>
+    
+                                                    <p>
+                                                    <label for="elevation_gain"> Elevation Gain </label>
+                                                    <input type="number" value="{{ hike.elevation_gain}}" name="elevation_gain" min="0">
+                                                    </p>
+    
+                                                    <p>
+                                                    <label for="hike_rating"> Hike Rating </label>
+                                                    <input type="number" value="{{ hike.hike_rating}}" name="hike_rating" min="1" max="5" required>
+                                                    </p>
+    
+                                                    <label for="description">Hike description</label>
+                                                    <p>
+                                                    <textarea type="text" value="{{hike.description}}" rows="10" cols="50" name="description">{{hike.description}}</textarea>
+                                                    </p>
+    
+                                                    {% if form.errors %}
+                                                    {% for field in form %}
+                                                        {% for error in field.errors %}
+                                                            <div style="padding: 10px;">
+                                                                <strong class="has-text-danger-dark">{{ error|escape }}</strong>
+                                                            </div>
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                    {% for error in form.non_field_errors %}
+                                                        <div style="padding: 10px;">
+                                                            <strong class="has-text-danger-dark">{{ error|escape }}</strong>
+                                                        </div>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                            </section>
                                             <footer class="modal-card-foot">
-                                            <form class="card-footer-item" method="post" action="{% url 'hike_update' hike.pk %}">
-                                                <div class="d-flex flex-column mb-3">
-                                                {% csrf_token %}
-
-                                                <label for="name">Hike Name</label>
-                                                <input type="text" value="{{ hike.name }}" name="name" required>
-
-                                                <label for="img_one">Image</label>
-                                                <input type="text" value="{{ hike.img_one }}" name="img_one" required>
-
-                                                <label for="img_two">Image</label>
-                                                <input type="text" value="{{ hike.img_two }}" name="img_two">
-
-                                                <label for="img_three">Image</label>
-                                                <input type="text" value="{{ hike.img_three}}" name="img_three">
-
-                                                <label for="location">Location</label>
-                                                <input type="text" value="{{ hike.location}}" name="location" required>
-
-                                                <label for="hike_date"> Date Hiked</label>
-                                                <input type="date" value="{{ hike.hike_date|date:'Y-m-d'}}" placeholder="{{ hike.hike_date|date:'Y-m-d'}}" name="hike_date" required>
-
-                                                <label for="length"> Length </label>
-                                                <input type="number" value="{{ hike.length}}" name="length" min="0" step="0.1">
-
-                                                <label for="elevation_gain"> Elevation Gain </label>
-                                                <input type="number" value="{{ hike.elevation_gain}}" name="elevation_gain" min="0">
-
-                                                <label for="hike_rating"> Hike Rating </label>
-                                                <input type="number" value="{{ hike.hike_rating}}" name="hike_rating" min="1" max="5" required>
-
-                                                <label for="description">Hike description</label>
-                                                <textarea type="text" value="{{hike.description}}" rows="10" cols="30" name="description">{{hike.description}}</textarea>
-                            
-                                            {% if form.errors %}
-                                            {% for field in form %}
-                                            {% for error in field.errors %}
-                                            <div> 
-                                                <strong class="has-text-danger-dark">{{ error|escape }}</strong>
-                                            </div>
-                                            {% endfor %}
-                                            {% endfor %}
-                                            {% for error in form.non_field_errors %}
-                                            <div>
-                                                <strong class="has-text-danger-dark">{{ error|escape }}</strong>
-                                            </div>
-                                            {% endfor %}
-                                            {% endif %}
-
-                                            <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Update">
-                                            <input type="hidden" name="text" value="{{ next }}" />
+                                                <input class="button has-background-primary-dark has-text-link-light" type="submit" value="Save Changes">
+                                                <button class="button site-btn"  aria-label="close" id="hike-edit-cancel-btn">Cancel</button>
+                                                <input type="hidden" name="text" value="{{ next }}" />
+                                            </footer>
                                         </form> 
+                                    </div>
                                 </div>
-                                <button class="button is-success" aria-label="close" id="hike-edit-cancel-btn">Cancel</button>
-                        </footer>
-                    </div>
                 </div>
-                            <a class="card-footer-item has-text-danger-dark modal-delete-btn delete-link" id="delete-btn">Delete</a>
+            </div>
+        </div>
+    </main>
+                            
                             <div class="modal" id="delete-modal">
                                 <div class="modal-background" id="delete-modal-background"></div>
                                 <div class="modal-card">
@@ -174,11 +201,5 @@
                                 </div>
                             </div>
                             {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
 
 {% endblock %}
-
