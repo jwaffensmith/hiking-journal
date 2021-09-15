@@ -190,6 +190,14 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   font-size: 15px;
   list-style-type: square;
 }
+.signup-page ul.errorlist {
+  margin: 10px;
+  color: #cc0f35;
+}
+.signup-page ul.errorlist li {
+  font-size: 20px;
+  list-style-type: none;
+}
 
 .container.page-card {
   left: 0;

@@ -237,6 +237,17 @@ nav.navbar.is-fixed-top {
                 list-style-type: square;
             }
         }
+
+        ul.errorlist {
+            margin: 10px;
+            color: hsl(348, 86%, 43%);
+
+            li {
+                font-size: 20px;
+                list-style-type: none;
+                
+            }
+        }
     }
 
 .container.page-card {
