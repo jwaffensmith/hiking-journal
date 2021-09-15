@@ -6,119 +6,159 @@
 
 
 
-<main class="gradient">
-    <div class="container is-max-desktop page-card">
-        <div class="card-border">
-            <h1 class="welcome-message">{{ profile.user.username }}'s Hiking Journal</h1>
-            {% if profile.user == user %}
-            <a class="button is-dark" href="{% url 'profile_update' profile.pk %}">Update Account</a>
-            <div>
-                <a href="{% url 'sort_hikes' %}"><button class="button">Search Your Hikes</button></a>
-            </div>
-            {% endif %}
-            <img src={{profile.avatar}} >
-            <p> {{ profile.user.username }}</p> 
-            {% if profile.user == user %}
-            <a class="button is-dark" href="{% url 'hike_create' profile.pk %}">Add Hike</a>
-            {% endif %}
-            {% for hike in profile.user.hikes.all %}
-                <div class="card is-mobile is-centered" style="margin-top: 20px;" id="hike-list-card">
-                    <div class="card-header">
-                        <p class="card-header-title">
-                        {{hike.name}}
-                        </p>
-                        <nav class="breadcrumb is-right" aria-label="breadcrumbs" style="margin-top: 10px;">
-                            <ul>
-                                <li>
-                                    <a class="review-hike" href="{% url 'hike_detail' hike.pk %}">
-                                    <span class="icon is-small">
-                                        <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
-                                    </span>
-                                    <span class="review-hike"> View Hike</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                </div>
-    
-                    <div class="card-image">
-                        <a href="{% url 'hike_detail' hike.pk%}">
-                            <figure class="image is-4by3">
-                                <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
-                            </figure>
-                        </a>
+<main class="main-container">
+    <div class="container page-card">
+        <div class="card profile-card" style="background-color: #e7ede6;">
+            <header class="card-header">
+                <p class="card-header-title is-centered">
+                    {{ profile.user.first_name }}'s Hiking Journal
+                </p>
+            </header>
+
+            <div class="card-content is-centered">
+                <div class="media">
+                        <figure class="image is-128x128">
+                            <img src="{{profile.avatar}}" alt="profile avatar"/>
+                        </figure>
+                    <div class="content" style="margin-left: 20px">
+                        <p class="title is-5">{{profile.user.username}}</p>
+                        <p class="subtitle is-7">{{user.profile.location}}</p>
                     </div>
-                {% if profile.user != user %}
-                <footer class="card-footer">
-                    <form class="card-footer-item" action="{% url 'comment_create' profile.pk hike.pk%}" method="post">
-                        {% csrf_token %}
-                        <input type="text" name="content" placeholder="Add a comment...">
-                        {% if form.errors %}
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                <div>
-                                    <strong>{{ error|escape }}</strong>
+                </div>
+            </div>
+            {% if profile.user == user %}
+            <footer class="card-footer">
+                <a href="{% url 'profile_update' profile.pk %}" class="card-footer-item journal-link">Update Account</a>
+                <a href="{% url 'sort_hikes' %}" class="card-footer-item journal-link">Search Your Hikes</a>
+                <a href="{% url 'hike_create' profile.pk %}" class="card-footer-item journal-link">Add Hike</a>
+            </footer>
+            {% endif %}
+        </div>
+
+        {% for hike in profile.user.hikes.all %}
+            <div class="card is-mobile is-centered profile-hike-card" id="hike-list-card">
+                <div class="card-header">
+                    <p class="card-header-title">
+                    {{hike.name}}
+                    </p>
+                    <nav class="breadcrumb is-right" aria-label="breadcrumbs" style="margin-top: 10px;">
+                        <ul>
+                            <li>
+                                <a class="review-hike" href="{% url 'hike_detail' hike.pk %}">
+                                <span class="icon is-small">
+                                    <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
+                                </span>
+                                <span class="review-hike"> View Hike</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+            </div>
+            <div class="card-image">
+                <a href="{% url 'hike_detail' hike.pk%}">
+                    <figure class="image is-4by3">
+                        <img src="{{ hike.img_one}}" alt="{{hike.name}}"/>
+                    </figure>
+                </a>
+            </div>
+
+        {% if profile.user != user %}
+        <article class="media" style="margin-top: 20px;">
+            <figure class="media-right">
+                <p class="image is-64x64">
+                    <img src="{{user.profile.avatar}}">
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="field">
+                    <p class="control">
+                        <form class="card-footer-item" action="{% url 'comment_create' profile.pk hike.pk%}" method="post">
+                            {% csrf_token %}
+                            <textarea class="textarea" type="text" name="content" maxlength="1000" placeholder="Add a comment..." required></textarea>
+        
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div style="padding: 10px;">
+                                        <strong class="has-text-danger-dark">{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div style="padding: 10px;">
+                                    <strong class="has-text-danger-dark">{{ error|escape }}</strong>
                                 </div>
                             {% endfor %}
-                        {% endfor %}
-                        {% for error in form.non_field_errors %}
-                            <div>
-                                <strong>{{ error|escape }}</strong>
+                            {% endif %}
+                    </p>
+                </div>
+                    <nav class="level">
+                        <div class="level-left">
+                            <div class="level-item">
+                                <input class="button site-btn" type="submit" value="Post" href="{% url 'profile' user.profile.pk %}">
                             </div>
-                        {% endfor %}
-                        {% endif %}
-                        <input class="button has-text-white-ter has-background-dark is-small" type="submit" value="Post" href="{% url 'profile' user.profile.pk %}">
-                    </form>
-                </footer>
-                {% endif %}
-                {% for comment in hike.comments.all %}
-                <div class="card">
-                    <div>
-                        <p>{{comment.content}}</p>
-                        <p>{{comment.created_at|date}}</p>
-                        <a href="{% url 'profile' comment.user.id %}">
-                            <p>{{comment.user}}</p>
-                        </a>
-                        {% if comment.user == user %}
-                        <nav class="breadcrumb is-right" aria-label="breadcrumbs">
-                            <ul>
-                                <li>
-                                    <a class="review-note" href="{% url 'comment_detail' comment.pk %}">
-                                    <span class="icon is-small">
-                                        <i class="far fa-edit" aria-hidden="true" style="color: #28587b;"></i>
-                                    </span>
-                                    <span class="review-note"> Edit Comment</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        {% endif %}
+                        </div>
+                    </nav>
+                </form>
+            </div>
+        </article>
+        {% endif %}
 
-                        {% if profile.user == user %}
-                        <nav class="breadcrumb is-right" aria-label="breadcrumbs">
-                            <ul>
-                                <li>
-                                    <a class="review-note" href="{% url 'comment_detail' comment.pk %}">
-                                    <span class="icon is-small">
-                                        <i class="far fa-comment-alt" aria-hidden="true" style="color:#28587b;;"></i>
-                                    </span>
-                                    <span class="review-note"> View Comment</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        {% endif %}
+        {% for comment in hike.comments.all %}
+        <article class="media-card" style="margin-top: 20px; border-bottom: 1px solid #36454F;">
+            <div class="container"> 
+                <div class="media-content" style="margin-top: 20px; border-top: 1px solid #36454F">
+                    <div class="content" >
+                        <p class="image is-64x64">
+                            <img src="{{user.profile.avatar}}">
+                        </p>
+                        <p>
+                        <strong>{{comment.user.first_name}}</strong> <a href="{% url 'profile' comment.user.id %}"><small>@{{comment.user.username}}</small></a><small>{{comment.created_at|date}}</small>
+                        <br>
+                        {{comment.content}}
+                        </p>
                     </div>
-                {% endfor %}
-            </div>
-                {% empty %}
-                <article class="message">
-                    <div class="message-header">
-                        <p>No Hikes Available</p>
-                    </div>
-                {% endfor %}
-                </article>
-            </div>
+                    {% if comment.user == user %}
+                    <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+                        <ul>
+                            <li>
+                                <a class="review-note" href="{% url 'comment_detail' comment.pk %}">
+                                <span class="icon is-small">
+                                    <i class="far fa-edit" aria-hidden="true" style="color: #28587b;"></i>
+                                </span>
+                                <span class="review-note"> Edit Comment</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    {% endif %}
+                    {% if profile.user == user %}
+                    <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+                        <ul>
+                            <li>
+                                <a class="review-note" href="{% url 'comment_detail' comment.pk %}">
+                                <span class="icon is-small">
+                                    <i class="far fa-comment-alt" aria-hidden="true" style="color:#28587b;;"></i>
+                                </span>
+                                <span class="review-note"> View Comment</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </article>
+
+                    
+            {% empty %}
+            <article class="message">
+                <div class="message-header">
+                    <p>No Hikes Available</p>
+                </div>
+            {% endfor %}
+            </article>
         </div>
     </div>
 </main>

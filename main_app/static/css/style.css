@@ -242,6 +242,10 @@ span.review-hike {
   color: #28587b !important;
 }
 
+.journal-link {
+  color: #28587b;
+}
+
 a.journal-link:hover {
   color: #64888a !important;
   transform: rotate(360deg);
@@ -292,11 +296,25 @@ a.edit-link:hover, a.delete-link:hover {
   margin-bottom: 20px;
   font-weight: 700;
   border-radius: 2px;
-  border: 2px solid #36454F;
+  border-bottom: 1px solid #36454F;
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
+}
+
+.profile-card {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.profile-hike-card {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
 }
 
 .site-form input:focus {
@@ -308,6 +326,15 @@ a.edit-link:hover, a.delete-link:hover {
   outline: none !important;
   border-color: #28587b;
   box-shadow: 0 0 5px #64888a;
+}
+
+.class-footer-item form input {
+  margin-bottom: 20px;
+}
+.class-footer-item form input:focus {
+  outline: none !important;
+  border-color: none;
+  box-shadow: none;
 }
 
 @media screen and (max-width: 1024px) {

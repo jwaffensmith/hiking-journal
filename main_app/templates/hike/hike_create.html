@@ -37,7 +37,7 @@
                             <input type="number" name="hike_rating" min="1" max="5" required>
 
                             <label for="description">Hike Notes</label>
-                            <textarea type="text" name="description" placeholder="Write about the hike"></textarea>
+                            <textarea type="text" name="description" maxlength="1000" placeholder="Write about the hike"></textarea>
 
                             {% if form.errors %}
                             {% for field in form %}
