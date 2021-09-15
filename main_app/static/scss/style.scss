@@ -198,14 +198,46 @@ nav.navbar.is-fixed-top {
     border-style: solid;
     border-width: 5px;
     text-align: justify;
+}
 
 
-    .signup-form {
+.signup-page {
         margin-top: 10px;
         color: rgb(45, 42, 42);
-        font-size: 20px;
+
+        p {
+            font-size: 17px;
+            margin: 10px;
+            padding: 10px;
+
+            input {
+                    width: 100%;
+                    padding: 8px 14px;
+                    margin: 8px 0;
+                    box-sizing: border-box;
+            }
+
+            input:focus {
+                outline: none !important;
+                border-color: none;
+                box-shadow: none;
+            }
+
+            .helptext {
+                font-size: 15px;
+                list-style-type: square;
+            }
+        }
+
+        ul {
+            margin: 10px;
+
+            li {
+                font-size: 15px;
+                list-style-type: square;
+            }
+        }
     }
-}
 
 .container.page-card {
     left: 0;
@@ -255,8 +287,8 @@ a.edit-link:hover, a.delete-link:hover  {
 }
 
 .site-btn {
-    color: $btn;
-    outline: none !important;
+    color: $navbar;
+    border-color: $btn !important;
 }
 
 .site-btn:hover {

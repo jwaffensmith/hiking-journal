@@ -6,8 +6,8 @@
 
 <main class="gradient">
     <div class="columns is-centered">
-        <div class="column is-one-third">
-            <form class="box site-form" method="POST" action="{% url 'signup' %}" style="margin-top: 200px;">
+        <div class="column is-half">
+            <form class="box site-form signup-page" method="POST" action="{% url 'signup' %}" style="margin-top: 100px;">
                 
                 {% csrf_token %}   
                 {{ signup_form.as_p }}
@@ -29,7 +29,7 @@
                 {% endif %}
 
                     <div class="control">
-                        <input type="submit" class="button" value="Sign Up" /> 
+                        <input type="submit" class="button site-btn" value="Sign Up" /> 
                         <input type="hidden" name="next" value="{{ next }}" />
                     </div>
                 </div>

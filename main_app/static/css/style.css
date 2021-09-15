@@ -158,10 +158,37 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   border-width: 5px;
   text-align: justify;
 }
-.container.signup .signup-form {
+
+.signup-page {
   margin-top: 10px;
   color: #2d2a2a;
-  font-size: 20px;
+}
+.signup-page p {
+  font-size: 17px;
+  margin: 10px;
+  padding: 10px;
+}
+.signup-page p input {
+  width: 100%;
+  padding: 8px 14px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.signup-page p input:focus {
+  outline: none !important;
+  border-color: none;
+  box-shadow: none;
+}
+.signup-page p .helptext {
+  font-size: 15px;
+  list-style-type: square;
+}
+.signup-page ul {
+  margin: 10px;
+}
+.signup-page ul li {
+  font-size: 15px;
+  list-style-type: square;
 }
 
 .container.page-card {
@@ -208,8 +235,8 @@ a.edit-link:hover, a.delete-link:hover {
 }
 
 .site-btn {
-  color: #467383;
-  outline: none !important;
+  color: #28587b;
+  border-color: #467383 !important;
 }
 
 .site-btn:hover {
