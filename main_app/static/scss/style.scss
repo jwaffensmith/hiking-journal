@@ -91,10 +91,8 @@ nav.navbar.is-fixed-top {
     } 
 
 .footer {
-    padding: 20px;
     background: $footer;
     width:100%;
-    bottom: 0;
     position: fixed;
 
     .contact-info {
@@ -256,28 +254,28 @@ a.edit-link:hover, a.delete-link:hover  {
 
 }
 
-#site-btn {
+.site-btn {
     color: $btn;
     outline: none !important;
 }
 
-#site-btn:hover {
+.site-btn:hover {
     color: $btn;
     border-color: $btn;
 }
 
-#site-btn:active {
+.site-btn:active {
     color: $btn;
     border-color: $btn;
     box-shadow: none;
     outline: none !important;
 }
 
-#site-btn:focus {
+.site-btn:focus {
     box-shadow: 0 0 5px $trim;
 }
 
-#site-btn:hover:after {
+.site-btn:hover:after {
     pointer-events: none;
     outline: none !important;
     border-color: $btn;

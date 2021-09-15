@@ -62,10 +62,8 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
 }
 
 .footer {
-  padding: 20px;
   background: #e7ede6;
   width: 100%;
-  bottom: 0;
   position: fixed;
 }
 .footer .contact-info {
@@ -209,28 +207,28 @@ a.edit-link:hover, a.delete-link:hover {
   transform: scale(1.05);
 }
 
-#site-btn {
+.site-btn {
   color: #467383;
   outline: none !important;
 }
 
-#site-btn:hover {
+.site-btn:hover {
   color: #467383;
   border-color: #467383;
 }
 
-#site-btn:active {
+.site-btn:active {
   color: #467383;
   border-color: #467383;
   box-shadow: none;
   outline: none !important;
 }
 
-#site-btn:focus {
+.site-btn:focus {
   box-shadow: 0 0 5px #64888a;
 }
 
-#site-btn:hover:after {
+.site-btn:hover:after {
   pointer-events: none;
   outline: none !important;
   border-color: #467383;

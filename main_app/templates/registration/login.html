@@ -4,12 +4,27 @@
 {% block content%}
 
 <main class="gradient">
-    <div class="container is-max-desktop page-card">
-        <div class="card-border">
-            <h1>Log In</h1>
-            <form method="post" action="{% url 'login' %}">
+    <div class="columns is-centered">
+        <div class="column is-one-third" style="margin-top: 200px;">
+            <form class="box site-form" method="post" action="{% url 'login' %}">
                 {% csrf_token %} 
-                {{ form.as_p }}
+                <div class="field">
+                    <label class="label">Username</label>
+                    <p class="control has-icons-left">
+                        {% csrf_token %}
+                        <input class="input" type="text" name="username" id="id_username" maxlength="150" autocapitalize="none" required/>
+                        <span class="icon is-left"><i class="fas fa-user"></i></span>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <p class="control has-icons-left">
+                        {% csrf_token %}
+                        <input class="input" type="password" name="password" required id="id_password"/>
+                        <span class="icon is-left"><i class="fas fa-lock"></i></span>
+                    </p>
+                </div>
+
                 {% if form.errors %}
                 {% for field in form %}
                     {% for error in field.errors %}
@@ -24,32 +39,19 @@
                     </div>
                 {% endfor %}
                 {% endif %}
-                <input type="submit" class="button" value="Login" />
-                <input type="hidden" name="next" value="{{ next }}" />
+
+                <div style="display: flex; justify-content: space-between; margin-top: 10px;"> 
+                    <div class="control">
+                        <input class="button site-btn" type="submit" value="Login" name="Login"/>
+                        <input type="hidden" name="next" value="{{ next }}" />
+                    </div>
+                    <div class="control">
+                        <a class="button site-btn" href="{% url 'password_reset' %}">Reset Password</a>
+                    </div>
+                </div>
             </form>
-            <div>
-                <a class="button" href="{% url 'password_reset' %}">Reset Password</a>
-            </div>
         </div>
     </div>
 </main>
     
 {% endblock %}
-
-<form class="box">
-    <div class="field">
-      <label class="label">Email</label>
-      <div class="control">
-        <input class="input" type="email" placeholder="e.g. alex@example.com">
-      </div>
-    </div>
-  
-    <div class="field">
-      <label class="label">Password</label>
-      <div class="control">
-        <input class="input" type="password" placeholder="********">
-      </div>
-    </div>
-  
-    <button class="button is-primary">Sign in</button>
-  </form>
