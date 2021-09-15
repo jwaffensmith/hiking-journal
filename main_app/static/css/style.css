@@ -337,6 +337,30 @@ a.edit-link:hover, a.delete-link:hover {
   box-shadow: none;
 }
 
+.box.sort-form {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.box.sort-form label {
+  margin-right: 20px;
+  font-weight: 700;
+  font-size: 12px;
+}
+.box.sort-form input {
+  width: 100%;
+  padding: 8px 8px;
+  margin: 8px 0;
+}
+.box.sort-form input:focus {
+  outline: none !important;
+  border-color: #64888a;
+}
+.box.sort-form textarea:focus {
+  outline: none !important;
+  border-color: #64888a;
+}
+
 @media screen and (max-width: 1024px) {
   .img-container {
     left: 50%;
