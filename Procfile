@@ -1,0 +1,1 @@
+web: gunicorn hike_project.wsgi
