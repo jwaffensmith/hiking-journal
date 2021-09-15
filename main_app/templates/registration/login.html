@@ -5,8 +5,8 @@
 
 <main class="gradient">
     <div class="columns is-centered">
-        <div class="column is-one-third" style="margin-top: 200px;">
-            <form class="box site-form" method="post" action="{% url 'login' %}">
+        <div class="column is-one-third">
+            <form class="box site-form" method="post" action="{% url 'login' %}" style="margin-top: 200px;">
                 {% csrf_token %} 
                 <div class="field">
                     <label class="label">Username</label>
@@ -28,14 +28,14 @@
                 {% if form.errors %}
                 {% for field in form %}
                     {% for error in field.errors %}
-                        <div class="is-danger">
-                            <strong>{{ error|escape }}</strong>
+                        <div style="padding: 10px;">
+                            <strong class="has-text-danger-dark">{{ error|escape }}</strong>
                         </div>
                     {% endfor %}
                 {% endfor %}
                 {% for error in form.non_field_errors %}
-                    <div class="is-danger">
-                        <strong>{{ error|escape }}</strong>
+                    <div style="padding: 10px;">
+                        <strong class="has-text-danger-dark">{{ error|escape }}</strong>
                     </div>
                 {% endfor %}
                 {% endif %}
