@@ -23,8 +23,8 @@ body, html {
   /* will cover the 100% of viewport */
   overflow: hidden;
   display: block;
-  position: relative;
-  padding-bottom: 100px;
+  margin-top: 50px;
+  padding-bottom: 200px;
   /* height of your footer */
   background: #e7ede6;
 }

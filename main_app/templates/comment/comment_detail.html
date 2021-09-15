@@ -4,12 +4,13 @@
 {% block content %}
 
 <main>
-    <main class="gradient">
+    <main class="main-container">
         <div class="container page-card">
             <div class="card-border">
-                <div class="column card">
-                    <div class="card-header">
-                        <p class="card-header-title">
+                <div class="card" style="width: 500px; margin-left: auto;
+                margin-right: auto;">
+                    <div class="card-header" style="padding-top: 20px">
+                        <p class="card-header-title" style="font-size: 20px;">
                         {{comment.hike.name}}
                         </p>
                         <nav class="breadcrumb is-right" aria-label="breadcrumbs">
@@ -30,11 +31,12 @@
                             </figure>
                         </a>
                     </div>
-                    <section class="content hike-details">
-                        <strong>Notes written on {{comment.created_at|date}}</strong> 
+                    <section class="content hike-details" style="margin-top: 10px;">
+                        <strong>Comment posted on {{comment.created_at|date}}</strong> 
                         <p>{{comment.content}}</p>
                     </section>
-                    <div class="card">
+                    <div class="card" style="width: 500px; margin-left: auto;
+                    margin-right: auto;">
                         {% if comment.user == user %}
                         <footer class="card-footer">
                             <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>
@@ -43,34 +45,35 @@
                                 <div class="modal-background" id="delete-modal-background"></div>
                                 <div class="modal-card">
                                     <header class="modal-card-head">
-                                        <p class="modal-card-title">Update Note</p>
+                                        <p class="modal-card-title">Edit Comment</p>
                                         <button class="delete" aria-label="close" id="comment-edit-close"></button>
                                     </header>
-                                    <footer class="modal-card-foot">
-                                        <form class="card-footer-item" action="{% url 'comment_update' comment.pk %}" method="post">
+                                    <section class="modal-card-body">
+                                        <form class="update-modal" style="text-align: center;" action="{% url 'comment_update' comment.pk %}" method="post">
                                             {% csrf_token %}
                                             <div class="d-flex flex-column mb-3">
-                                                <label for="content">Comment Content:</label>
                                                 <textarea type="text" value="{{ comment.content}}" name="content" rows="10" cols="30" name="description" required>{{ comment.content }}</textarea>
                                             </div>
                                             {% if form.errors %}
                                             {% for field in form %}
                                                 {% for error in field.errors %}
-                                                    <div class="alert alert-danger">
-                                                        <strong>{{ error|escape }}</strong>
+                                                    <div style="padding: 10px;">
+                                                        <strong class="has-text-danger-dark">{{ error|escape }}</strong>
                                                     </div>
                                                 {% endfor %}
                                             {% endfor %}
                                             {% for error in form.non_field_errors %}
-                                                <div class="alert alert-danger">
-                                                    <strong>{{ error|escape }}</strong>
+                                                <div style="padding: 10px;">
+                                                    <strong class="has-text-danger-dark">{{ error|escape }}</strong>
                                                 </div>
                                             {% endfor %}
                                             {% endif %}
-                                            <input class="button has-text-white-ter has-background-danger-dark" type="submit" value="Update" href="{% url 'profile' user.profile.pk %}">
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                            <input class="button has-background-primary-dark has-text-link-light" type="submit" value="Save Changes" href="{% url 'profile' user.profile.pk %}">
                                             <input type="hidden" name="text" value="{{ next }}" />
                                         </form> 
-                                        <button class="button is-success" aria-label="close" id="comment-cancel-btn">Cancel</button>
+                                        <button class="button site-btn" aria-label="close" id="comment-cancel-btn">Cancel</button>
                                     </footer>
                                 </div>
                             </div>
