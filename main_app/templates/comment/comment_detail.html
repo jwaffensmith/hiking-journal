@@ -41,7 +41,7 @@
                         </a>
                     </div>
                     <section class="content hike-details" style="margin-top: 10px;">
-                        <strong>Comment posted on {{comment.created_at|date}}</strong> 
+                        <strong>{{comment.user.first_name}}'s comment posted on {{comment.created_at|date}}</strong> 
                         <p>{{comment.content}}</p>
                     </section>
                     <div class="card" style="width: 500px; margin-left: auto;
