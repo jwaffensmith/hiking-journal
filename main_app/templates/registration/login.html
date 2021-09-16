@@ -7,6 +7,9 @@
     <div class="columns is-centered">
         <div class="column is-one-third">
             <form class="box site-form" method="post" action="{% url 'login' %}" style="margin-top: 200px;">
+                <div class="control" style="text-align: right">
+                    <a class="button site-btn" href="{% url 'password_reset' %}">Reset Password</a>
+                </div>
                 {% csrf_token %} 
                 <div class="field">
                     <label class="label">Username</label>
@@ -44,9 +47,6 @@
                     <div class="control">
                         <input class="button site-btn" type="submit" value="Login" name="Login"/>
                         <input type="hidden" name="next" value="{{ next }}" />
-                    </div>
-                    <div class="control" style="margin-top: 50px; text-align: center">
-                        <a class="button site-btn" href="{% url 'password_reset' %}">Reset Password</a>
                     </div>
                 </div>
             </form>
