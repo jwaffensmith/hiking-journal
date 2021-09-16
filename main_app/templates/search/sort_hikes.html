@@ -24,78 +24,76 @@
         </div>
 
     {% for hike in hikes %}
-        <div style="margin-bottom: 80px; padding: 20px">
-            <div class="card is-mobile is-centered profile-card">
-                <div class="card-header" style="padding-top:10px">
-                    <p class="card-header-title" style="font-size: 20px;"> 
-                    {{hike.name}} 
-                    </p>
-                    {% if hike.user == user %}
-                    <p style="margin-right: 5px;">Posted on {{hike.created_at|date}}</p>
-                    {% else %}
-                    <p style="margin-right: 5px;">Posted by </p>
-                    <span style="margin-right: 5px;"><a href="{% url 'profile' hike.user.id %}"> {{hike.user.username}}</a></span>
-                    <p style="margin-right: 10px;"> on {{hike.created_at|date}} </p>
-                    {% endif %}
-                </div>
-                <div style="margin-top: 10px; font-size: 20px; text-align: center;">
-                    {{hike.location}}
-                </div>
-                <div class="card-image 64x64px">
-                    <figure class="image is-square" style="margin-top: 5px;">
-                        <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
-                    </figure>
-                </div>
-                <section class="card-content hike-details">
-                    <div>
-                        <P><strong>Length | </strong> {{hike.length}} Miles</p>
-                        <p><strong>Elevation Gain | </strong> {{hike.elevation_gain}} Feet</P>
-                        <p><strong>Hiked | </strong> {{hike.hike_date}}</p>
-                    </div>
-                    <div>
-                        <div style="margin-bottom: 20px; margin-top: 20px;">
-                            <spn><p><strong>Hike Rating</strong></p></spn>
-                            {% if hike.hike_rating == 5 %}
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            {% elif hike.hike_rating == 4 %}
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            {% elif hike.hike_rating == 3 %}
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            {% elif hike.hike_rating == 2 %}
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span>  
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            {% elif hike.hike_rating == 1 %}
-                            <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            <span><i class="fas fa-star" style="color: gray;"></i></span> 
-                            {% endif %}
-                        </div>
-                        <i class="fas fa-book"></i> <strong>Journal Notes</strong>
-                        <p>{{hike.description}}</p>
-                    </div>
-                </section>
+        <div class="card is-mobile is-centered profile-hike-card">
+            <div class="card-header" style="padding-top:10px">
+                <p class="card-header-title" style="font-size: 20px;"> 
+                {{hike.name}} 
+                </p>
+                {% if hike.user == user %}
+                <p style="margin-right: 5px;">Posted on {{hike.created_at|date}}</p>
+                {% else %}
+                <p style="margin-right: 5px;">Posted by </p>
+                <span style="margin-right: 5px;"><a href="{% url 'profile' hike.user.id %}"> {{hike.user.username}}</a></span>
+                <p style="margin-right: 10px;"> on {{hike.created_at|date}} </p>
+                {% endif %}
             </div>
-            {% empty %}
-            <p style="font-size: 20px; margin-top: 30px">Sorry, no hikes were found.</p>
-            {% endfor %}
+            <div style="margin-top: 10px; font-size: 20px; text-align: center;">
+                {{hike.location}}
+            </div>
+            <div class="card-image 64x64px">
+                <figure class="image is-square" style="margin-top: 5px;">
+                    <img src="{{hike.img_one}}" alt="{{hike.name}}"/>
+                </figure>
+            </div>
+            <section class="card-content hike-details">
+                <div>
+                    <P><strong>Length | </strong> {{hike.length}} Miles</p>
+                    <p><strong>Elevation Gain | </strong> {{hike.elevation_gain}} Feet</P>
+                    <p><strong>Hiked | </strong> {{hike.hike_date}}</p>
+                </div>
+                <div>
+                    <div style="margin-bottom: 20px; margin-top: 20px;">
+                        <spn><p><strong>Hike Rating</strong></p></spn>
+                        {% if hike.hike_rating == 5 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        {% elif hike.hike_rating == 4 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        {% elif hike.hike_rating == 3 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        {% elif hike.hike_rating == 2 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span>  
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        {% elif hike.hike_rating == 1 %}
+                        <span><i class="fas fa-star" style="color: rgb(230, 230, 20);"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        <span><i class="fas fa-star" style="color: gray;"></i></span> 
+                        {% endif %}
+                    </div>
+                    <i class="fas fa-book"></i> <strong>Journal Notes</strong>
+                    <p>{{hike.description}}</p>
+                </div>
+            </section>
         </div>
+        {% empty %}
+        <p style="font-size: 20px; margin-top: 30px">Sorry, no hikes were found.</p>
+        {% endfor %}
     </div>
 
 {% endblock %}
