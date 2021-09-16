@@ -3,7 +3,6 @@
 
 {% block content%}
 
-<main class="gradient">
     <div class="columns is-centered">
         <div class="column is-one-third">
             <form class="box site-form" method="post" action="{% url 'login' %}" style="margin-top: 200px;">
@@ -41,18 +40,17 @@
                 {% endfor %}
                 {% endif %}
 
-                <div style="margin-top: 10px;"> 
+                <div style="margin-top: 30px;"> 
                     <div class="control">
                         <input class="button site-btn" type="submit" value="Login" name="Login"/>
                         <input type="hidden" name="next" value="{{ next }}" />
                     </div>
                 </div>
-                <div class="control" style="text-align: right; margin-bottom: 10px;">
+                <div class="control" style="text-align: right; margin-top: 50px; margin-bottom: 10px;">
                     <a class="button site-btn" href="{% url 'password_reset' %}">Reset Password</a>
                 </div>
             </form>
         </div>
     </div>
-</main>
-    
+
 {% endblock %}

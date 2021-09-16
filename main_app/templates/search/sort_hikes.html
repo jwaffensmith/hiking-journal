@@ -4,24 +4,27 @@
 
 {% block content%}
 
-<main class="main-container">
     <div class="container page-card">
-        <div class="container">
-            <p style="font-size: 20px; margin-bottom: 20px">Search Your Hikes</p>
-            <form method="GET" class="box sort-form">
-                {{hike_filter.form}}
-                <div class="control" style="margin-top: 20px">
-                    <input type="submit" class="button has-background-primary-dark has-text-link-light" value="Search" /> 
-                    <input type="hidden" name="next" value="{{ next }}" />
+        <div class="columns is-centered">
+            <div class="column is-half profile-card">
+                <div class="box sort-form">
+                    <p style="font-size: 17px; margin-bottom: 10px">Search Your Hikes</p>
+
+                    <form method="GET">
+                        {{hike_filter.form.as_p}}
+                        <div class="control" style="margin-top: 20px">
+                            <input type="submit" class="button has-background-primary-dark has-text-link-light" style="width: 80%;" value="Search" /> 
+                            <input type="hidden" name="next" value="{{ next }}" />
+                        </div>
+                    </form>
+
+                    <a href="{% url 'sort_hikes' %}"> <button class="button site-btn" style="margin-top: 30px">Clear Search</button></a>
                 </div>
-                <a href="{% url 'sort_hikes' %}"> <button class="button site-btn" style="margin-top: 30px">Clear Search</button></a>
+            </div>
         </div>
-            </form>
-    
+
     {% for hike in hikes %}
-    <div class="card-border" style="margin-bottom: 80px; padding: 20px">
-        <div class="card is-centered" style="width: 500px; margin-left: auto;
-        margin-right: auto;">
+        <div class="card is-mobile is-centered profile-hike-card">
             <div class="card-header" style="padding-top:10px">
                 <p class="card-header-title" style="font-size: 20px;"> 
                 {{hike.name}} 
@@ -91,7 +94,7 @@
         {% empty %}
         <p style="font-size: 20px; margin-top: 30px">Sorry, no hikes were found.</p>
         {% endfor %}
-</main>
+    </div>
 
 {% endblock %}
 

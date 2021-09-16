@@ -25,7 +25,7 @@
                                 </li>
                                 {% if comment.hike.user != user %}
                                 <li>
-                                    <a href="{% url 'profile' comment.user.profile.pk %}"> 
+                                    <a href="{% url 'profile' comment.hike.user.profile.pk %}"> 
                                     <span class="icon is-small">
                                         <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
                                     </span>
@@ -63,7 +63,7 @@
                                         <form class="update-modal" style="text-align: center;" action="{% url 'comment_update' comment.pk %}" method="post">
                                             {% csrf_token %}
                                             <div class="d-flex flex-column mb-3">
-                                                <textarea type="text" value="{{ comment.content}}" name="content" rows="10" cols="30" name="description" required>{{ comment.content }}</textarea>
+                                                <textarea type="text" value="{{comment.content}}" name="content" class="input" rows="5" cols="50" maxlength="1000" required>{{ comment.content }}</textarea>
                                             </div>
                                             {% if form.errors %}
                                             {% for field in form %}

@@ -4,40 +4,112 @@ $trim: #64888a;
 $gradient_four: #9fb798;
 $gradient_five:  #b7cdb2;
 $gradient_six: #cfdbcc;
-$footer: #e7ede6;
-$background: #f4f4f4;
+$background: #e7ede6;
+$footer: #f4f4f4;
 $primary-font: 'Poppins', sans-serif;
 
 
 body, html {
-    font-family: $primary-font;
     height: 100%;
-    width: 100%;
-    margin: 0;
-    position: relative;
-    box-sizing: border-box;
+}
+
+body {
+    font-family: $primary-font;
+    display: flex;
+    flex-direction: column;
     background-color: $footer;
     color: #36454F;
 }
 
-.gradient {
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    background: linear-gradient($btn, $btn, $btn, $trim, $trim, 
-    $gradient_four, $gradient_four, $gradient_five, $gradient_five, 
-    $gradient_six, $gradient_six, $footer, $background, $footer, $footer, $footer);
+#content-wrap {
+    flex: 1 0 auto;
+    background: linear-gradient($btn, $btn, $trim, 
+    $gradient_four, $gradient_five,
+    $gradient_six, $background, $footer);
 }
 
-.main-container {
-    min-height: 100vh; /* will cover the 100% of viewport */
-    overflow: hidden;
-    display: block;
-    margin-top: 50px;
-    padding-bottom: 200px; /* height of your footer */
+#footer {
+    flex-shrink: 0;
     background: $footer;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    
+    .contact-info {
+        margin: 0;
+        padding: 0;
+
+        .developer-name, .contact-icon {
+            color: $navbar;
+            font-size: 15px;
+        }
+    }
+}
+
+
+.img-container {
+
+    .landing-img {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background-color: $background;
+        height: 90vh; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+        .welcome-message {
+            margin-top: 10em;
+            color: $btn;
+            font-size: 20px;
+        }
+
+        .user-message {
+            margin-top: 2em ;
+            color: $btn;
+            font-size: 20px;
+        }
+
+        .img-login, .img-signup {
+            margin: 15px;
+            color: $navbar;
+            outline: none !important;
+            text-decoration: none;
+            border-color: transparent;
+        }
+        
+        .img-login:hover, .img-signup:hover  {
+            text-decoration: none;
+            transition: all .5s;
+            color: $btn;
+        }
+
+        .img-login:active, .img-signup:active {
+            color: $navbar;
+        }
+
+        .img-login:focus, .img-signup:focus {
+            box-shadow: none;
+        }
+
+        .img-login:after, .img-signup:after  {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: $btn;
+            transform-origin: bottom right;
+            transition: transform 0.10s ease-out;
+        }
+
+        .img-login:hover:after, .img-signup:hover:after  {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
 }
 
 nav.navbar.is-fixed-top {
@@ -90,131 +162,34 @@ nav.navbar.is-fixed-top {
         }
     } 
 
-.footer {
-    background: $footer;
-    width:100%;
-    position: fixed;
-
-    .contact-info {
-        margin: 0;
-        padding: 0;
-
-        .developer-name, .contact-icon {
-            color: $navbar;
-            font-size: 15px;
-        }
-    }
-}
-
 .border {
     border-color: #36454F;
     border-left: 3px groove;
 }
 
-
-.img-container {
-    background-color: $background;
-    height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    .landing-caption {
-        position: absolute;
-        left: 0;
-        top: 20%;
-        width: 100%;
-        text-align: center;
-    }
-        .welcome-message {
-            margin-top: 10px;
-            color: $btn;
-            font-size: 20px;
-        }
-
-        .img-login, .img-signup {
-            margin: 15px;
-            color: $navbar;
-            outline: none !important;
-            text-decoration: none;
-            border-color: transparent;
-        }
-        
-        .img-login:hover, .img-signup:hover  {
-            text-decoration: none;
-            transition: all .5s;
-            color: $btn;
-        }
-
-        .img-login:active, .img-signup:active {
-            color: $navbar;
-        }
-
-        .img-login:focus, .img-signup:focus {
-            box-shadow: none;
-        }
-
-        .img-login:after, .img-signup:after  {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: $btn;
-            transform-origin: bottom right;
-            transition: transform 0.10s ease-out;
-        }
-
-        .img-login:hover:after, .img-signup:hover:after  {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-}
-
 .container.about {
-    display: inline;
-    top: 20%;
     width: 100%;
+    text-align: center;
+    padding-top: 10em;
+    color: #4d4848;
+    font-size: 20px;
     text-align: center;
 
     .welcome-message {
-        margin-top: 30px;
-        color: rgb(77, 72, 72);
-        font-size: 20px;
-        text-align: center;
-
-    }
-}
-
-.container.signup {
-    left: 0;
-    top: 20%;
-    background: $footer;
-    padding: 50px;
-    border-radius: 7px;
-    border-color: $btn;
-    border-style: solid;
-    border-width: 5px;
-    text-align: justify;
-}
-
+        padding: 20px;
+    }  
+} 
 
 .signup-page {
-        margin-top: 7px;
         color: rgb(45, 42, 42);
 
         p {
-            font-size: 15px;
-            margin: 7px;
-            padding: 7px;
+            padding-top: 10px;
+            padding-bottom: 10px;
 
             input {
-                    width: 100%;
                     padding: 8px 5px;
                     margin: 5px 0;
-                    box-sizing: border-box;
             }
 
             input:focus {
@@ -229,8 +204,6 @@ nav.navbar.is-fixed-top {
         }
 
         ul {
-            margin: 10px;
-
             li {
                 font-size: 15px;
                 margin-left: 10px;
@@ -250,12 +223,68 @@ nav.navbar.is-fixed-top {
     }
 
 
+
+.update-profile {
+
+    color: rgb(45, 42, 42);
+
+    p {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+    label {
+        margin-right: 20px;
+        font-size: 17px;
+
+        } 
+    
+    input {
+        width: 100%;
+        padding: 8px 5px;
+        margin: 7px 0;
+    }
+
+    input:focus { 
+        outline: none !important;
+        border-color: $trim;
+        box-shadow: none;
+}
+
+
+    .helptext {
+        font-size: 15px;
+    }
+}
+
+    span.helptext {
+        font-size: 15px;
+    }
+
+
+    ul {
+        li {
+            font-size: 10px;
+            margin-left: 10px;
+        }
+    }
+
+    ul.errorlist {
+        margin: 10px;
+        color: hsl(348, 86%, 43%);
+
+        li {
+            font-size: 15px;
+            list-style-type: none;
+            
+        }
+    }
+}
+
 .update-modal {
         color: rgb(45, 42, 42);
         font-weight: 700;
         font-size: 15px;
         text-align: left;
-        margin-left: 50px;
 
     p {   
         
@@ -273,18 +302,15 @@ nav.navbar.is-fixed-top {
 
 }
 
+.card-header-title {
+    font-size: 20px;
+}
+
 .container.page-card {
-    margin-top: 20px;
+    margin-top: 50px;
     text-align: center;
-    background: $footer;
     width: 100%;
     padding: 40px;
-
-    .card-border {
-        margin-top: 10px;
-        color: rgb(45, 42, 42);
-        font-size: 17px;
-    }
 }
 
 .review-note {
@@ -416,7 +442,7 @@ a.edit-link:hover, a.delete-link:hover  {
     }
 
     label {
-       
+
         margin-right: 20px;
         font-weight: 700;
         font-size: 14px;
@@ -430,32 +456,6 @@ a.edit-link:hover, a.delete-link:hover  {
     }
 }
 
-.profile-update-form {
-        
-        input {
-            margin-bottom: 20px;
-            width: 50%;
-        }
-
-        input:focus { 
-            outline: none !important;
-            border-color: $trim;
-    
-    }
-
-    label {
-        margin-right: 20px;
-        font-weight: 700;
-        font-size: 14px;
-
-        }   
-
-    textarea:focus { 
-        outline: none !important;
-        border-color: $trim;
-        
-    }
-}
 
 .class-footer-item {
     form {   
@@ -477,21 +477,13 @@ a.edit-link:hover, a.delete-link:hover  {
 
 .box.sort-form {
 
-    max-width: 500px; 
-    margin-left: auto;
-    margin-right: auto; 
 
     label {
-       
-        margin-right: 20px;
-        font-weight: 700;
-        font-size: 12px;
+        font-size: 14px;
         }    
 
     input {
-        width: 100%;
-        padding: 8px 8px;
-        margin: 8px 0;
+        margin: 5px 0;
     }   
  
     input:focus { 
@@ -502,6 +494,30 @@ a.edit-link:hover, a.delete-link:hover  {
         outline: none !important;
         border-color: $trim;
     }
+}
+
+.password-form {
+
+    input {
+
+        margin-top: 20px; 
+        margin-bottom: 20px; 
+
+    }
+}
+
+.password-reset {
+
+    text-align: center; 
+    margin-top: 200px;
+    max-width: 500px; 
+    margin-left: auto;
+    margin-right: auto; 
+
+    p {
+        margin-bottom: 20px;
+    }
+    
 }
 
 @media screen and (max-width: 1024px) { 
