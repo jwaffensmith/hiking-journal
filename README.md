@@ -34,7 +34,7 @@ https://thehikingjournal.herokuapp.com/
 
 === User Stories ===
 
-* Navbar will be fixed on top of each page with logo, app name and About on the left. When user is not authenticated, register and login links will be on the right.
+* Navbar will be fixed on top of each page with logo and app name on the left. When user is not authenticated, register and login links will be on the right.
 * Once users are authenticated, user will see their username and logout to the right of the navbar.
 * Footer will display developer’s name with links to GitHub and LinkedIn
 * Landing page will provide an overview of the application and direct users to login or register for an account.
