@@ -6,8 +6,7 @@
     <main class="main-container">
         <div class="container page-card">
             <div class="card-border">
-                <div class="card  is-centered" style="width: 500px; margin-left: auto;
-                margin-right: auto;">
+                <div class="card is-centered hike-detail-card">
                     <div class="card-header" style="padding-top: 10px">
                         <p class="card-header-title" style="font-size: 20px;"> 
                         {{hike.name}} 
@@ -84,8 +83,7 @@
                         </div>
                     </section>
                 </div>
-                    <div class="card" style="width: 500px; margin-left: auto;
-                    margin-right: auto;">
+                    <div class="card hike-detail-card">
                         <footer class="card-footer">
                             {% if hike.user == user %}
                             <a class="card-footer-item has-text-black-ter journal-link" href="{% url 'profile' user.profile.pk %}">Journal</a>

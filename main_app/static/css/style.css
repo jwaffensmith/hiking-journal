@@ -316,6 +316,13 @@ a.edit-link:hover, a.delete-link:hover {
   margin-bottom: 0px;
 }
 
+.hike-detail-card {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+}
+
 .site-form input:focus {
   outline: none !important;
   border-color: #28587b;
