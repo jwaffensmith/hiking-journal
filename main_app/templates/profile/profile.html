@@ -8,9 +8,9 @@
 
 <main class="main-container">
     <div class="container page-card">
-        <div class="card profile-card" style="background-color: #f4f4f4">
+        <div class="card profile-card" style="background: linear-gradient(#64888a, #64888a, #9fb798, #b7cdb2, #cfdbcc)">
             <header class="card-header">
-                <p class="card-header-title is-centered">
+                <p class="card-header-title is-centered" >
                     {{ profile.user.first_name }}'s Hiking Journal
                 </p>
             </header>
@@ -64,7 +64,7 @@
         </div>
 
         {% if profile.user != user %}
-        <article class="media" style="margin-top: 20px;">
+        <article class="media profile-hike-card">
             <figure class="media-right">
                 <p class="image is-64x64">
                     <img src="{{user.profile.avatar}}" style="border-radius: 5px;">
@@ -105,11 +105,11 @@
         </article>
         {% endif %}
 
-        <article class="media-card" style="margin: 5px;">
-            <div class="container" > 
+        <article class="media-card profile-hike-card">
+            <div class="box" > 
                 {% for comment in hike.comments.all %}
                 <div class="media-content" style="border-top: 1px solid #C0C0C0">
-                    <div class="content" style="margin: 20px;">
+                    <div class="content" style="margin: 20px; text-align: left">
                         <p>
                         <strong>{{comment.user.first_name}}</strong> <a href="{% url 'profile' comment.user.id %}"><small>@{{comment.user.username}}</small></a><small> {{comment.created_at|date}}</small>
                         <br>

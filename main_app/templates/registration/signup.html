@@ -6,7 +6,7 @@
 
 <main class="gradient">
     <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-half profile-card">
             <form class="box site-form signup-page" method="POST" action="{% url 'signup' %}" style="margin-top: 100px;">
                 
                 {% csrf_token %}   
@@ -22,14 +22,15 @@
                     {% endfor %}
                 {% endfor %}
                 {% for error in form.non_field_errors %}
+                
                     <div style="padding: 10px;">
                         <strong class="has-text-danger-dark">{{ error|escape }}</strong>
                     </div>
                 {% endfor %}
                 {% endif %}
 
-                    <div class="control">
-                        <input type="submit" class="button site-btn" value="Sign Up" /> 
+                    <div class="control" style="text-align: center">
+                        <input type="submit" class="button site-btn" value="Sign Up"/> 
                         <input type="hidden" name="next" value="{{ next }}" />
                     </div>
                 </div>
