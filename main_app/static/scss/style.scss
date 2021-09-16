@@ -302,18 +302,16 @@ nav.navbar.is-fixed-top {
 
 }
 
+.card-header-title {
+    font-size: 20px;
+}
+
 .container.page-card {
-    margin-top: 20px;
+    margin-top: 50px;
     text-align: center;
     background: $background;
     width: 100%;
     padding: 40px;
-
-    .card-border {
-        margin-top: 10px;
-        color: rgb(45, 42, 42);
-        font-size: 17px;
-    }
 }
 
 .review-note {

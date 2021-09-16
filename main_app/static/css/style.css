@@ -222,17 +222,16 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   box-shadow: none;
 }
 
+.card-header-title {
+  font-size: 20px;
+}
+
 .container.page-card {
-  margin-top: 20px;
+  margin-top: 50px;
   text-align: center;
   background: #e7ede6;
   width: 100%;
   padding: 40px;
-}
-.container.page-card .card-border {
-  margin-top: 10px;
-  color: #2d2a2a;
-  font-size: 17px;
 }
 
 .review-note {
