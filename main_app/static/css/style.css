@@ -9,13 +9,21 @@ body, html {
   color: #36454F;
 }
 
-.gradient {
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  top: 0px;
-  z-index: -1;
+#page-container {
+  position: relative;
+  min-height: 100vh;
   background: linear-gradient(#467383, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6, #e7ede6, #e7ede6);
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 
 .main-container {
@@ -27,57 +35,6 @@ body, html {
   padding-bottom: 200px;
   /* height of your footer */
   background: #e7ede6;
-}
-
-nav.navbar.is-fixed-top {
-  box-shadow: 1px 1px 1px #467383;
-}
-nav.navbar.is-fixed-top .navbar-brand .navbar-burger {
-  color: #e7ede6;
-}
-nav.navbar.is-fixed-top .navbar-brand .navbar-burger.is-active {
-  color: #e7ede6;
-}
-nav.navbar.is-fixed-top .navbar-item .logo {
-  color: #e7ede6;
-  padding: 2px;
-}
-nav.navbar.is-fixed-top .navbar-item .site-name {
-  padding: 5px;
-  font-weight: 700;
-  font-size: 20px;
-  color: #e7ede6;
-}
-nav.navbar.is-fixed-top .navbar-item #home-link:hover {
-  pointer-events: none;
-}
-nav.navbar.is-fixed-top .navbar-menu.is-active {
-  text-align: center;
-}
-nav.navbar.is-fixed-top .navbar-end .about, nav.navbar.is-fixed-top .navbar-end .signup-button, nav.navbar.is-fixed-top .navbar-end .login-button, nav.navbar.is-fixed-top .navbar-end .welcome-user {
-  color: #e7ede6;
-}
-nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top .navbar-end .signup-button:hover, nav.navbar.is-fixed-top .navbar-end .about:hover, nav.navbar.is-fixed-top .navbar-end .welcome-user:hover {
-  color: #28587b;
-}
-
-.footer {
-  background: #e7ede6;
-  width: 100%;
-  position: fixed;
-}
-.footer .contact-info {
-  margin: 0;
-  padding: 0;
-}
-.footer .contact-info .developer-name, .footer .contact-info .contact-icon {
-  color: #28587b;
-  font-size: 15px;
-}
-
-.border {
-  border-color: #36454F;
-  border-left: 3px groove;
 }
 
 .img-container {
@@ -134,29 +91,67 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   transform-origin: bottom left;
 }
 
-.container.about {
-  display: inline;
-  top: 20%;
-  width: 100%;
+nav.navbar.is-fixed-top {
+  box-shadow: 1px 1px 1px #467383;
+}
+nav.navbar.is-fixed-top .navbar-brand .navbar-burger {
+  color: #e7ede6;
+}
+nav.navbar.is-fixed-top .navbar-brand .navbar-burger.is-active {
+  color: #e7ede6;
+}
+nav.navbar.is-fixed-top .navbar-item .logo {
+  color: #e7ede6;
+  padding: 2px;
+}
+nav.navbar.is-fixed-top .navbar-item .site-name {
+  padding: 5px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #e7ede6;
+}
+nav.navbar.is-fixed-top .navbar-item #home-link:hover {
+  pointer-events: none;
+}
+nav.navbar.is-fixed-top .navbar-menu.is-active {
   text-align: center;
 }
-.container.about .welcome-message {
-  margin-top: 30px;
+nav.navbar.is-fixed-top .navbar-end .about, nav.navbar.is-fixed-top .navbar-end .signup-button, nav.navbar.is-fixed-top .navbar-end .login-button, nav.navbar.is-fixed-top .navbar-end .welcome-user {
+  color: #e7ede6;
+}
+nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top .navbar-end .signup-button:hover, nav.navbar.is-fixed-top .navbar-end .about:hover, nav.navbar.is-fixed-top .navbar-end .welcome-user:hover {
+  color: #28587b;
+}
+
+.footer {
+  background: #e7ede6;
+  width: 100%;
+  position: fixed;
+}
+.footer .contact-info {
+  margin: 0;
+  padding: 0;
+}
+.footer .contact-info .developer-name, .footer .contact-info .contact-icon {
+  color: #28587b;
+  font-size: 15px;
+}
+
+.border {
+  border-color: #36454F;
+  border-left: 3px groove;
+}
+
+.container.about {
+  width: 100%;
+  text-align: center;
+  padding-top: 10em;
   color: #4d4848;
   font-size: 20px;
   text-align: center;
 }
-
-.container.signup {
-  left: 0;
-  top: 20%;
-  background: #e7ede6;
-  padding: 50px;
-  border-radius: 7px;
-  border-color: #467383;
-  border-style: solid;
-  border-width: 5px;
-  text-align: justify;
+.container.about .welcome-message {
+  padding: 20px;
 }
 
 .signup-page {

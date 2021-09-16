@@ -16,58 +16,62 @@
     <title>The Hiking Journal - {% block title %} {% endblock%} </title>
 </head>
     <body>
-        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand" style="background: linear-gradient(#28587b, #467383);">
-                <a class="navbar-item" id="home-link" href="{% url 'home' %}" style="background: linear-gradient(#28587b, #467383);">
-                    <i class="fas fa-hiking fa-2x logo"></i>
-                    <span class="site-name">The Hiking Journal</span>
-                </a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-            <div class="navbar-menu" style="background: linear-gradient(#28587b, #467383);">
-                <div class="navbar-start" style="background: linear-gradient(#467383, #28587b);">
+        <div id="page-container"> 
+            <div id="content-wrap"> 
+            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand" style="background: linear-gradient(#28587b, #467383);">
+                    <a class="navbar-item" id="home-link" href="{% url 'home' %}" style="background: linear-gradient(#28587b, #467383);">
+                        <i class="fas fa-hiking fa-2x logo"></i>
+                        <span class="site-name">The Hiking Journal</span>
+                    </a>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
                 </div>
-            {% if user.is_authenticated and not user.is_superuser %}
-                <div class="navbar-end">
-                    <a class="navbar-item welcome-user" href="{% url 'profile' user.profile.pk %}">My Journal</a>
-                    <a class="navbar-item about" href="{% url 'search' %}">Search</a>
-                    <a class="navbar-item about" href="{% url 'about' %}">About</a>
-                    <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
+                <div class="navbar-menu" style="background: linear-gradient(#28587b, #467383);">
+                    <div class="navbar-start" style="background: linear-gradient(#467383, #28587b);">
+                    </div>
+                {% if user.is_authenticated and not user.is_superuser %}
+                    <div class="navbar-end">
+                        <a class="navbar-item welcome-user" href="{% url 'profile' user.profile.pk %}">My Journal</a>
+                        <a class="navbar-item about" href="{% url 'search' %}">Search</a>
+                        <a class="navbar-item about" href="{% url 'about' %}">About</a>
+                        <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                {% elif user.is_superuser %}
+                    <div class="navbar-end">
+                        <a class="navbar-item welcome-user" href="{% url 'admin:index' %}">Admin Page</a>
+                        <a class="navbar-item about" href="{% url 'search' %}">Search</a>
+                        <a class="navbar-item about" href="{% url 'about' %}">About</a>
+                        <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
+                        
+                    </div>
+                {% else %}
+                    <div class="navbar-end">
+                        <a class="navbar-item about" href="{% url 'about' %}">About</a>
+                        <a class="navbar-item login-button" href="{% url 'login' %}">Log In</a>
+                        <a class="navbar-item signup-button" href="{% url 'signup' %}"> Sign Up </a>
+                    </div>
                 </div>
-            {% elif user.is_superuser %}
-                <div class="navbar-end">
-                    <a class="navbar-item welcome-user" href="{% url 'admin:index' %}">Admin Page</a>
-                    <a class="navbar-item about" href="{% url 'search' %}">Search</a>
-                    <a class="navbar-item about" href="{% url 'about' %}">About</a>
-                    <a class="navbar-item login-button" href="{% url 'logout' %}">Logout</a>
-                    
-                </div>
-            {% else %}
-                <div class="navbar-end">
-                    <a class="navbar-item about" href="{% url 'about' %}">About</a>
-                    <a class="navbar-item login-button" href="{% url 'login' %}">Log In</a>
-                    <a class="navbar-item signup-button" href="{% url 'signup' %}"> Sign Up </a>
-                </div>
-            </div>
-            {% endif %}
-        </nav>
-    
+                {% endif %}
+            </nav>
+        
             {% block content %} 
             {% endblock %}
-            
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <p class="contact-info">
-                    <a class="developer-name"> By Jenna Waffensmith </a>
-                    <br>
-                    <a class="contact-icon" href="https://github.com/jwaffensmith" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>
-                    <a class="contact-icon" href="https://www.linkedin.com/in/jennawaffensmith/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
-                </p>
+                    
             </div>
-        </footer>
+            <footer class="footer" id="footer">
+                <div class="content has-text-centered">
+                    <p class="contact-info">
+                        <a class="developer-name"> By Jenna Waffensmith </a>
+                        <br>
+                        <a class="contact-icon" href="https://github.com/jwaffensmith" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>
+                        <a class="contact-icon" href="https://www.linkedin.com/in/jennawaffensmith/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                    </p>
+                </div>
+            </footer>
+        </div>
     </body>
 </html class="has-navbar-fixed-top">
