@@ -4,60 +4,60 @@
 
     <main class="main-container">
             <div class="columns is-centered">
-                <div class="column is-half"> 
-                    <form method="post" class="box hike-create-form" method="POST" style="margin-top: 100px;">
+                <div class="column is-half box hike-create-form" style="margin-top: 100px; margin-bottom: 100px;""> 
+                    <form method="post"  method="POST">
                         <p style="font-weight: 700; font-size: 20px; margin-bottom: 20px; text-align: center;">Journal Entry</p>
                         <div>
                             {% csrf_token %}
                             
                             <p>
                             <label for="name">Hike Name</label>
-                            <input type="text"  name="name" value="{{ hike.name }}" placeholder="Name of the trail" required>
+                            <input class="input" type="text"  name="name" value="{{ hike.name }}" placeholder="Hike name" required>
                             </p>
                 
                             <p>
                             <label for="img_one">Image</label>
-                            <input type="text" name="img_one" value="https://source.unsplash.com/Bkci_8qcdvQ" placeholder="Add a photo" required>
+                            <input class="input" type="text" name="img_one" value="https://source.unsplash.com/Bkci_8qcdvQ" placeholder="Add a photo" required>
                             </p>
                 
                             <p>
                             <label for="img_two">Image</label>
-                            <input type="text" name="img_two" placeholder="optional">
+                            <input class="input" type="text" name="img_two" placeholder="optional">
                             </p>
                 
                             <p>
                             <label for="img_three">Image</label>
-                            <input type="text" name="img_three" placeholder="optional">
+                            <input class="input" type="text" name="img_three" placeholder="optional">
                             </p>
                 
                             <p>
                             <label for="location">Location</label>
-                            <input type="text" name="location" placeholder="Where was the hike?" required>
+                            <input class="input" type="text" name="location" placeholder="Where was the hike?" required>
                             </p>
                 
                             <p>
                             <label for="hike_date"> Date Hiked</label>
-                            <input type="date"  name="hike_date" required>
+                            <input class="input" type="date"  name="hike_date" required>
                             </p>
                 
                             <p>
                             <label for="length"> Length (Miles) </label>
-                            <input type="number" name="length" min="0" step="0.1" placeholder="Miles">
+                            <input class="input" type="number" name="length" min="0" step="0.1" placeholder="5">
                             </p>
                 
                             <p>
                             <label for="elevation_gain"> Elevation Gain (Feet) </label>
-                            <input type="number" name="elevation_gain" min="0" placeholder="Feet">
+                            <input class="input" type="number" name="elevation_gain" min="0" placeholder="2500">
                             </p>
                 
                             <p>
                             <label for="hike_rating"> Hike Rating (1-5) </label>
-                            <input type="number" name="hike_rating" min="1" max="5" placeholder="1-5" required>
+                            <input class="input" type="number" name="hike_rating" min="1" max="5" placeholder="1-5" required>
                             </p>
                 
                             <label for="description">Hike description</label>
                             <p>
-                            <textarea type="text" maxlength="1000" rows="10" cols="30" placeholder="Write about the adventure!" name="description">{{hike.description}}</textarea>
+                            <textarea class="input" type="text" maxlength="1000" rows="10" cols="30" placeholder="Write about the adventure!" name="description">{{hike.description}}</textarea>
                             </p>
                 
                             {% if form.errors %}
@@ -75,10 +75,12 @@
                             {% endfor %}
                             {% endif %}
                         </div>
-                        <input class="button has-background-primary-dark has-text-link-light" type="submit" value="Add Hike">
-                        <input type="hidden" name="text" value="{{ next }}" />
+                            <input class="button has-background-primary-dark has-text-link-light" type="submit" value="Add Hike" style="margin-top: 20px; min-width: 100%;">
+                            <input type="hidden" name="text" value="{{ next }}" />
                     </form> 
-                    <a href="{% url 'profile' user.profile.pk %}"><button  class="button site-btn">Cancel</button></a>
+                    <div style="margin-top: 40px; margin-bottom: 20px; text-align: center;"> 
+                        <a href="{% url 'profile' user.profile.pk %}"><button  class="button site-btn">Cancel</button></a>
+                    </div>
                 </div>
             </div>
     </main>
