@@ -6,19 +6,20 @@ body {
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
-  background-color: #e7ede6;
+  background-color: #f4f4f4;
   color: #36454F;
 }
 
 #content-wrap {
   flex: 1 0 auto;
-  background: linear-gradient(#467383, #467383, #467383, #64888a, #64888a, #64888a, #64888a, #9fb798, #9fb798, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #cfdbcc, #cfdbcc, #e7ede6, #e7ede6, #e7ede6, #e7ede6, #e7ede6);
+  background: linear-gradient(#467383, #467383, #64888a, #9fb798, #b7cdb2, #cfdbcc, #e7ede6, #f4f4f4);
 }
 
 #footer {
   flex-shrink: 0;
-  background: #e7ede6;
+  background: #f4f4f4;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 #footer .contact-info {
   margin: 0;
@@ -34,7 +35,7 @@ body {
   left: 0;
   width: 100%;
   text-align: center;
-  background-color: #f4f4f4;
+  background-color: #e7ede6;
   height: 90vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -89,20 +90,20 @@ nav.navbar.is-fixed-top {
   box-shadow: 1px 1px 1px #467383;
 }
 nav.navbar.is-fixed-top .navbar-brand .navbar-burger {
-  color: #e7ede6;
+  color: #f4f4f4;
 }
 nav.navbar.is-fixed-top .navbar-brand .navbar-burger.is-active {
-  color: #e7ede6;
+  color: #f4f4f4;
 }
 nav.navbar.is-fixed-top .navbar-item .logo {
-  color: #e7ede6;
+  color: #f4f4f4;
   padding: 2px;
 }
 nav.navbar.is-fixed-top .navbar-item .site-name {
   padding: 5px;
   font-weight: 700;
   font-size: 20px;
-  color: #e7ede6;
+  color: #f4f4f4;
 }
 nav.navbar.is-fixed-top .navbar-item #home-link:hover {
   pointer-events: none;
@@ -111,7 +112,7 @@ nav.navbar.is-fixed-top .navbar-menu.is-active {
   text-align: center;
 }
 nav.navbar.is-fixed-top .navbar-end .about, nav.navbar.is-fixed-top .navbar-end .signup-button, nav.navbar.is-fixed-top .navbar-end .login-button, nav.navbar.is-fixed-top .navbar-end .welcome-user {
-  color: #e7ede6;
+  color: #f4f4f4;
 }
 nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top .navbar-end .signup-button:hover, nav.navbar.is-fixed-top .navbar-end .about:hover, nav.navbar.is-fixed-top .navbar-end .welcome-user:hover {
   color: #28587b;
@@ -171,7 +172,6 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   font-weight: 700;
   font-size: 15px;
   text-align: left;
-  margin-left: 50px;
 }
 .update-modal p input {
   margin-bottom: 20px;
@@ -185,7 +185,7 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
 .container.page-card {
   margin-top: 20px;
   text-align: center;
-  background: #e7ede6;
+  background: #f4f4f4;
   width: 100%;
   padding: 40px;
 }

@@ -4,8 +4,8 @@ $trim: #64888a;
 $gradient_four: #9fb798;
 $gradient_five:  #b7cdb2;
 $gradient_six: #cfdbcc;
-$footer: #e7ede6;
-$background: #f4f4f4;
+$background: #e7ede6;
+$footer: #f4f4f4;
 $primary-font: 'Poppins', sans-serif;
 
 
@@ -23,15 +23,16 @@ body {
 
 #content-wrap {
     flex: 1 0 auto;
-    background: linear-gradient($btn, $btn, $btn, $trim, $trim, $trim, $trim, 
-    $gradient_four, $gradient_four, $gradient_four, $gradient_four, $gradient_five, $gradient_five, $gradient_five, $gradient_five,
-    $gradient_six, $gradient_six, $gradient_six, $gradient_six, $footer, $footer, $footer, $footer, $footer);
+    background: linear-gradient($btn, $btn, $trim, 
+    $gradient_four, $gradient_five,
+    $gradient_six, $background, $footer);
 }
 
 #footer {
     flex-shrink: 0;
     background: $footer;
     padding-bottom: 20px;
+    padding-top: 20px;
     
     .contact-info {
         margin: 0;
@@ -227,7 +228,6 @@ nav.navbar.is-fixed-top {
         font-weight: 700;
         font-size: 15px;
         text-align: left;
-        margin-left: 50px;
 
     p {   
         
