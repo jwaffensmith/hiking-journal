@@ -373,6 +373,22 @@ a.edit-link:hover, a.delete-link:hover {
   border-color: #64888a;
 }
 
+.password-form input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.password-reset {
+  text-align: center;
+  margin-top: 200px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.password-reset p {
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1024px) {
   .img-container {
     left: 50%;

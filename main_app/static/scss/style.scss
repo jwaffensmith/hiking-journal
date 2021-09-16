@@ -388,7 +388,7 @@ a.edit-link:hover, a.delete-link:hover  {
     }
 
     label {
-       
+
         margin-right: 20px;
         font-weight: 700;
         font-size: 14px;
@@ -474,6 +474,30 @@ a.edit-link:hover, a.delete-link:hover  {
         outline: none !important;
         border-color: $trim;
     }
+}
+
+.password-form {
+
+    input {
+
+        margin-top: 20px; 
+        margin-bottom: 20px; 
+
+    }
+}
+
+.password-reset {
+
+    text-align: center; 
+    margin-top: 200px;
+    max-width: 500px; 
+    margin-left: auto;
+    margin-right: auto; 
+
+    p {
+        margin-bottom: 20px;
+    }
+    
 }
 
 @media screen and (max-width: 1024px) { 
