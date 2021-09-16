@@ -3,14 +3,16 @@
 
 {% block content %}
 
-<main class="main-container">
+
     <div class="columns is-centered">
-        <div class="column is-half"> 
-                <form method="POST" class="box profile-upate-form" style="margin-top: 100px;">
-                    <p style="font-weight: 700; font-size: 20px; margin-bottom: 20px; text-align: center;">Update Account</p>
-                        {% csrf_token %}
-                        {{ update_user_form }}
-                        {{ update_profile_form }}
+        <div class="column is-half profile-card"> 
+            <div class="box" style="margin-top: 100px; text-align: center;"> 
+                <form class="update-profile" method="POST">
+                    <p style="font-weight: 700; font-size: 20px; text-align: center;">Update Account</p>
+                        
+                    {% csrf_token %}
+                        {{ update_user_form.as_p }}
+                        {{ update_profile_form.as_p }}
             
                         {% if form.errors %}
                         {% for field in form %}
@@ -27,15 +29,17 @@
                         {% endfor %}
                         {% endif %}
 
-                    <input class="button has-background-primary-dark has-text-link-light" type="submit" value="Update Account">
+                    <input class="button has-background-primary-dark has-text-link-light" style="width: 80%; margin-top: 20px;" type="submit" value="Update Account">
                     <input type="hidden" name="text" value="{{ next }}" />
-                    <a href="{% url 'profile' user.profile.pk %}"><button  class="button site-btn">Cancel</button></a>
                 </form> 
-                    <a class="button" href="{% url 'password_change' %}">Change Password</a>
-                </div>
+                <div style="display: flex; justify-content: center; margin-top: 40px;">
+                    <a class="button" href="{% url 'password_change' %}" style="margin-right: 20%;">Change Password</a>
+                    <a href="{% url 'profile' user.profile.pk %}"><button  class="button site-btn">Cancel</button></a>
+                </div> 
+            </div>
         </div>
     </div>
-</main>
+
 
 {% endblock %}
 

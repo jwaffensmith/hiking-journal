@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import widgets
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
@@ -30,11 +31,22 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields= ["location", "avatar"]
+        widgets={
+
+            "location": forms.TextInput(attrs=({"class": 'input', "placeholder": "Location"})),
+             "avatar": forms.TextInput(attrs=({"class": 'input', "placeholder": "Photo"}))
+        }
         
 
 class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
+        widgets={
+
+            "username": forms.TextInput(attrs=({"class": 'input', "placeholder": "Username"})),
+            "first_name": forms.TextInput(attrs=({"class": 'input', "placeholder": "First Name"})),
+            "last_name": forms.TextInput(attrs=({"class": 'input', "placeholder": "Last Name"}))
+        }
 
 

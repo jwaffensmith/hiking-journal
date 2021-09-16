@@ -167,6 +167,46 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   list-style-type: none;
 }
 
+.update-profile {
+  color: #2d2a2a;
+}
+.update-profile p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.update-profile p label {
+  margin-right: 20px;
+  font-size: 17px;
+}
+.update-profile p input {
+  width: 100%;
+  padding: 8px 5px;
+  margin: 7px 0;
+}
+.update-profile p input:focus {
+  outline: none !important;
+  border-color: #64888a;
+  box-shadow: none;
+}
+.update-profile p .helptext {
+  font-size: 15px;
+}
+.update-profile span.helptext {
+  font-size: 15px;
+}
+.update-profile ul li {
+  font-size: 10px;
+  margin-left: 10px;
+}
+.update-profile ul.errorlist {
+  margin: 10px;
+  color: #cc0f35;
+}
+.update-profile ul.errorlist li {
+  font-size: 15px;
+  list-style-type: none;
+}
+
 .update-modal {
   color: #2d2a2a;
   font-weight: 700;
@@ -316,24 +356,6 @@ a.edit-link:hover, a.delete-link:hover {
   font-size: 14px;
 }
 .hike-create-form textarea:focus {
-  outline: none !important;
-  border-color: #64888a;
-}
-
-.profile-update-form input {
-  margin-bottom: 20px;
-  width: 50%;
-}
-.profile-update-form input:focus {
-  outline: none !important;
-  border-color: #64888a;
-}
-.profile-update-form label {
-  margin-right: 20px;
-  font-weight: 700;
-  font-size: 14px;
-}
-.profile-update-form textarea:focus {
   outline: none !important;
   border-color: #64888a;
 }

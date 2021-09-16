@@ -223,6 +223,63 @@ nav.navbar.is-fixed-top {
     }
 
 
+
+.update-profile {
+
+    color: rgb(45, 42, 42);
+
+    p {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+    label {
+        margin-right: 20px;
+        font-size: 17px;
+
+        } 
+    
+    input {
+        width: 100%;
+        padding: 8px 5px;
+        margin: 7px 0;
+    }
+
+    input:focus { 
+        outline: none !important;
+        border-color: $trim;
+        box-shadow: none;
+}
+
+
+    .helptext {
+        font-size: 15px;
+    }
+}
+
+    span.helptext {
+        font-size: 15px;
+    }
+
+
+    ul {
+        li {
+            font-size: 10px;
+            margin-left: 10px;
+        }
+    }
+
+    ul.errorlist {
+        margin: 10px;
+        color: hsl(348, 86%, 43%);
+
+        li {
+            font-size: 15px;
+            list-style-type: none;
+            
+        }
+    }
+}
+
 .update-modal {
         color: rgb(45, 42, 42);
         font-weight: 700;
@@ -402,32 +459,6 @@ a.edit-link:hover, a.delete-link:hover  {
     }
 }
 
-.profile-update-form {
-        
-        input {
-            margin-bottom: 20px;
-            width: 50%;
-        }
-
-        input:focus { 
-            outline: none !important;
-            border-color: $trim;
-    
-    }
-
-    label {
-        margin-right: 20px;
-        font-weight: 700;
-        font-size: 14px;
-
-        }   
-
-    textarea:focus { 
-        outline: none !important;
-        border-color: $trim;
-        
-    }
-}
 
 .class-footer-item {
     form {   
