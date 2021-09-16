@@ -6,7 +6,7 @@
 <main class="main-container">
     <div class="columns is-centered">
         <div class="column is-half"> 
-                <form method="POST" action="{% url 'profile_update' user.pk %}" class="box profile-upate-form" style="margin-top: 100px;">
+                <form method="POST" class="box profile-upate-form" style="margin-top: 100px;">
                     <p style="font-weight: 700; font-size: 20px; margin-bottom: 20px; text-align: center;">Update Account</p>
                         {% csrf_token %}
                         {{ update_user_form }}
