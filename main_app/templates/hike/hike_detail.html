@@ -16,7 +16,7 @@
                         <p style="margin-right: 5px;">Posted on {{hike.created_at|date}}</p>
                         {% else %}
                         <p style="margin-right: 5px;">Posted by </p>
-                        <span style="margin-right: 5px;"><a href="{% url 'profile' hike.user.id %}"> {{hike.user.username}}</a></span>
+                        <span style="margin-right: 5px;"><a href="{% url 'profile' hike.user.profile.pk %}"> {{hike.user.username}}</a></span>
                         <p style="margin-right: 10px;"> on {{hike.created_at|date}} </p>
                         {% endif %}
                     </div>

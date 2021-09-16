@@ -88,10 +88,9 @@
                 </div>
             </section>
         </div>
-
-    {% empty %}
-    <p style="font-size: 20px; margin-top: 30px">Sorry, no hikes matched that search.</p>
-    {% endfor %}
+        {% empty %}
+        <p style="font-size: 20px; margin-top: 30px">Sorry, no hikes were found.</p>
+        {% endfor %}
 </main>
 
 {% endblock %}
