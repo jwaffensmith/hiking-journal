@@ -1,58 +1,52 @@
 body, html {
-  font-family: "Poppins", sans-serif;
   height: 100%;
-  width: 100%;
-  margin: 0;
-  position: relative;
-  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
   background-color: #e7ede6;
   color: #36454F;
 }
 
-#page-container {
-  position: relative;
-  min-height: 100vh;
-  background: linear-gradient(#467383, #467383, #467383, #64888a, #64888a, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #e7ede6, #f4f4f4, #e7ede6, #e7ede6, #e7ede6);
-}
-
 #content-wrap {
-  padding-bottom: 2.5rem;
+  flex: 1 0 auto;
+  background: linear-gradient(#467383, #467383, #467383, #64888a, #64888a, #64888a, #64888a, #9fb798, #9fb798, #9fb798, #9fb798, #b7cdb2, #b7cdb2, #b7cdb2, #b7cdb2, #cfdbcc, #cfdbcc, #cfdbcc, #cfdbcc, #e7ede6, #e7ede6, #e7ede6, #e7ede6, #e7ede6);
 }
 
 #footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-}
-
-.main-container {
-  min-height: 100vh;
-  /* will cover the 100% of viewport */
-  overflow: hidden;
-  display: block;
-  margin-top: 50px;
-  padding-bottom: 200px;
-  /* height of your footer */
+  flex-shrink: 0;
   background: #e7ede6;
+  padding-bottom: 20px;
+}
+#footer .contact-info {
+  margin: 0;
+  padding: 0;
+}
+#footer .contact-info .developer-name, #footer .contact-info .contact-icon {
+  color: #28587b;
+  font-size: 15px;
 }
 
-.img-container {
+.img-container .landing-img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
   background-color: #f4f4f4;
-  height: 100%;
+  height: 90vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.img-container .landing-caption {
-  position: absolute;
-  left: 0;
-  top: 20%;
-  width: 100%;
-  text-align: center;
-}
 .img-container .welcome-message {
-  margin-top: 10px;
+  margin-top: 10em;
+  color: #467383;
+  font-size: 20px;
+}
+.img-container .user-message {
+  margin-top: 2em;
   color: #467383;
   font-size: 20px;
 }
@@ -123,20 +117,6 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
   color: #28587b;
 }
 
-.footer {
-  background: #e7ede6;
-  width: 100%;
-  position: fixed;
-}
-.footer .contact-info {
-  margin: 0;
-  padding: 0;
-}
-.footer .contact-info .developer-name, .footer .contact-info .contact-icon {
-  color: #28587b;
-  font-size: 15px;
-}
-
 .border {
   border-color: #36454F;
   border-left: 3px groove;
@@ -155,19 +135,15 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
 }
 
 .signup-page {
-  margin-top: 7px;
   color: #2d2a2a;
 }
 .signup-page p {
-  font-size: 15px;
-  margin: 7px;
-  padding: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .signup-page p input {
-  width: 100%;
   padding: 8px 5px;
   margin: 5px 0;
-  box-sizing: border-box;
 }
 .signup-page p input:focus {
   outline: none !important;
@@ -176,9 +152,6 @@ nav.navbar.is-fixed-top .navbar-end .login-button:hover, nav.navbar.is-fixed-top
 }
 .signup-page p .helptext {
   font-size: 15px;
-}
-.signup-page ul {
-  margin: 10px;
 }
 .signup-page ul li {
   font-size: 15px;
