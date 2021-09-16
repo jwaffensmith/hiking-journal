@@ -11,7 +11,7 @@ The Hiking Journal is a place for users to log all their hiking adventures. Why?
 
 === Application Website ===
 
-(Coming Soon)
+https://thehikingjournal.herokuapp.com/
 
 === Technologies ===
 

@@ -28,9 +28,9 @@
             </div>
             {% if profile.user == user %}
             <footer class="card-footer">
-                <a href="{% url 'profile_update' profile.pk %}" class="card-footer-item journal-link">Update Account</a>
+                <a href="{% url 'hike_create' profile.pk %}"class="card-footer-item journal-link">Add Hike</a>
                 <a href="{% url 'sort_hikes' %}" class="card-footer-item journal-link">Search Your Hikes</a>
-                <a href="{% url 'hike_create' profile.pk %}" class="card-footer-item journal-link">Add Hike</a>
+                <a href="{% url 'profile_update' profile.pk %}" class="card-footer-item journal-link">Update Account</a>
             </footer>
             {% endif %}
         </div>
@@ -156,9 +156,9 @@
 
                     
             {% empty %}
-            <article class="message">
+            <article class="message profile-card is-medium">
                 <div class="message-header">
-                    <p>No Hikes Available</p>
+                    <p>No Hikes Posted</p>
                 </div>
             {% endfor %}
             </article>
