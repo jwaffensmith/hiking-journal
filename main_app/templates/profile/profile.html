@@ -8,8 +8,8 @@
 
 
     <div class="container page-card">
-        <div class="card profile-card" style="background: linear-gradient(#64888a, #64888a, #9fb798, #b7cdb2, #cfdbcc)">
-            <header class="card-header">
+        <div class="card profile-card">
+            <header class="card-header" style="background: linear-gradient( #b7cdb2, #cfdbcc)">
                 <p class="card-header-title is-centered" >
                     {{ profile.user.first_name }}'s Hiking Journal
                 </p>
@@ -116,7 +116,7 @@
                 <div class="media-content" style="border-top: 1px solid #C0C0C0">
                     <div class="content" style="margin: 20px; text-align: left">
                         <p>
-                        <strong>{{comment.user.first_name}}</strong> <a href="{% url 'profile' comment.user.id %}"><small>@{{comment.user.username}}</small></a><small> {{comment.created_at|date}}</small>
+                        <strong>{{comment.user.first_name}}</strong> <a href="{% url 'profile' comment.user.profile.pk %}"><small>@{{comment.user.username}}</small></a><small> {{comment.created_at|date}}</small>
                         <br>
                         {{comment.content}}
                         </p>
