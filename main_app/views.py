@@ -100,7 +100,7 @@ class ProfileUpdate(TemplateView):
         profile = get_object_or_404(Profile, pk=self.kwargs['pk'])
         user = get_object_or_404(User, pk=profile.user.pk)
 
-        update_profile_form = UpdateProfileForm(instance=user.profile, data=request.POST)
+        update_profile_form = UpdateProfileForm(instance=profile, data=request.POST)
         update_user_form = UpdateUserForm(instance=user, data=request.POST)
 
         if update_profile_form.is_valid() and update_user_form.is_valid():
@@ -108,8 +108,6 @@ class ProfileUpdate(TemplateView):
             update_user_form.save()
             return redirect("/profile/")
         else:
-            update_profile_form = UpdateProfileForm(instance=request.profile.user)
-            update_user_form = UpdateUserForm(instance=request.user)
             context = {"update_user_form": update_user_form, 
             "update_profile_form": update_profile_form }
             return render(request, "profile/profile_update.html", context)
