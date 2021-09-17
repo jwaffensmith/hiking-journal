@@ -92,13 +92,16 @@ class ProfileUpdate(TemplateView):
         print("profile pk", profile.pk)
         context['profile'] = profile
         context['user'] = user
-        context['update_profile_form'] = UpdateProfileForm(instance=user.profile)
+        context['update_profile_form'] = UpdateProfileForm(instance=profile)
         context['update_user_form'] = UpdateUserForm(instance=user)
         return context
 
     def post(self, request, *args, **kwargs):   
-        update_profile_form = UpdateProfileForm(request.POST)
-        update_user_form = UpdateUserForm(request.POST)
+        profile = get_object_or_404(Profile, pk=self.kwargs['pk'])
+        user = get_object_or_404(User, pk=profile.user.pk)
+
+        update_profile_form = UpdateProfileForm(instance=profile, data=request.POST)
+        update_user_form = UpdateUserForm(instance=user, data=request.POST)
 
         if update_profile_form.is_valid() and update_user_form.is_valid():
             update_profile_form.save()

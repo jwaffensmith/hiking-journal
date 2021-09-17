@@ -24,7 +24,7 @@
         </div>
 
     {% for hike in hikes %}
-        <div class="card is-mobile is-centered profile-hike-card">
+        <div class="card is-mobile is-centered profile-hike-card" style="margin-bottom: 20px">
             <div class="card-header" style="padding-top:10px">
                 <p class="card-header-title" style="font-size: 20px;"> 
                 {{hike.name}} 
@@ -37,6 +37,18 @@
                 <p style="margin-right: 10px;"> on {{hike.created_at|date}} </p>
                 {% endif %}
             </div>
+            <nav class="breadcrumb is-right" aria-label="breadcrumbs" style="margin-top: 10px;">
+                <ul>
+                    <li>
+                        <a class="review-hike" href="{% url 'hike_detail' hike.pk %}">
+                        <span class="icon is-small">
+                            <i class="fas fa-hiking" aria-hidden="true" style="color: #28587b;"></i>
+                        </span>
+                        <span class="review-hike"> View Hike</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
             <div style="margin-top: 10px; font-size: 20px; text-align: center;">
                 {{hike.location}}
             </div>
