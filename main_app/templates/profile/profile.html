@@ -22,7 +22,7 @@
                         </figure>
                     <div class="content" style="margin-left: 20px">
                         <p class="title is-5">{{profile.user.username}}</p>
-                        <p class="subtitle is-6">{{user.profile.location}}</p>
+                        <p class="subtitle is-6">{{profile.location}}</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
     
 
         <article class="media-card profile-hike-card">
-            <div class="box" > 
+            <div class="box" style="margin-bottom: 20px;"> 
                 {% for comment in hike.comments.all %}
                 <div class="media-content" style="border-top: 1px solid #C0C0C0">
                     <div class="content" style="margin: 20px; text-align: left">
