@@ -1,0 +1,12 @@
+fly.toml
+.git/
+*.sqlite3
+.env
+__pycache__/
+
+# macOS file
+.DS_Store
+
+# Editor-specific configuration
+.idea/
+.vscode

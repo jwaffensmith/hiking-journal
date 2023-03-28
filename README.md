@@ -24,8 +24,8 @@ https://thehikingjournal.herokuapp.com/
 * Sass
 * CSS
 * HTML
-* Bulma CSS Framework
-* Heroku
+* Bulma
+* Docker & fly.io
 
 === Installation ===
 * Postgres
